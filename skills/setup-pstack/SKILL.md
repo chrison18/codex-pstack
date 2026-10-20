@@ -11,7 +11,7 @@ Write `~/.gemini/config/rules/pstack-models.md`, an always-applied rule that set
 
 ### 1. Detect available model tiers
 
-Antigravity's `invoke_subagent` accepts four `Model` tiers: `pro`, `flash`, `flash_lite`, and `inherit`. You can also run `agy models` to inspect the underlying models available in the current session. The aliases `inherit-parent` and `auto` are always valid and map to `Model: "inherit"`.
+Antigravity's `invoke_subagent` accepts four `Model` tiers: `pro`, `flash`, `flash_lite`, and `inherit`. You can also run `agy models` to inspect the underlying models available in the current session. Passing `pro`, `flash`, or `flash_lite` resolves to the backend's default model and default reasoning effort for that tier, whereas `inherit` (and the aliases `inherit-parent` and `auto`, which map to `Model: "inherit"`) clones the parent session's exact model and reasoning effort.
 
 ### 2. Load current state
 
@@ -28,7 +28,7 @@ The default role-to-model mapping is the rule shape shown in step 5 below. If `~
 
 **(b) Apply it.** Build the working table from the skill defaults, and on a re-run keep any role you changed by tier, list, or alias (`inherit`, `inherit-parent`, `auto`). `unlimited` upgrades `flash` roles to `pro`. `large` keeps the skill defaults (`pro` for judgment, prose, and hardest tasks; `flash` for fast code, explorer, investigator, and worker roles). `medium` maps code and explorer roles to `flash` and judgment roles to `pro` or `flash`. `small` maps fast code and explorer roles to `flash_lite` and judgment roles to `flash`. `inherit`, `inherit-parent`, and `auto` do not change.
 
-**(c) Show the roles and confirm.** Show every role with its model tier. Also list each line step 2 dropped. Ask whether to accept as-is or change specific roles, offering `pro`, `flash`, `flash_lite`, and `inherit` (which runs that role on the parent chat model) as the options. Prefer `ask_question` over free text. For panel roles (arena runners, architect runners, interrogate reviewers) the value is a list, and one subagent runs per entry, alias entries included, so the list length sets the count. `arena cross-judge pool` is also a list, and Arena selects one value from it that differs from the parent's tier when possible. `swarm workers` is the default tier for every worker unless a race or comparison assigns another tier per arm.
+**(c) Show the roles and confirm.** Show every role with its model tier. Also list each line step 2 dropped. Ask whether to accept as-is or change specific roles, offering `pro`, `flash`, `flash_lite`, and `inherit` (which runs that role on the parent chat model and preserves its reasoning effort) as the options. Prefer `ask_question` over free text. For panel roles (arena runners, architect runners, interrogate reviewers) the value is a list, and one subagent runs per entry, alias entries included, so the list length sets the count. `arena cross-judge pool` is also a list, and Arena selects one value from it that differs from the parent's tier when possible. `swarm workers` is the default tier for every worker unless a race or comparison assigns another tier per arm.
 
 ### 4. Validate
 
@@ -40,7 +40,7 @@ Write `~/.gemini/config/rules/pstack-models.md` as plain Markdown (no YAML front
 
 ```
 # pstack model configuration. One line per role. Delete a line to fall back to the skill default.
-# `inherit`, `inherit-parent`, or `auto` as a value: the role runs on the parent chat model (`Model: "inherit"`). Alias entries in a panel list still count toward its fan-out.
+# `inherit`, `inherit-parent`, or `auto` as a value: the role runs on the parent chat model and preserves its reasoning effort (`Model: "inherit"`). Alias entries in a panel list still count toward its fan-out.
 # budget: large (pro / flash)
 feature, refactoring: flash
 bug-fix: flash
