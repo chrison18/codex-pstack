@@ -26,6 +26,10 @@ Open a todolist by writing and updating `<appDataDir>/brain/<conversation-id>/ta
 
 Spawn all N workers in one `invoke_subagent` call with `TypeName: "self"` (or `"poteto-agent"` for code-writing workers), `Workspace: "branch"` when isolating git changes, and the step 4 `Model` tier.
 
+Use `Workspace: "share"` only when the worker needs access to something in the user's own checkout or machine state.
+
+When a worker must start from a non-default pushed branch, name it in the brief and have the worker check it out before editing.
+
 Every brief stands alone. Include the goal, scope, exact slice or race arm, how to verify, and what to report. Reports use `PASS`, `ISSUES`, or `BLOCKED` with evidence. A worker that can prove a defect reports `ISSUES` and lists every issue it can prove, not only the first.
 
 If a worker drops out, proceed with N-1 and note it.
