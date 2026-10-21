@@ -4,13 +4,19 @@ description: Delegate subagent for code-writing and helper tasks spawned during 
 inheritMcp: true
 tools:
   - send_message
+  - read_file
   - view_file
+  - grep_search
+  - find_by_name
+  - list_dir
   - read_url_content
   - search_web
   - schedule
   - generate_image
+  - edit_file
   - multi_replace_file_content
   - replace_file_content
+  - write_file
   - write_to_file
   - run_command
   - manage_task
