@@ -57,6 +57,6 @@ Pick something real but small, and describe it the way you'd describe it to a co
 
 Watch the todo list. Its first items are the matched playbook's steps copied in, the Feature playbook for this prompt. If `/poteto-mode` skips a step, the step stays in the list with `skip: <reason>`, so you can see what it chose not to do.
 
-From here you can type normal follow-ups.
+From here you can type normal follow-ups. `/poteto-mode` attaches the skill to one message, and it fades as the chat moves on, so start each new task with `/poteto-mode`.
 
 Next: [Route work through `/poteto-mode`](./02-poteto-mode.md).
