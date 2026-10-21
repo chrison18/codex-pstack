@@ -1,6 +1,59 @@
 # pstack
 
-> This fork is preparing a Codex-only migration with explicit `$poteto-mode` activation. The runtime below still targets Antigravity. See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [test baseline](docs/migration/baseline-2026-10-21.md).
+This fork is migrating to Codex-only support. The installable package at `plugins/pstack/` is an **entry preview**: it reports availability when explicitly invoked. Core workflows, agents, and autonomous execution are pending. The inherited root `skills/`, `agents/`, and manifests remain migration source, outside the Codex package.
+
+See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [phase 1 evidence and limits](docs/migration/phase-1-entry-evidence.md).
+
+## Install the Codex preview
+
+From a checkout containing `plugins/pstack/`, with a Codex CLI that supports plugin marketplaces:
+
+```sh
+codex plugin marketplace add .
+codex plugin add pstack@codex-pstack
+codex plugin list --json
+```
+
+The marketplace points only at `plugins/pstack/`. It does not install the 59 inherited agy skills. The preview uses version `0.1.0-alpha.1`, independently of the upstream source version.
+
+Codex namespaces plugin skills. In the tested CLI, the plugin entry is invoked as `$pstack:poteto-mode`. To use the agreed short entry **`$poteto-mode`** in a project, add a project-scoped skill link to this checkout:
+
+```sh
+PSTACK_CHECKOUT="$(pwd)"
+PROJECT=/absolute/path/to/your/project
+mkdir -p "$PROJECT/.agents/skills"
+ln -s "$PSTACK_CHECKOUT/plugins/pstack/skills/poteto-mode" "$PROJECT/.agents/skills/poteto-mode"
+```
+
+Keep the checkout at that location while the link is in use. `ln -s` fails if a skill already occupies that path; do not overwrite an existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. An explicit invocation currently reports that core execution is pending; it does not run the requested task as poteto-mode.
+
+For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. Desktop UI installation and an actual model response are still pending acceptance; see the evidence report before relying on this path.
+
+## Remove the preview
+
+For a project link created with the command above, remove only that link:
+
+```sh
+unlink "$PROJECT/.agents/skills/poteto-mode"
+codex plugin remove pstack@codex-pstack
+codex plugin marketplace remove codex-pstack
+```
+
+Do not use the unlink command on an unrelated skill. Plugin removal does not remove project links; remove both if both were installed.
+
+## Check the Codex package
+
+```sh
+bun scripts/validate-codex-plugin.ts
+bun test scripts/validate-codex-plugin.test.ts
+python3 scripts/smoke-codex-entry.py
+```
+
+The smoke check needs Codex CLI and binds a temporary local HTTP server. It uses disposable Codex state to inspect host context injection; it does not call an external model or change your installed plugins. This proves loading policy, not the model's response or full task execution.
+
+---
+
+The remaining text is inherited Antigravity documentation. Its install commands and workflow claims do not describe the Codex preview above.
 
 Antigravity (`agy`) port of [pstack](https://github.com/cursor/plugins/tree/88d47514b82e7c44f00f2b2a72ff6dd12158038c/pstack) (`0.15.29`) by [Lauren Tan (poteto)](https://x.com/poteto), bundling `deslop`, `control-cli`, and `control-ui` from [cursor-team-kit](https://github.com/cursor/plugins/tree/88d47514b82e7c44f00f2b2a72ff6dd12158038c/cursor-team-kit) (`1.2.0`) by Eric Zakariasson.
 
