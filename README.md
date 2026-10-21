@@ -1,5 +1,7 @@
 # pstack
 
+> This fork is preparing a Codex-only migration with explicit `$poteto-mode` activation. The runtime below still targets Antigravity. See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [test baseline](docs/migration/baseline-2026-10-21.md).
+
 Antigravity (`agy`) port of [pstack](https://github.com/cursor/plugins/tree/88d47514b82e7c44f00f2b2a72ff6dd12158038c/pstack) (`0.15.29`) by [Lauren Tan (poteto)](https://x.com/poteto), bundling `deslop`, `control-cli`, and `control-ui` from [cursor-team-kit](https://github.com/cursor/plugins/tree/88d47514b82e7c44f00f2b2a72ff6dd12158038c/cursor-team-kit) (`1.2.0`) by Eric Zakariasson.
 
 See the [upstream pstack README](https://github.com/cursor/plugins/blob/88d47514b82e7c44f00f2b2a72ff6dd12158038c/pstack/README.md), [upstream cursor-team-kit README](https://github.com/cursor/plugins/blob/88d47514b82e7c44f00f2b2a72ff6dd12158038c/cursor-team-kit/README.md), and the [guide](./docs/guide/README.md) for usage and documentation.
