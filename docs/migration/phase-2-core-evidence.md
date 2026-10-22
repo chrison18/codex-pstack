@@ -82,3 +82,11 @@ Desktop automation was denied for the Codex app during phase 1. The restriction 
 The catalog helper starts a native app-server with its own effective configuration; it does not replay arbitrary command-line provider overrides from a different parent process. Use a snapshot from the same provider/configuration as the task. Cross-provider parity is not established by these account-backed tests.
 
 On October 22 the owner chose to perform the phase 2 desktop acceptance later. This is a pending check, not an acceptance result. PR #3 remains a draft; no phase 2 merge is authorized or performed.
+
+## PR #3 independent review correction
+
+The reviewer reproduced a P2 false-positive in the artifact snapshot: it ignored symlinks and empty directories, so a read-only task could change a link without appearing in the changed-path set. The corrected snapshot records lstat types and modes, regular-file digests, link targets without following them, and directories. Root Git metadata stays outside the content snapshot and is checked separately by the harness's HEAD/index assertions; this is not a promise to audit every internal Git metadata write.
+
+Five Python regression cases cover link creation/deletion/retargeting, file-to-link replacement, empty directories, mode changes, and non-traversal of links. The suite now has 14 Bun tests, including 9 runtime and 5 snapshot Python cases. A --case selector allows rerunning only the affected real-model fixture. The earlier Investigation result established regular-file content stability; the corrected snapshot is required for the stronger entry/type/mode claim.
+
+With the corrected snapshot, the authenticated Investigation-only recheck completed with CLI exit 0, unchanged entry/type/mode state, and a passing fixture check. This is a new observed result, not a relabeling of the earlier content-only observation.

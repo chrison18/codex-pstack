@@ -8,10 +8,14 @@ from pathlib import Path
 import subprocess
 import tempfile
 
+from codex_acceptance_state import snapshot
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--model', required=True)
 parser.add_argument('--effort', required=True)
 parser.add_argument('--catalog', type=Path, required=True, help='Fresh native snapshot from runtime.py models --output')
+parser.add_argument('--case', action='append', choices=('feature', 'bug', 'investigation'),
+                    help='Run only the selected fixture; repeat to select more than one')
 parser.add_argument('--auth-file', type=Path, default=Path.home() / '.codex/auth.json',
                     help='Existing CLI login file, referenced temporarily and never printed')
 args = parser.parse_args()
@@ -20,12 +24,6 @@ entry = repository / 'plugins/pstack/skills/poteto-mode'
 root = Path(tempfile.mkdtemp(prefix='pstack-core-live-')).resolve()
 catalog = args.catalog.resolve(strict=True)
 print(json.dumps({'evidenceDirectory': str(root)}), flush=True)
-
-
-def snapshot(workspace):
-    return {str(path.relative_to(workspace)): path.read_bytes().hex()
-            for path in workspace.rglob('*')
-            if path.is_file() and '.git' not in path.parts and not path.is_symlink()}
 
 
 def git(workspace, *arguments):
@@ -112,7 +110,8 @@ cases=[
  'def total(items):\n    return sum(item["price"] * item["quantity"] for item in items)\n',
  'from app import total\nassert total([{"price":3,"quantity":2}]) == 6\nprint("investigation fixture unchanged")\n',True)]
 with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
-    results = list(executor.map(lambda case: run(*case), cases))
+    selected = [case for case in cases if args.case is None or case[0] in args.case]
+    results = list(executor.map(lambda case: run(*case), selected))
 for result in results:
     print(json.dumps(result), flush=True)
 print('Scope: artifact checks only; independently inspect role loading, model events, checklist, and failing reproduction.')
