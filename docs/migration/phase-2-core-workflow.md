@@ -26,7 +26,8 @@ The original router depends on `how`, `architect`, principles and other leaf ski
 - [x] Port both agent roles. Scope every delegate to named files, read/write responsibilities, success criteria and the primary's resource paths. Preserve one writer per worktree.
 - [x] Implement setup without modifying unrelated settings. Keep task override, role override and inheritance distinct; validate the selected model and effort together; surface unsupported selections without silently substituting another model.
 - [x] Add structural and regression checks for the expanded package, referenced resources, role/config parsing and safe setup/removal.
-- [ ] Run actual model tasks for each route and model-resolution case. Record resulting artifacts and tool activity with the tested SHA. Repeat applicable desktop scenarios separately.
+- [x] Run actual CLI/model tasks for each route and model-resolution case. Record resulting artifacts and tool activity with the tested implementation SHA.
+- [ ] Repeat applicable desktop scenarios separately; the owner will perform manual acceptance later.
 - [ ] Obtain independent review and green CI before requesting phase 2 merge approval. The owner's conditional authorization to merge PR #2 does not approve merging phase 2.
 
 ## Acceptance contract

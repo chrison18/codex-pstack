@@ -1,6 +1,6 @@
 # Phase 2 core candidate evidence
 
-Status: CLI artifact checks and native role probes have observed results; phase 2 acceptance is incomplete. Desktop execution, follow-up ownership, checklist failure handling, and independent review remain open. Do not merge or advertise phase 2 as accepted.
+Status: CLI artifact checks and native role probes have observed results; phase 2 acceptance is incomplete. Desktop execution and independent review remain open. Do not merge or advertise phase 2 as accepted.
 
 ## Candidate and source
 
@@ -35,9 +35,9 @@ Three disposable Git projects were isolated from each other. Each had its own te
 | Bug fix | Original average fixture divides by len(values) + 1; failing reproduction is retained before the fix | Same check.py fails before, passes after division changes to len(values); check.py unchanged; only app.py and task.md changed |
 | Investigation | Explains total(items) with file/line citations and explicit read-only scope | Before/after file-content snapshots identical, including tracked and untracked files; fixture check passes |
 
-These artifact observations do not independently prove every delegate action in those CLI runs: the CLI JSON output omits some nested activity. Native role/model proof was collected separately below. Checklist files preserve completed, pending and skipped items in the two writing fixtures; failure-to-completion transitions and multi-turn continuity need dedicated acceptance rather than inference from these successful runs.
+These artifact observations do not independently prove every delegate action in those CLI runs: the CLI JSON output omits some nested activity. Native role/model proof was collected separately below. Checklist files preserve completed, pending and skipped items in the two writing fixtures. Dedicated failure-path and multi-turn observations are described below; they are not inferred from the initial successful task runs.
 
-The first run using the user's normal configuration could not discover fixture roles or launch nested model discovery. Feature stopped, but Bug fix performed a primary-only fix after reporting delegation unavailable. That run **FAILS** the delegated workflow gate despite passing its final behavior test. The candidate now explicitly stops Feature/Bug fix when mandatory delegation is unavailable; the isolated test setup uses project trust and a host-provided native catalog. The successful runs do not prove the failure path fixed; a dedicated blocked-delegation recheck remains required.
+The first run using the user's normal configuration could not discover fixture roles or launch nested model discovery. Feature stopped, but Bug fix performed a primary-only fix after reporting delegation unavailable. That run **FAILS** the delegated workflow gate despite passing its final behavior test. The candidate now explicitly stops Feature/Bug fix when mandatory delegation is unavailable; the isolated test setup uses project trust and a host-provided native catalog. A separate native blocked-delegation recheck then deliberately edited poteto-agent.toml. Both verify and catalog-backed resolve exited 1. The model retained a FAILED/BLOCKED checklist step and subsequent pending steps, and app.py remained byte-identical. No primary implementation or role repair was substituted. That failure-path recheck passes for this observed scenario.
 
 ## Native role and model observations
 
@@ -50,9 +50,15 @@ A separate read-only app-server probe used experimental raw event observation in
 | poteto-agent | gpt-6.1-sol / high | gpt-6.1-sol / high |
 | comment-sicko | gpt-6.1-sol / low | gpt-6.1-sol / low |
 
-Raw native spawn calls name the two custom agent types. Host developer-instruction events contain each packaged role's instructions. All four delegates execute successful entry-file reads. Comment-sicko emits its prescribed opening, flags the fixture's redundant comment, and reports no edits. Native model/effort start events match all four requested pairs despite different global defaults. This establishes registration, instruction loading and native explicit-setting handoff; deterministic resolver tests establish preference precedence. A complete saved-preference-to-spawn acceptance matrix remains to be exercised together, including rejected selections.
+Raw native spawn calls name the two custom agent types. Host developer-instruction events contain each packaged role's instructions. All four delegates execute successful entry-file reads. Comment-sicko emits its prescribed opening, flags the fixture's redundant comment, and reports no edits. Native model/effort start events match all four requested pairs despite different global defaults. This establishes registration, instruction loading and native explicit-setting handoff; deterministic resolver tests establish preference precedence. A second native matrix generated resolved.json by calling the real resolver: absent-role parent inheritance, a saved feature preference, then an explicit task override. The primary read those resolved settings, spawned the exact registered roles, and native subAgentActivity events matched Sol/low, Luna/medium and Sol/high. This closes the saved-preference-to-spawn chain for those cases. Separate calls using the actual native catalog rejected an unavailable identifier and Sol/none with exit 1, before any spawn; no fallback model was selected.
 
 The probe uses the native app-server backend, not desktop UI automation. Raw account/session/protocol logs remain local and are not committed. No internal database path is treated as a supported product interface.
+
+## Explicit Feature follow-up and new-task control
+
+A separate native session actually loaded `$poteto-mode` for a Feature fixture, delegated implementation and comment review, verified multiply while preserving add, and persisted task.md. The unchanged check.py passed. The next turn in the same thread asked to continue that feature; the primary read the existing checklist, reran the same acceptance command, and appended a follow-up verification entry to the same file. It created no second workflow owner or delegate.
+
+A third turn explicitly started a new ordinary arithmetic task. The native event stream for that root turn contains one user message and one assistant message, with final text `12`; no command, checklist update or subagent activity occurred. This supplements the isolated new-session context-exclusion smoke test. The fixture was not a Git repository, which the model retained as a limitation; Git-based change checks were covered separately by the three-project CLI script.
 
 ## Reproduction
 
@@ -69,9 +75,10 @@ The last command uses real model quota, creates three ephemeral sessions with sc
 ## Remaining phase 2 gates
 
 - Desktop candidate install/discovery/removal and the three routed real tasks. Phase 1 owner-reported UI acceptance applies only to 0.1.0-alpha.1.
-- Saved preference, explicit task override and invalid selections observed through the complete native spawn path.
-- A follow-up continuing the same task/checklist, then a new ordinary task remaining inactive.
-- Failed checklist step retained as failed; missing delegation stops a writing route without a primary-only substitute.
 - Independent review of the current PR and green CI at its final head.
 
-Desktop automation was denied for the Codex app during phase 1. The restriction has not been bypassed. Desktop acceptance needs separately labeled owner/manual evidence unless an allowed control surface becomes available.
+Desktop automation was denied for the Codex app during phase 1. The restriction has not been bypassed. Desktop acceptance needs separately labeled owner/manual evidence unless an allowed control surface becomes available. See the [desktop acceptance procedure](phase-2-desktop-acceptance.md).
+
+The catalog helper starts a native app-server with its own effective configuration; it does not replay arbitrary command-line provider overrides from a different parent process. Use a snapshot from the same provider/configuration as the task. Cross-provider parity is not established by these account-backed tests.
+
+On October 22 the owner chose to perform the phase 2 desktop acceptance later. This is a pending check, not an acceptance result. PR #3 remains a draft; no phase 2 merge is authorized or performed.
