@@ -1,6 +1,6 @@
 # Phase 2 core candidate evidence
 
-Status: CLI artifact checks and native role probes have observed results; phase 2 acceptance is incomplete. Desktop execution and independent review remain open. Do not merge or advertise phase 2 as accepted.
+Status: CLI artifact checks and native role probes have observed results; phase 2 acceptance is incomplete. Desktop execution remains open. Independent review of implementation and the snapshot correction passed at `81ca1347eee2bfe1e25a459edb37c18bf1b4bf10`; phase 2 remains unaccepted pending desktop evidence. Do not merge or advertise phase 2 as accepted.
 
 ## Candidate and source
 
@@ -75,7 +75,7 @@ The last command uses real model quota, creates three ephemeral sessions with sc
 ## Remaining phase 2 gates
 
 - Desktop candidate install/discovery/removal and the three routed real tasks. Phase 1 owner-reported UI acceptance applies only to 0.1.0-alpha.1.
-- Independent review of the current PR and green CI at its final head.
+- Preserve independent review and green CI when making later changes. The review of `81ca134` found no remaining blockers; both [inherited checks](https://github.com/chrison18/codex-pstack/actions/runs/39735424733/job/119679858492) and [Codex checks](https://github.com/chrison18/codex-pstack/actions/runs/39735424742/job/119679858383) passed at that head.
 
 Desktop automation was denied for the Codex app during phase 1. The restriction has not been bypassed. Desktop acceptance needs separately labeled owner/manual evidence unless an allowed control surface becomes available. See the [desktop acceptance procedure](phase-2-desktop-acceptance.md).
 
@@ -90,3 +90,5 @@ The reviewer reproduced a P2 false-positive in the artifact snapshot: it ignored
 Five Python regression cases cover link creation/deletion/retargeting, file-to-link replacement, empty directories, mode changes, and non-traversal of links. The suite now has 14 Bun tests, including 9 runtime and 5 snapshot Python cases. A --case selector allows rerunning only the affected real-model fixture. The earlier Investigation result established regular-file content stability; the corrected snapshot is required for the stronger entry/type/mode claim.
 
 With the corrected snapshot, the authenticated Investigation-only recheck completed with CLI exit 0, unchanged entry/type/mode state, and a passing fixture check. This is a new observed result, not a relabeling of the earlier content-only observation.
+
+The independent reviewer rechecked the fix at `81ca134`, independently ran the tests, verified the native distribution inventory, and confirmed the corrected Investigation before/after snapshots contain the same 11 entries. No further blocking findings remained. The PR stays draft/open and unmerged by the owner's instruction.
