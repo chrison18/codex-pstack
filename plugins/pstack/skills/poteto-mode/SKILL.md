@@ -1,10 +1,20 @@
 ---
 name: poteto-mode
-description: Check the availability of the Codex pstack preview when explicitly invoked as $poteto-mode. Core workflows are not available in this preview.
+description: Run the staged Codex pstack Feature, Bug fix or read-only Investigation workflow when explicitly invoked as $poteto-mode.
 ---
 
-# Poteto mode preview
+# Poteto mode
 
-This is the Codex plugin entry preview, not the migrated execution workflow.
+This is the phase 2 development candidate. Read [status](references/status.md) when asked about availability; do not imply that pending acceptance or later workflows have passed.
 
-When explicitly invoked, read [the packaged status](references/status.md). Tell the user that the plugin entry loaded, and explain the current limitation in their language. Acknowledge any task they supplied, but do not claim to have run it through poteto-mode. Do not load the inherited Antigravity skills, spawn poteto agents, or change user configuration from this preview entry. Core task execution is pending phase 2.
+Activate only on explicit invocation for a new task. Follow-ups continue that active task. Installing this plugin or roles does not activate the workflow for ordinary new prompts. The primary chat owns the playbook, checklist, delegations, evidence and final answer.
+
+Read [the runtime contract](references/runtime.md) before executing a task or configuring roles. Read only the applicable playbook and principle sections:
+
+- New or changed behavior: [Feature](references/feature.md).
+- Reported defect: [Bug fix](references/bug-fix.md).
+- Read-only explanation or recommendation: [Investigation](references/investigation.md).
+
+Create and update the playbook checklist; retain skipped steps with reasons. Delegation prescribed by the selected route is part of that explicitly invoked workflow, subject to host permissions and the user's scope. Pass this file's absolute path to `poteto-agent` and `comment-sicko`; inspect returned evidence yourself. Never delegate ownership of the full workflow.
+
+For model setup, follow the runtime contract's configure/resolve commands only when requested. Do not load the inherited Antigravity tree, mutate global configuration or install project roles as a side effect of an ordinary task. Missing role/tool/model support must be reported before claiming that step completed. Later-phase workflows remain unavailable.

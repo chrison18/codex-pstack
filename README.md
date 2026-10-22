@@ -1,6 +1,6 @@
 # pstack
 
-This fork is migrating to Codex-only support. The installable package at `plugins/pstack/` is an **entry preview**: it reports availability when explicitly invoked. Core workflows, agents, and autonomous execution are pending. The inherited root `skills/`, `agents/`, and manifests remain migration source, outside the Codex package.
+This fork is migrating to Codex-only support. The installable package at `plugins/pstack/` is a **phase 2 development candidate** with Feature, Bug fix and read-only Investigation routes, project agent templates, and model configuration. Acceptance is in progress; it is not a completed migration. Autonomous execution and the remaining upstream workflows are pending. The inherited root `skills/`, `agents/`, and manifests remain migration source, outside the Codex package.
 
 See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [phase 1 evidence and limits](docs/migration/phase-1-entry-evidence.md).
 
@@ -14,7 +14,7 @@ codex plugin add pstack@codex-pstack
 codex plugin list --json
 ```
 
-The marketplace points only at `plugins/pstack/`. It does not install the 59 inherited agy skills. The preview uses version `0.1.0-alpha.1`, independently of the upstream source version.
+The marketplace points only at `plugins/pstack/`. It does not install the 59 inherited agy skills. The candidate uses version `0.2.0-alpha.1`, independently of the upstream source version.
 
 Codex namespaces plugin skills. In the tested CLI, the plugin entry is invoked as `$pstack:poteto-mode`. To use the agreed short entry **`$poteto-mode`** in a project, add a project-scoped skill link to this checkout:
 
@@ -22,9 +22,22 @@ Codex namespaces plugin skills. In the tested CLI, the plugin entry is invoked a
 python3 scripts/link-codex-entry.py /absolute/path/to/your/project
 ```
 
-Keep the checkout at that location while the link is in use. The helper refuses existing paths, including directories and dangling symlinks, without modifying the existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. An explicit invocation currently reports that core execution is pending; it does not run the requested task as poteto-mode.
+Keep the checkout at that location while the link is in use. The helper refuses existing paths, including directories and dangling symlinks, without modifying the existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. Explicit invocation routes a supported task through its bounded playbook. Custom roles require separate project setup before they can be used.
 
-For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. The owner manually confirmed desktop installation, explicit invocation, an ordinary-chat negative control, and removal on October 22. Authenticated CLI responses also passed; see the evidence report for the exact scope and evidence sources.
+For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. The owner manually confirmed the phase 1 package at 0.1.0-alpha.1 on October 22. Those results do not establish desktop acceptance for the expanded 0.2.0-alpha.1 candidate; see the evidence reports for version-specific results.
+
+## Configure the development candidate
+
+Invoke `$pstack:setup-pstack` to inspect and configure a named project. Both setup and the workflow entry require explicit activation. For direct setup from this checkout:
+
+```sh
+python3 plugins/pstack/skills/poteto-mode/scripts/runtime.py install /absolute/path/to/your/project
+python3 plugins/pstack/skills/poteto-mode/scripts/runtime.py models
+```
+
+Setup creates two project roles and an ownership receipt under `.codex/`, preserving unrelated configuration. Codex must trust project configuration; start a new session to discover the roles. Setup does not change trust or global model settings. See the [runtime contract](plugins/pstack/skills/poteto-mode/references/runtime.md) for model precedence, configuration, and limitations.
+
+To remove unchanged owned roles, run `python3 plugins/pstack/skills/poteto-mode/scripts/runtime.py uninstall /absolute/path/to/your/project` before removing the plugin or checkout. This preserves project model preferences; review `.codex/pstack-models.json` separately if you want to remove them.
 
 ## Remove the preview
 

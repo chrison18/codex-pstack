@@ -1,9 +1,11 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "pstack",
-  "version": "0.1.0-alpha.1",
-  "description": "Codex-only pstack preview with an explicit entry point. Core workflows are not available yet.",
-  "author": { "name": "Lauren Tan" },
+  "version": "0.2.0-alpha.1",
+  "description": "Codex-only pstack core workflow development candidate; explicit activation and bounded phase 2 routes.",
+  "author": {
+    "name": "Lauren Tan"
+  },
   "homepage": "https://github.com/chrison18/codex-pstack",
   "repository": "https://github.com/chrison18/codex-pstack",
   "license": "MIT",
@@ -11,7 +13,7 @@
     "com.openai": {
       "interface": {
         "displayName": "pstack for Codex (preview)",
-        "shortDescription": "Explicit entry preview; core workflows pending"
+        "shortDescription": "Core workflow candidate; acceptance pending"
       }
     }
   }

@@ -35,7 +35,7 @@ def run_smoke(repository, executable):
         installed = json.loads(cli("plugin", "add", "pstack@codex-pstack", "--json"))
         installed_path = Path(installed["installedPath"])
         actual = sorted(p.relative_to(installed_path).as_posix() for p in installed_path.rglob("SKILL.md"))
-        assert actual == ["skills/poteto-mode/SKILL.md"], actual
+        assert actual == ["skills/poteto-mode/SKILL.md", "skills/setup-pstack/SKILL.md"], actual
         assert json.loads(cli("plugin", "list", "--json"))["installed"][0]["enabled"]
 
         captured = queue.Queue()
@@ -75,7 +75,7 @@ def run_smoke(repository, executable):
                     request = captured.get(timeout=30)
                     assert request["model"] == "gpt-6.1-sol"
                     content = json.dumps(request["input"])
-                    return "This is the Codex plugin entry preview" in content
+                    return "The primary chat owns the playbook" in content
                 except queue.Empty as error:
                     raise RuntimeError("Codex did not reach the local context capture") from error
                 finally:
