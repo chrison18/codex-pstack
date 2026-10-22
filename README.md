@@ -24,7 +24,7 @@ python3 scripts/link-codex-entry.py /absolute/path/to/your/project
 
 Keep the checkout at that location while the link is in use. The helper refuses existing paths, including directories and dangling symlinks, without modifying the existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. An explicit invocation currently reports that core execution is pending; it does not run the requested task as poteto-mode.
 
-For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. Desktop UI acceptance is blocked by the automation tool and needs manual verification. Authenticated CLI responses passed; see the evidence report for the exact scope.
+For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. The owner manually confirmed desktop installation, explicit invocation, an ordinary-chat negative control, and removal on October 22. Authenticated CLI responses also passed; see the evidence report for the exact scope and evidence sources.
 
 ## Remove the preview
 

@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phase 0 merged in PR #1; phase 1 in progress on `feat/codex-plugin-entry`. The preview package validates an entry point; core runtime migration remains pending phase 2.
+Status: phase 0 merged in PR #1; phase 1 acceptance completed on `feat/codex-plugin-entry`, pending final review and merge of PR #2. The preview package validates an entry point; core runtime migration remains pending phase 2.
 
 ## Outcome and scope
 

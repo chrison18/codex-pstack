@@ -59,7 +59,7 @@ IDs resolve in this repository and are listed in ancestry order.
 | Phase | Adaptation | Status |
 | --- | --- | --- |
 | 0 | Plan, Git rules, provenance, observed test baseline | Merged in [PR #1](https://github.com/chrison18/codex-pstack/pull/1), `30a666d6fb473caea211fbb750079afbee19d30f` |
-| 1 | Isolated Codex package under `plugins/pstack/`, repo marketplace, explicit invocation policy, safe project short-name alias, structural CI | In progress; CLI host and authenticated responses passed, desktop UI acceptance blocked pending manual evidence |
+| 1 | Isolated Codex package under `plugins/pstack/`, repo marketplace, explicit invocation policy, safe project short-name alias, structural CI | Accepted in [PR #2](https://github.com/chrison18/codex-pstack/pull/2); CLI evidence and owner-reported desktop acceptance complete; pending final review and merge |
 | 2 through 6 | Execution, lifecycle, automation, release | Pending; see the [plan](docs/migration/codex-migration-plan.md) |
 
 The preview package version starts at `0.1.0-alpha.1`. The inherited source pin remains pstack 0.15.29. The package does not include root agy workflows or the bundled cursor-team-kit skills yet. Keeping the package root separate permits incremental migration without exposing unported skills as supported Codex workflows.

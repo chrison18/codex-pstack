@@ -1,12 +1,12 @@
 # Phase 1 entry evidence
 
-Status: in progress. CLI host checks and authenticated model responses pass. Desktop UI acceptance is blocked by the computer-use tool's safety restriction and still requires manual evidence. Core workflows remain phase 2 work.
+Status: phase 1 acceptance complete. CLI host checks and authenticated model responses pass. The owner completed and confirmed desktop UI acceptance on October 22. Core workflows remain phase 2 work.
 
 ## Scope
 
 The Codex marketplace distributes only `plugins/pstack/`, version `0.1.0-alpha.1`. Its single skill is a preview availability response. The original 59 skills, 2 agents, 23 playbooks, and 3 Benny skills remain migration source; none is implicitly included in this package. The upstream MIT license is included unchanged.
 
-The initial host probes used temporary `CODEX_HOME` directories and disposable workspaces. On October 22, authenticated CLI checks temporarily registered this marketplace and preview plugin in the user's normal Codex configuration, using the existing ChatGPT login. No credentials were copied, no timers or agents were installed, and no unrelated plugin settings were changed. Preview removal is part of the pending manual desktop acceptance.
+The initial host probes used temporary `CODEX_HOME` directories and disposable workspaces. On October 22, authenticated CLI checks temporarily registered this marketplace and preview plugin in the user's normal Codex configuration, using the existing ChatGPT login. No credentials were copied, no timers or agents were installed, and no unrelated plugin settings were changed. The owner confirmed removing the preview after manual desktop acceptance.
 
 ## Observed results, 2026-10-21
 
@@ -55,12 +55,19 @@ The explicit responses correctly listed task routing, custom agents, model setup
 
 The reviewer found that the original `ln -s SOURCE TARGET` example could create a nested link inside an existing directory. The instructions now call `scripts/link-codex-entry.py`, whose atomic symlink creation refuses an occupied path. Four regression tests cover a fresh link, an existing skill directory, a dangling link, and an existing file/already installed link. The preview suite now has 10 passing tests and 20 assertions. The full combined run had 79 passing tests and 267 assertions. The host smoke check uses the same installer and passed again.
 
-## Desktop UI blocker and remaining acceptance
+## Manual desktop UI acceptance, 2026-10-22
 
-On October 22, attempting the supported computer-use API to select the desktop app was denied with `Computer Use is not allowed to use the app 'com.openai.codex' for safety reasons.` No alternate UI automation, screenshots through another mechanism, or app-server result is being used to bypass that restriction. Desktop install/invoke/remove is BLOCKED, not PASS. The owner has been asked to perform that UI sequence manually and report the actual result.
+On October 22, attempting the supported computer-use API to select the desktop app was denied with `Computer Use is not allowed to use the app 'com.openai.codex' for safety reasons.` The automation restriction remains. No alternate UI automation or app-server result was used as a substitute.
 
-- Complete clean desktop UI installation, invocation, and removal against the reviewed head.
-- Record the manual desktop result; authenticated CLI model turns are now complete.
-- Keep the phase 1 PR open until its client acceptance gaps are resolved or the owner explicitly approves a narrower supported scope.
+The owner then performed the requested UI sequence for the 0.1.0-alpha.1 preview and answered: "全部符合预期，已卸载" (all behaved as expected; uninstalled). This is owner-reported manual evidence, not an agent-observed screenshot or automated UI test. The owner did not separately report the desktop application version.
+
+| Manual scenario | Result | Evidence source |
+| --- | --- | --- |
+| Find preview, uninstall, reinstall in the plugin directory | PASS | Owner confirmed the complete requested sequence |
+| Invoke `$pstack:poteto-mode` in a test chat | PASS | Owner confirmed the expected loaded-entry/core-unavailable response |
+| Ordinary chat asks `7+5`, digits only | PASS | Owner confirmed the expected `12` response |
+| Uninstall preview after testing | PASS | Owner explicitly confirmed removal |
+
+These results close the phase 1 desktop acceptance gap. CLI evidence covers the short project alias separately. The next phase adds actual task execution; no phase 2 capability is implied by this acceptance.
 
 The inherited Antigravity CI remains while its source is retained. The new Codex workflow validates the isolated preview package independently. Neither CI job proves core Codex task execution.
