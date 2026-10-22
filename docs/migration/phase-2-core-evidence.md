@@ -1,6 +1,6 @@
 # Phase 2 core candidate evidence
 
-Status: CLI checks, native role probes, independent review, and desktop routed-task observations are recorded. Desktop plugin removal and the complete install/discovery lifecycle still need confirmation. Phase 2 remains unaccepted; keep PR #3 draft and do not merge.
+Status: CLI checks, native role probes, independent review, and desktop routed-task observations are recorded. The owner has confirmed plugin removal, and a subsequent native installed-plugin listing contains no pstack entry. The complete install/discovery evidence boundary is noted below. Phase 2 remains unaccepted; keep PR #3 draft and do not merge.
 
 ## Candidate and source
 
@@ -108,6 +108,6 @@ The owner manually operated the application and supplied screenshots. No automat
 | Read-only Investigation | PASS | Screenshot explains total(items) with file/line citations. The independently captured before/after snapshots have the same 12 entries, with no content, type, mode, directory or link changes. No task file is created. |
 | New ordinary chat | PASS for visible response | Screenshot shows exactly 12 for the digits-only arithmetic prompt, with no visible tool, checklist or delegation activity. This manual observation supplements the earlier native event/context negative controls. |
 | Candidate install/discovery lifecycle | NOT FULLY RECORDED | Task screenshots prove short project-entry operation; candidate version display and qualified plugin entry discovery were not independently captured. |
-| Candidate plugin removal | PENDING | The owner said they were going to uninstall pstack. Intent is not recorded as completed removal. |
+| Candidate plugin removal | PASS | After saying they were uninstalling pstack, the owner returned and confirmed completion. A subsequent native plugin list completed successfully and contained no installed pstack entry. Project skill links and role resources remain in the retained acceptance fixtures; plugin removal does not remove those separately managed artifacts. |
 
-Private screenshots and full conversations are not committed. The desktop test results above are explicitly separated into owner-operated UI observations and agent-inspected local artifacts. Final lifecycle confirmation and owner merge authorization remain separate requirements.
+Private screenshots and full conversations are not committed. The desktop test results above are explicitly separated into owner-operated UI observations and agent-inspected local artifacts. Plugin removal is confirmed. Candidate version display and qualified UI discovery remain limited to the evidence described above; owner merge authorization is still a separate requirement. No fixtures or unrelated plugins were removed during this confirmation.
