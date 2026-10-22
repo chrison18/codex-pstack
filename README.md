@@ -2,7 +2,7 @@
 
 This fork is migrating to Codex-only support. The installable package at `plugins/pstack/` is a **phase 2 development candidate** with Feature, Bug fix and read-only Investigation routes, project agent templates, and model configuration. Acceptance is in progress; it is not a completed migration. Autonomous execution and the remaining upstream workflows are pending. The inherited root `skills/`, `agents/`, and manifests remain migration source, outside the Codex package.
 
-See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [phase 1 evidence and limits](docs/migration/phase-1-entry-evidence.md).
+See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [phase 1 evidence and limits](docs/migration/phase-1-entry-evidence.md), and [phase 2 candidate evidence](docs/migration/phase-2-core-evidence.md).
 
 ## Install the Codex preview
 

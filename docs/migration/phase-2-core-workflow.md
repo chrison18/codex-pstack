@@ -1,6 +1,6 @@
 # Phase 2 core workflow
 
-Status: started; runtime implementation and acceptance NOT RUN. Branch `feat/codex-core-workflow` starts at phase 1 squash merge `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`. The distributed package remains the phase 1 availability preview until this phase passes its gates.
+Status: candidate implementation committed; CLI artifact and native role observations are recorded in [the evidence report](phase-2-core-evidence.md). Acceptance remains incomplete. Branch `feat/codex-core-workflow` starts at phase 1 squash merge `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`. The branch packages a 0.2.0-alpha.1 development candidate; main remains the accepted phase 1 entry preview until phase 2 passes its gates.
 
 ## Source mapping
 
@@ -20,12 +20,12 @@ The original router depends on `how`, `architect`, principles and other leaf ski
 
 ## Implementation order
 
-- [ ] Probe native custom-role registration, loading and available model discovery in isolated Codex state. Record CLI version, desktop scope and actual errors. Plugin discovery alone does not establish role discovery.
-- [ ] Define one explicit runtime capability contract for routing, delegation, questions, persistent checklists and model resolution. Name unsupported mechanisms and their allowed fallback before changing the preview response.
-- [ ] Implement the three routed playbooks and their required portable dependencies. Keep implicit invocation disabled for the main entry and any setup entry.
-- [ ] Port both agent roles. Scope every delegate to named files, read/write responsibilities, success criteria and the primary's resource paths. Preserve one writer per worktree.
-- [ ] Implement setup without modifying unrelated settings. Keep task override, role override and inheritance distinct; validate the selected model and effort together; surface unsupported selections without silently substituting another model.
-- [ ] Add structural and regression checks for the expanded package, referenced resources, role/config parsing and safe setup/removal.
+- [x] Probe native custom-role registration, loading and available model discovery in isolated Codex state. Record CLI version, desktop scope and actual errors. Plugin discovery alone does not establish role discovery.
+- [x] Define one explicit runtime capability contract for routing, delegation, questions, persistent checklists and model resolution. Name unsupported mechanisms and their allowed fallback before changing the preview response.
+- [x] Implement the three routed playbooks and their required portable dependencies. Keep implicit invocation disabled for the main entry and any setup entry.
+- [x] Port both agent roles. Scope every delegate to named files, read/write responsibilities, success criteria and the primary's resource paths. Preserve one writer per worktree.
+- [x] Implement setup without modifying unrelated settings. Keep task override, role override and inheritance distinct; validate the selected model and effort together; surface unsupported selections without silently substituting another model.
+- [x] Add structural and regression checks for the expanded package, referenced resources, role/config parsing and safe setup/removal.
 - [ ] Run actual model tasks for each route and model-resolution case. Record resulting artifacts and tool activity with the tested SHA. Repeat applicable desktop scenarios separately.
 - [ ] Obtain independent review and green CI before requesting phase 2 merge approval. The owner's conditional authorization to merge PR #2 does not approve merging phase 2.
 
@@ -50,3 +50,5 @@ Inherited script checks and phase 1 negative activation checks remain required. 
 ## Boundaries
 
 Phase 2 does not claim parallel design panels, all 59 skills, session recovery, timers, recurring automation, autonomous runs or full release readiness. Those remain assigned to later phases. A task requiring an unavailable workflow receives a specific limitation; installation alone never enables the full workflow.
+
+The candidate adds an explicit-only setup-pstack entry. Six portable principle summaries required by the bounded routes are included as one reference. Full routed skills remain phase 3 work, explicitly limited in the candidate. See the evidence report for failed first-run observations and gates that remain open.

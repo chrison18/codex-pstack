@@ -60,7 +60,7 @@ IDs resolve in this repository and are listed in ancestry order.
 | --- | --- | --- |
 | 0 | Plan, Git rules, provenance, observed test baseline | Merged in [PR #1](https://github.com/chrison18/codex-pstack/pull/1), `30a666d6fb473caea211fbb750079afbee19d30f` |
 | 1 | Isolated Codex package under `plugins/pstack/`, repo marketplace, explicit invocation policy, safe project short-name alias, structural CI | Merged in [PR #2](https://github.com/chrison18/codex-pstack/pull/2), `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`; CLI evidence and owner-reported desktop acceptance complete |
-| 2 | Router, both agents, model setup, checklist, three initial playbooks | Started on `feat/codex-core-workflow`; [source mapping and gates](docs/migration/phase-2-core-workflow.md); runtime acceptance NOT RUN |
+| 2 | Router, both agents, model setup, checklist, three initial playbooks | Candidate on `feat/codex-core-workflow`; bounded routes, explicit setup entry, native project roles, model resolver and six portable principle summaries; [observed results and open gates](docs/migration/phase-2-core-evidence.md); phase 2 NOT ACCEPTED |
 | 3 through 6 | Remaining skills, lifecycle, automation, release | Pending; see the [plan](docs/migration/codex-migration-plan.md) |
 
 The preview package version starts at `0.1.0-alpha.1`. The inherited source pin remains pstack 0.15.29. The package does not include root agy workflows or the bundled cursor-team-kit skills yet. Keeping the package root separate permits incremental migration without exposing unported skills as supported Codex workflows.
