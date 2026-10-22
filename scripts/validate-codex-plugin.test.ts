@@ -21,7 +21,7 @@ test("validates the distributable preview independently of inherited skills", ()
   const root = fixture();
   mkdirSync(join(root, "skills/legacy"), { recursive: true });
   writeFileSync(join(root, "skills/legacy/SKILL.md"), "not part of the Codex package");
-  expect(validateCodexPlugin(root)).toEqual(["poteto-mode"]);
+  expect(validateCodexPlugin(root)).toEqual(["poteto-mode", "setup-pstack"]);
 });
 
 test("rejects implicit invocation, including a truthy string instead of a boolean", () => {
@@ -58,4 +58,17 @@ test("rejects a marketplace that points at the inherited package", () => {
   catalog.plugins[0].source.path = "./";
   writeFileSync(file, JSON.stringify(catalog));
   expect(() => validateCodexPlugin(root)).toThrow("isolated Codex package");
+});
+
+test("setup also requires explicit activation", () => {
+  const root = fixture();
+  writeFileSync(join(root, "plugins/pstack/skills/setup-pstack/agents/openai.yaml"), "policy:\n  allow_implicit_invocation: true\n");
+  expect(() => validateCodexPlugin(root)).toThrow("explicit invocation");
+});
+
+test("rejects role model settings that would defeat task override precedence", () => {
+  const root = fixture();
+  const file = join(root, "plugins/pstack/skills/poteto-mode/resources/agents/poteto-agent.toml");
+  writeFileSync(file, readFileSync(file, "utf8") + '\nmodel = "unexpected"\n');
+  expect(() => validateCodexPlugin(root)).toThrow("inherit native settings");
 });

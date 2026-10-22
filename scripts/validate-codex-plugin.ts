@@ -59,18 +59,35 @@ export function validateCodexPlugin(repository: string): string[] {
   }
   const skillRoot = join(root, "skills");
   const names = readdirSync(skillRoot).sort();
-  if (names.join(",") !== "poteto-mode") throw new Error("Preview must expose only poteto-mode");
+  if (names.join(",") !== "poteto-mode,setup-pstack") throw new Error("Core candidate must expose only poteto-mode and setup-pstack");
   const skill = inside(root, join(skillRoot, names[0]));
-  const text = readFileSync(join(skill, "SKILL.md"), "utf8");
+  const roles = join(skill, "resources/agents");
+  const roleNames = readdirSync(roles).sort();
+  if (roleNames.join(",") !== "comment-sicko.toml,poteto-agent.toml") {
+    throw new Error("Core candidate must package exactly the two migrated roles");
+  }
+  for (const name of roleNames) {
+    const role = record(Bun.TOML.parse(readFileSync(inside(root, join(roles, name)), "utf8")), "agent definition");
+    if (role.name !== name.replace(/\.toml$/, "") || typeof role.description !== "string" || !role.description.trim() || typeof role.developer_instructions !== "string" || !role.developer_instructions.trim()) {
+      throw new Error("Agent identity and instructions are required");
+    }
+    if (Object.keys(role).some((key) => !["name", "description", "developer_instructions"].includes(key))) {
+      throw new Error("Role templates must inherit native settings; resolve model choices at spawn time");
+    }
+  }
+  for (const name of names) {
+    const current = inside(root, join(skillRoot, name));
+  const text = readFileSync(join(current, "SKILL.md"), "utf8");
   const frontmatter = text.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
   if (!frontmatter) throw new Error("Skill must have YAML frontmatter");
   const metadata = record(Bun.YAML.parse(frontmatter[1]), "skill frontmatter");
-  if (metadata.name !== names[0] || typeof metadata.description !== "string" || !metadata.description.trim()) {
+  if (metadata.name !== name || typeof metadata.description !== "string" || !metadata.description.trim()) {
     throw new Error("Skill name and description must match discovery requirements");
   }
-  const config = record(Bun.YAML.parse(readFileSync(join(skill, "agents/openai.yaml"), "utf8")), "skill config");
+  const config = record(Bun.YAML.parse(readFileSync(join(current, "agents/openai.yaml"), "utf8")), "skill config");
   if (record(config.policy, "invocation policy").allow_implicit_invocation !== false) {
-    throw new Error("poteto-mode must require explicit invocation");
+    throw new Error("Every pstack entry must require explicit invocation");
+  }
   }
   function inspect(directory: string) {
     for (const name of readdirSync(directory)) {
@@ -85,14 +102,14 @@ export function validateCodexPlugin(repository: string): string[] {
       }
     }
   }
-  inspect(skill);
+  inspect(skillRoot);
   return names;
 }
 
 if (import.meta.main) {
   try {
     const names = validateCodexPlugin(resolve(import.meta.dir, ".."));
-    console.log(`Validated Codex preview: ${names.length} explicit skill (${names.join(", ")}).`);
+    console.log(`Validated Codex candidate: ${names.length} explicit skills (${names.join(", ")}).`);
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;

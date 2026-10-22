@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phase 0 merged in PR #1; phase 1 acceptance completed on `feat/codex-plugin-entry`, pending final review and merge of PR #2. The preview package validates an entry point; core runtime migration remains pending phase 2.
+Status: phases 0 and 1 merged in PR #1 and PR #2. Phase 2 has started on `feat/codex-core-workflow` from main commit `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`. The accepted main package remains an entry preview; the phase 2 branch contains an unaccepted core candidate. See the [phase 2 work plan](phase-2-core-workflow.md) for implementation order and acceptance gates.
 
 ## Outcome and scope
 
@@ -48,7 +48,7 @@ One phase uses one branch and PR from latest merged `main`. Wait for dependencie
 
 Phase 1 proves discovery and activation before runtime migration. Do not advertise an executable core workflow until phase 2 passes. During staged migration expose only verified workflows as supported and identify pending ones; packaging must not imply pending workflows are fully supported.
 
-Phase 1 uses `plugins/pstack/` as the Codex package root and retains inherited source outside that package. Codex CLI 0.163.0-alpha.10.2 exposes the plugin entry as `$pstack:poteto-mode`; a native project skill link supplies the agreed `$poteto-mode` short entry. Both paths have implicit invocation disabled. Installation does not create that project link automatically. See the [entry evidence](phase-1-entry-evidence.md) for the verified scope and remaining acceptance work.
+Phase 1 uses `plugins/pstack/` as the Codex package root and retains inherited source outside that package. Codex CLI 0.163.0-alpha.10.2 exposes the plugin entry as `$pstack:poteto-mode`; a native project skill link supplies the agreed `$poteto-mode` short entry. Both paths have implicit invocation disabled. Installation does not create that project link automatically. See the [entry evidence](phase-1-entry-evidence.md) for the verified scope, including owner-reported desktop acceptance.
 
 ## Inventory ownership
 
