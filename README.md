@@ -19,21 +19,19 @@ The marketplace points only at `plugins/pstack/`. It does not install the 59 inh
 Codex namespaces plugin skills. In the tested CLI, the plugin entry is invoked as `$pstack:poteto-mode`. To use the agreed short entry **`$poteto-mode`** in a project, add a project-scoped skill link to this checkout:
 
 ```sh
-PSTACK_CHECKOUT="$(pwd)"
-PROJECT=/absolute/path/to/your/project
-mkdir -p "$PROJECT/.agents/skills"
-ln -s "$PSTACK_CHECKOUT/plugins/pstack/skills/poteto-mode" "$PROJECT/.agents/skills/poteto-mode"
+python3 scripts/link-codex-entry.py /absolute/path/to/your/project
 ```
 
-Keep the checkout at that location while the link is in use. `ln -s` fails if a skill already occupies that path; do not overwrite an existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. An explicit invocation currently reports that core execution is pending; it does not run the requested task as poteto-mode.
+Keep the checkout at that location while the link is in use. The helper refuses existing paths, including directories and dangling symlinks, without modifying the existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. An explicit invocation currently reports that core execution is pending; it does not run the requested task as poteto-mode.
 
-For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. Desktop UI installation and an actual model response are still pending acceptance; see the evidence report before relying on this path.
+For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. Desktop UI acceptance is blocked by the automation tool and needs manual verification. Authenticated CLI responses passed; see the evidence report for the exact scope.
 
 ## Remove the preview
 
 For a project link created with the command above, remove only that link:
 
 ```sh
+PROJECT=/absolute/path/to/your/project
 unlink "$PROJECT/.agents/skills/poteto-mode"
 codex plugin remove pstack@codex-pstack
 codex plugin marketplace remove codex-pstack
@@ -45,7 +43,7 @@ Do not use the unlink command on an unrelated skill. Plugin removal does not rem
 
 ```sh
 bun scripts/validate-codex-plugin.ts
-bun test scripts/validate-codex-plugin.test.ts
+bun test ./scripts/
 python3 scripts/smoke-codex-entry.py
 ```
 

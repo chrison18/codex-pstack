@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import queue
 import subprocess
+import sys
 import tempfile
 import threading
 
@@ -89,10 +90,11 @@ def run_smoke(repository, executable):
             assert not body_loaded("Investigate the failing tests."), "Implicit activation"
             assert body_loaded("$pstack:poteto-mode Check availability."), "Qualified invocation missing"
             assert not body_loaded("$poteto-mode Check availability."), "Recheck short-name behavior in this client"
-            aliases = workspace / ".agents/skills"
-            aliases.mkdir(parents=True)
-            alias = aliases / "poteto-mode"
-            alias.symlink_to(repository / "plugins/pstack/skills/poteto-mode", target_is_directory=True)
+            subprocess.run(
+                [sys.executable, str(repository / "scripts/link-codex-entry.py"), str(workspace)],
+                check=True, capture_output=True, text=True,
+            )
+            alias = workspace / ".agents/skills/poteto-mode"
             assert not body_loaded("Implement a feature and fix a bug."), "Alias activated implicitly"
             assert body_loaded("$poteto-mode Check availability."), "Short invocation missing with alias"
             alias.unlink()

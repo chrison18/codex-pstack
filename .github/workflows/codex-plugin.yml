@@ -21,4 +21,4 @@ jobs:
         with:
           bun-version: 1.4.3
       - run: bun scripts/validate-codex-plugin.ts
-      - run: bun test scripts/validate-codex-plugin.test.ts
+      - run: bun test ./scripts/
