@@ -1,6 +1,6 @@
 # Phase 2 core candidate evidence
 
-Status: CLI artifact checks and native role probes have observed results; phase 2 acceptance is incomplete. Desktop execution remains open. Independent review of implementation and the snapshot correction passed at `81ca1347eee2bfe1e25a459edb37c18bf1b4bf10`; phase 2 remains unaccepted pending desktop evidence. Do not merge or advertise phase 2 as accepted.
+Status: CLI checks, native role probes, independent review, and desktop routed-task observations are recorded. Desktop plugin removal and the complete install/discovery lifecycle still need confirmation. Phase 2 remains unaccepted; keep PR #3 draft and do not merge.
 
 ## Candidate and source
 
@@ -74,14 +74,14 @@ The last command uses real model quota, creates three ephemeral sessions with sc
 
 ## Remaining phase 2 gates
 
-- Desktop candidate install/discovery/removal and the three routed real tasks. Phase 1 owner-reported UI acceptance applies only to 0.1.0-alpha.1.
+- Confirm the candidate plugin install/discovery/removal lifecycle. The three desktop routed tasks, Feature follow-up and ordinary-chat control now have manual observations below; phase 1 UI evidence still applies only to 0.1.0-alpha.1.
 - Preserve independent review and green CI when making later changes. The review of `81ca134` found no remaining blockers; both [inherited checks](https://github.com/chrison18/codex-pstack/actions/runs/39735424733/job/119679858492) and [Codex checks](https://github.com/chrison18/codex-pstack/actions/runs/39735424742/job/119679858383) passed at that head.
 
 Desktop automation was denied for the Codex app during phase 1. The restriction has not been bypassed. Desktop acceptance needs separately labeled owner/manual evidence unless an allowed control surface becomes available. See the [desktop acceptance procedure](phase-2-desktop-acceptance.md).
 
 The catalog helper starts a native app-server with its own effective configuration; it does not replay arbitrary command-line provider overrides from a different parent process. Use a snapshot from the same provider/configuration as the task. Cross-provider parity is not established by these account-backed tests.
 
-On October 22 the owner chose to perform the phase 2 desktop acceptance later. This is a pending check, not an acceptance result. PR #3 remains a draft; no phase 2 merge is authorized or performed.
+On October 22 the owner initially deferred desktop acceptance, then provided the routed-task screenshots described below. PR #3 remains a draft; no phase 2 merge is authorized or performed.
 
 ## PR #3 independent review correction
 
@@ -92,3 +92,22 @@ Five Python regression cases cover link creation/deletion/retargeting, file-to-l
 With the corrected snapshot, the authenticated Investigation-only recheck completed with CLI exit 0, unchanged entry/type/mode state, and a passing fixture check. This is a new observed result, not a relabeling of the earlier content-only observation.
 
 The independent reviewer rechecked the fix at `81ca134`, independently ran the tests, verified the native distribution inventory, and confirmed the corrected Investigation before/after snapshots contain the same 11 entries. No further blocking findings remained. The PR stays draft/open and unmerged by the owner's instruction.
+
+## Owner-operated desktop observations, 2026-10-22
+
+Installed desktop application version: **26.1016.61520**, build **21421**, production channel. The app update tool reported those values; the installed application's Info.plist independently matched them. This is the desktop version, distinct from the CLI protocol version above.
+
+The owner manually operated the application and supplied screenshots. No automated UI control was used. The tested short entry was the project-linked poteto-mode candidate from this checkout; the checked project roles and source remain 0.2.0-alpha.1. The owner moved the prepared fixtures from temporary storage into a project directory. Artifact inspection therefore used the actual project paths, without assuming the original temporary copy changed.
+
+| Desktop scenario | Result | Evidence |
+| --- | --- | --- |
+| Explicit Feature | PASS | Screenshot shows implementation and comment-review delegates; primary checks diff and runs check.py. Independent artifact inspection confirms multiply was added, add retained, check.py unchanged and acceptance exit 0. The fixture's preexisting Finder metadata and installed role/link resources were not counted as implementation changes. |
+| Same-task follow-up | PASS | Screenshot and task.md show the existing checklist read and appended; the same check passes again, without a new implementation or delegate. |
+| Expired model catalog | PASS for stopping behavior | Bug reproduction fails first; catalog-backed model resolution then refuses the expired snapshot. The application is left unchanged and pending work is retained. The host refreshes the same snapshot path, without changing model preferences. |
+| Bug fix after refresh | PASS | Original chat resumes, delegates the denominator correction, and primary reruns the same test. Screenshot retains exit 1 before and exit 0 after; artifact inspection confirms only the intended denominator fix, unchanged check.py and a passing check. |
+| Read-only Investigation | PASS | Screenshot explains total(items) with file/line citations. The independently captured before/after snapshots have the same 12 entries, with no content, type, mode, directory or link changes. No task file is created. |
+| New ordinary chat | PASS for visible response | Screenshot shows exactly 12 for the digits-only arithmetic prompt, with no visible tool, checklist or delegation activity. This manual observation supplements the earlier native event/context negative controls. |
+| Candidate install/discovery lifecycle | NOT FULLY RECORDED | Task screenshots prove short project-entry operation; candidate version display and qualified plugin entry discovery were not independently captured. |
+| Candidate plugin removal | PENDING | The owner said they were going to uninstall pstack. Intent is not recorded as completed removal. |
+
+Private screenshots and full conversations are not committed. The desktop test results above are explicitly separated into owner-operated UI observations and agent-inspected local artifacts. Final lifecycle confirmation and owner merge authorization remain separate requirements.
