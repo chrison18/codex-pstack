@@ -42,3 +42,5 @@ git diff --check
 ```
 
 Runtime changes also require proof in the supported Codex client. Record client version, prompt, expected behavior, actual behavior, and evidence. Mark unavailable checks BLOCKED or NOT RUN with a reason; never count them as passes. The inherited Antigravity CI remains during phase 0 and does not validate Codex behavior.
+
+For the phase 1 Codex preview, also run `bun scripts/validate-codex-plugin.ts`, `bun test ./scripts/`, and `python3 scripts/smoke-codex-entry.py`. The last command needs Codex CLI and a loopback port; it uses isolated state and captures host context without calling a model. Desktop UI and actual model behavior require separate evidence.
