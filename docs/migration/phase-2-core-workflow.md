@@ -27,8 +27,8 @@ The original router depends on `how`, `architect`, principles and other leaf ski
 - [x] Implement setup without modifying unrelated settings. Keep task override, role override and inheritance distinct; validate the selected model and effort together; surface unsupported selections without silently substituting another model.
 - [x] Add structural and regression checks for the expanded package, referenced resources, role/config parsing and safe setup/removal.
 - [x] Run actual CLI/model tasks for each route and model-resolution case. Record resulting artifacts and tool activity with the tested implementation SHA.
-- [ ] Repeat applicable desktop scenarios separately; the owner will perform manual acceptance later.
-- [x] Obtain independent review and green CI; `81ca134` passed with no remaining blockers. Desktop acceptance is still required before requesting phase 2 merge approval. The owner's conditional authorization to merge PR #2 does not approve merging phase 2.
+- [x] Record owner-operated desktop Feature, follow-up, Bug fix, Investigation, ordinary-chat control and plugin removal; keep qualified UI discovery/version-display capture as an explicit phase 6 evidence limit.
+- [x] Obtain independent review and green CI; the snapshot correction was independently verified. The owner now authorizes PR #3 merge conditional on one final review and green CI at the merge head.
 
 ## Acceptance contract
 

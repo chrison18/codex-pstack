@@ -5,7 +5,7 @@ description: Run the staged Codex pstack Feature, Bug fix or read-only Investiga
 
 # Poteto mode
 
-This is the phase 2 development candidate. Read [status](references/status.md) when asked about availability; do not imply that pending acceptance or later workflows have passed.
+This is the staged Codex core workflow. Read [status](references/status.md) when asked about availability; report the verified scope and remaining evidence limits. Later workflows remain unavailable.
 
 Activate only on explicit invocation for a new task. Follow-ups continue that active task. Installing this plugin or roles does not activate the workflow for ordinary new prompts. The primary chat owns the playbook, checklist, delegations, evidence and final answer.
 

@@ -13,7 +13,7 @@
     "com.openai": {
       "interface": {
         "displayName": "pstack for Codex (preview)",
-        "shortDescription": "Core workflow candidate; acceptance pending"
+        "shortDescription": "Explicit core workflows; staged migration"
       }
     }
   }

@@ -1,6 +1,6 @@
 # pstack
 
-This fork is migrating to Codex-only support. The installable package at `plugins/pstack/` is a **phase 2 development candidate** with Feature, Bug fix and read-only Investigation routes, project agent templates, and model configuration. Acceptance is in progress; it is not a completed migration. Autonomous execution and the remaining upstream workflows are pending. The inherited root `skills/`, `agents/`, and manifests remain migration source, outside the Codex package.
+This fork is migrating to Codex-only support. The installable package at `plugins/pstack/` is a **phase 2 development candidate** with Feature, Bug fix and read-only Investigation routes, project agent templates, and model configuration. Phase 2 core-task checks have passed in CLI/native probes and owner-operated desktop tests. Full migration remains in progress. Autonomous execution and the remaining upstream workflows are pending. The inherited root `skills/`, `agents/`, and manifests remain migration source, outside the Codex package.
 
 See the [migration plan](docs/migration/codex-migration-plan.md), [Git rules](CONTRIBUTING.md), [upstream provenance](UPSTREAM.md), and [phase 1 evidence and limits](docs/migration/phase-1-entry-evidence.md), and [phase 2 candidate evidence](docs/migration/phase-2-core-evidence.md).
 
@@ -24,7 +24,7 @@ python3 scripts/link-codex-entry.py /absolute/path/to/your/project
 
 Keep the checkout at that location while the link is in use. The helper refuses existing paths, including directories and dangling symlinks, without modifying the existing skill. Both entries require explicit invocation through `policy.allow_implicit_invocation: false`. Neither install modifies `AGENTS.md`, enables a timer, or installs custom agents. Explicit invocation routes a supported task through its bounded playbook. Custom roles require separate project setup before they can be used.
 
-For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. The owner manually confirmed the phase 1 package at 0.1.0-alpha.1 on October 22. Those results do not establish desktop acceptance for the expanded 0.2.0-alpha.1 candidate; see the evidence reports for version-specific results.
+For desktop, restart the app after adding the repo marketplace and choose **pstack for Codex** in the Plugins Directory to install the preview. A project link uses native project skill discovery. The owner manually confirmed the phase 1 package at 0.1.0-alpha.1 on October 22. The expanded 0.2.0-alpha.1 routes also passed owner-operated desktop tasks, follow-up and ordinary-chat checks, with removal confirmed. Qualified desktop entry discovery and version display remain an explicitly limited release-evidence item; see the evidence reports for exact scope.
 
 ## Configure the development candidate
 

@@ -1,6 +1,6 @@
 # Phase 2 core candidate evidence
 
-Status: CLI checks, native role probes, independent review, and desktop routed-task observations are recorded. The owner has confirmed plugin removal, and a subsequent native installed-plugin listing contains no pstack entry. The complete install/discovery evidence boundary is noted below. Phase 2 remains unaccepted; keep PR #3 draft and do not merge.
+Status: phase 2 core-task exit gates are complete: CLI/native checks, independent review, owner-operated desktop routes, follow-up, negative control and plugin removal are recorded. On October 22 the owner conditionally authorized merging PR #3 after a final independent review and green CI. Preserve the qualified desktop discovery/version-display evidence limit for phase 6; do not claim full migration or unrestricted client parity.
 
 ## Candidate and source
 
@@ -72,16 +72,16 @@ python3 -B scripts/accept-codex-core.py --model MODEL_FROM_CATALOG --effort SUPP
 
 The last command uses real model quota, creates three ephemeral sessions with scoped delegates, and prints its local evidence directory. It requires an existing CLI login file (or explicit --auth-file). It checks CLI exit, observable fixture behavior, allowed file changes, unchanged Git HEAD and an unstaged index. It returns nonzero on artifact failure. It deliberately does not call those artifact assertions a full workflow, role, model or desktop pass. Inspect tool activity, the initial failing reproduction and checklist separately.
 
-## Remaining phase 2 gates
+## Acceptance limits and merge checks
 
-- Confirm the candidate plugin install/discovery/removal lifecycle. The three desktop routed tasks, Feature follow-up and ordinary-chat control now have manual observations below; phase 1 UI evidence still applies only to 0.1.0-alpha.1.
+- Phase 2 core-task gates are met. Candidate version display and qualified plugin-entry discovery were not separately captured in desktop UI. Retain this explicit distribution-evidence limit for the phase 6 client matrix and release walkthrough; CLI/native observations must not be relabeled as UI evidence.
 - Preserve independent review and green CI when making later changes. The review of `81ca134` found no remaining blockers; both [inherited checks](https://github.com/chrison18/codex-pstack/actions/runs/39735424733/job/119679858492) and [Codex checks](https://github.com/chrison18/codex-pstack/actions/runs/39735424742/job/119679858383) passed at that head.
 
 Desktop automation was denied for the Codex app during phase 1. The restriction has not been bypassed. Desktop acceptance needs separately labeled owner/manual evidence unless an allowed control surface becomes available. See the [desktop acceptance procedure](phase-2-desktop-acceptance.md).
 
 The catalog helper starts a native app-server with its own effective configuration; it does not replay arbitrary command-line provider overrides from a different parent process. Use a snapshot from the same provider/configuration as the task. Cross-provider parity is not established by these account-backed tests.
 
-On October 22 the owner initially deferred desktop acceptance, then provided the routed-task screenshots described below. PR #3 remains a draft; no phase 2 merge is authorized or performed.
+On October 22 the owner initially deferred desktop acceptance, then provided the routed-task screenshots described below. The owner later authorized merging PR #3 conditional on a final independent review and green CI. The operation remains pending that final check.
 
 ## PR #3 independent review correction
 
@@ -91,7 +91,7 @@ Five Python regression cases cover link creation/deletion/retargeting, file-to-l
 
 With the corrected snapshot, the authenticated Investigation-only recheck completed with CLI exit 0, unchanged entry/type/mode state, and a passing fixture check. This is a new observed result, not a relabeling of the earlier content-only observation.
 
-The independent reviewer rechecked the fix at `81ca134`, independently ran the tests, verified the native distribution inventory, and confirmed the corrected Investigation before/after snapshots contain the same 11 entries. No further blocking findings remained. The PR stays draft/open and unmerged by the owner's instruction.
+The independent reviewer rechecked the fix at `81ca134`, independently ran the tests, verified the native distribution inventory, and confirmed the corrected Investigation before/after snapshots contain the same 11 entries. No further blocking findings remained. That review retained draft/open status under the earlier instruction. The latest owner instruction now authorizes a conditional merge after final review and CI.
 
 ## Owner-operated desktop observations, 2026-10-22
 
@@ -110,4 +110,4 @@ The owner manually operated the application and supplied screenshots. No automat
 | Candidate install/discovery lifecycle | NOT FULLY RECORDED | Task screenshots prove short project-entry operation; candidate version display and qualified plugin entry discovery were not independently captured. |
 | Candidate plugin removal | PASS | After saying they were uninstalling pstack, the owner returned and confirmed completion. A subsequent native plugin list completed successfully and contained no installed pstack entry. Project skill links and role resources remain in the retained acceptance fixtures; plugin removal does not remove those separately managed artifacts. |
 
-Private screenshots and full conversations are not committed. The desktop test results above are explicitly separated into owner-operated UI observations and agent-inspected local artifacts. Plugin removal is confirmed. Candidate version display and qualified UI discovery remain limited to the evidence described above; owner merge authorization is still a separate requirement. No fixtures or unrelated plugins were removed during this confirmation.
+Private screenshots and full conversations are not committed. The desktop test results above are explicitly separated into owner-operated UI observations and agent-inspected local artifacts. Plugin removal is confirmed. Candidate version display and qualified UI discovery remain limited to the evidence described above; the latest owner instruction conditionally authorizes merging after final review and green CI. No fixtures or unrelated plugins were removed during this confirmation.
