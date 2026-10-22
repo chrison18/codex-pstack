@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 and 1 merged in PR #1 and PR #2. Phase 2 has started on `feat/codex-core-workflow` from main commit `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`. The accepted main package remains an entry preview; the phase 2 branch contains an unaccepted core candidate. See the [phase 2 work plan](phase-2-core-workflow.md) for implementation order and acceptance gates.
+Status: phases 0 through 2 merged in PR #1, PR #2 and PR #3. Phase 3 has started on `feat/codex-skill-workflows` from merged main `a25255330be51548e27c4a2bda4e9ca5af86dfcf`; see the [phase 3 work plan](phase-3-skill-workflows.md). The phase 2 qualified desktop discovery/version-display evidence limit remains assigned to the phase 6 release walkthrough.
 
 ## Outcome and scope
 
