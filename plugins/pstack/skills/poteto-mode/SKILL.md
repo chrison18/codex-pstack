@@ -13,6 +13,7 @@ Read [the runtime contract](references/runtime.md) before executing a task or co
 
 - New or changed behavior: [Feature](references/feature.md).
 - Reported defect: [Bug fix](references/bug-fix.md).
+- Read-only adversarial code review: [Interrogate](references/interrogate.md), within the [Investigation](references/investigation.md) no-mutation boundary.
 - Read-only explanation or recommendation: [Investigation](references/investigation.md), then [How](references/how.md) for mechanics or [Why](references/why.md) for historical motivation.
 
 Create and update the playbook checklist; retain skipped steps with reasons. Delegation prescribed by the selected route is part of that explicitly invoked workflow, subject to host permissions and the user's scope. Pass this file's absolute path to `poteto-agent` and `comment-sicko`; inspect returned evidence yourself. Never delegate ownership of the full workflow.

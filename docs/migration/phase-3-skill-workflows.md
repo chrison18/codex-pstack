@@ -4,10 +4,10 @@
 
 PR #4 is phase **3A**: source inventory, full principle references and local How/Why research. Its merge gate is independent review of the exact head, passing CI and the recorded scoped acceptance; it does not claim completion of all phase 3 skills or A7/A8/A9. The owner requested review and merge of this increment before continuing.
 
-Phase **3B** starts only after PR #4 merges, on `feat/codex-remaining-workflows` from the latest `main`. It owns the unchecked work below: live Why coverage where available, design/review/delegation, remaining core skills, expanded playbooks and actual A7/A8/A9 checks. Phase 4 remains dependent on those gates. The inventory keeps integer phase ownership `3` across both increments, and existing pending/partial states remain unchanged.
+Phase **3A** merged in PR #4 as `288561b1feda1cf199f46ae36745ec47df6fb4ba` after independent review of `7469194` and exact-head CI. Phase **3B** has now started on `feat/codex-remaining-workflows` from that latest `main`; see [3B work and evidence](phase-3b-remaining-workflows.md). It owns the unchecked work below: live Why coverage where available, design/review/delegation, remaining core skills, expanded playbooks and actual A7/A8/A9 checks. Phase 4 remains dependent on those gates. The inventory keeps integer phase ownership `3` across both increments, and the split itself does not clear pending/partial work; current counts are below.
 
 
-Status: started on `feat/codex-skill-workflows` from phase 2 squash merge `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #3 has merged. The first unit established an executable inventory and provenance guard. The second unit replaces six principle summaries with all 24 full principle references; How/Why references and model roles are now ported; four local native research cases and two integrated principle regressions passed. Live Why connector coverage remains unverified. Remaining design and parallel workflows are pending.
+History: 3A started on `feat/codex-skill-workflows` from phase 2 squash merge `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #3 has merged. The first unit established an executable inventory and provenance guard. The second unit replaces six principle summaries with all 24 full principle references; How/Why references and model roles are now ported; four local native research cases and two integrated principle regressions passed. Live Why connector coverage remains unverified. Remaining design and parallel workflows are pending.
 
 ## Inventory contract
 
@@ -26,8 +26,8 @@ Each row records its source path and SHA256 at the inherited migration baseline,
 | Status | Current count | Meaning |
 | --- | --- | --- |
 | adapted | 27 | Two native agents, 24 full principles and How; see scoped native evidence for representative checks |
-| partial | 6 | Two bounded entries, three initial playbooks and Why; local Why checks passed, live source access remains unverified |
-| pending | 35 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
+| partial | 7 | Two bounded entries, three initial playbooks, Why and the Interrogate candidate; local Why checks passed, live source access remains unverified |
+| pending | 34 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
 | deferred | 19 | Full lifecycle/history or autonomous/Benny runtime belongs to phase 4 or 5 |
 
 Full lifecycle ownership of automate-me/reflect remains phase 4. Phase 3 must review any portable content needed by an earlier dependency and record its narrower scope rather than claiming the whole unit is supported. The same boundary applies to phase 5 automation overlays.

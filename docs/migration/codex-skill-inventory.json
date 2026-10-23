@@ -245,10 +245,28 @@
       "sourcePath": "skills/interrogate/SKILL.md",
       "sourceSha256": "2a48e35f50896e3e0ed0382f07858c95d8246b41274e30b439cf030827606798",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate.md",
+      "note": "Read-only review reference and all four lenses ported. One actual independent Sol/Luna review and unchanged-state checks passed; panel validation covers atomic failure and diversity reporting. Empty reviews, dropouts and negative client paths remain unverified, so support stays partial.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md",
+      "sourceReferences": {
+        "skills/interrogate/references/code-quality-review.md": {
+          "sourceSha256": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/code-quality-review.md"
+        },
+        "skills/interrogate/references/lead-judgment.md": {
+          "sourceSha256": "355f5195a76bc75a655125292369f2a8231a2b61fabe5188d8f1386060922b87",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/lead-judgment.md"
+        },
+        "skills/interrogate/references/reviewer-prompt.md": {
+          "sourceSha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/reviewer-prompt.md"
+        },
+        "skills/interrogate/references/rubric.md": {
+          "sourceSha256": "465804c3f1d58bd1efaa49488676f1120e410fa5fa653f96b67cc5db95845374",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/rubric.md"
+        }
+      }
     },
     {
       "id": "skill:ketchup",

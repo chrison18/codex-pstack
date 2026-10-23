@@ -117,7 +117,7 @@ def main():
     parser.add_argument('--effort', required=True)
     parser.add_argument('--catalog', type=Path, required=True)
     parser.add_argument('--auth-file', type=Path, default=Path.home() / '.codex/auth.json')
-    parser.add_argument('--case', action='append', choices=('how-simple', 'how-complex', 'why', 'fallback'))
+    parser.add_argument('--case', action='append', choices=('how-simple', 'how-complex', 'why', 'fallback', 'review'))
     args = parser.parse_args()
     repo = Path(__file__).resolve().parent.parent
     entry = repo / 'plugins/pstack/skills/poteto-mode'
@@ -128,6 +128,7 @@ def main():
         'how-simple': 'How does totals.total calculate its result? Explain edge cases with file/line citations.',
         'how-complex': 'Explain the architecture and complete runtime flow from api.handle through normalization and aggregation to the returned total. Trace the cross-module ownership and data transformations. Use the complex How route.',
         'why': 'Why is BATCH_SIZE 5 and TIMEOUT_SECONDS 11? I assume both were chosen for speed. Investigate the actual local history and distinguish known motivation from unknown reasons.',
+        'review': 'Interrogate the latest commit against the shipping fee requirement: zero quantity has zero fee; positive quantity has fee 3. Review only; do not fix. Use two independent reviewers with task selections gpt-6.1-sol/low and gpt-6-luna/medium. State concrete counterexamples and distinguish findings from suggestions.',
         'fallback': 'How does totals.total calculate its result? Do not delegate or install/configure anything; use the documented primary-only read path.',
     }
     results = []
@@ -146,10 +147,15 @@ def main():
         (workspace / 'normalize.py').write_text('def normalize(rows):\n    return [{"price": int(row["price"]), "quantity": int(row["quantity"])} for row in rows]\n')
         (workspace / 'api.py').write_text('from normalize import normalize\nfrom totals import total\n\ndef handle(rows):\n    return {"total": total(normalize(rows))}\n')
         (workspace / 'limits.py').write_text('BATCH_SIZE = 3\nTIMEOUT_SECONDS = 11\n')
+        if case == 'review':
+            (workspace / 'shipping.py').write_text('def shipping_fee(quantity):\n    return 0 if quantity == 0 else 3\n')
         git('init', '-q')
         git('add', '.')
         git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', '-c', 'commit.gpgsign=false', 'commit', '-qm', 'Initialize example request pipeline')
         (workspace / 'limits.py').write_text('BATCH_SIZE = 5\nTIMEOUT_SECONDS = 11\n')
+        if case == 'review':
+            (workspace / 'shipping.py').write_text('def shipping_fee(quantity):\n    return 3\n')
+            git('add', 'shipping.py')
         git('add', 'limits.py')
         git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', '-c', 'commit.gpgsign=false', 'commit', '-qm', 'Limit batches to five because the partner endpoint rejects larger batches')
         link = workspace / '.agents/skills/poteto-mode'
@@ -181,6 +187,8 @@ def main():
                    + args.model + '/' + args.effort + '. Resolve each research role using that observed pair and --catalog '
                    + str(catalog) + '. Do not run a nested app-server. Pass explicit resolved model and reasoning_effort '
                    'to the native spawn. Missing capability or rejected selection is not permission to claim delegation ran.')
+        if case == 'review':
+            prompt += ' Resolve the whole panel before spawning via resolve-panel with task selections [{"model":"gpt-6.1-sol","effort":"low"},{"model":"gpt-6-luna","effort":"medium"}].'
         if case == 'why':
             prompt += ' Task model override for why-synthesizer: --model ' + args.model + ' --effort high; do not save this override.'
         (log_root / 'prompt.txt').write_text(prompt)

@@ -129,8 +129,8 @@ test("transitive package targets cannot escape distribution", () => {
   expect(() => validateCodexInventory(root)).toThrow("escapes root");
 });
 
-test("How and Why cannot drop their complete reference maps", () => {
-  for (const id of ["skill:how", "skill:why"]) {
+test("Complete research and review ports cannot drop their reference maps", () => {
+  for (const id of ["skill:how", "skill:why", "skill:interrogate"]) {
     const root = fixture();
     const file = join(root, catalogPath);
     const catalog = JSON.parse(readFileSync(file, "utf8"));

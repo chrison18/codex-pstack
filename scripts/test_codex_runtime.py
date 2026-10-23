@@ -111,6 +111,50 @@ class RuntimeTest(unittest.TestCase):
                 self.assertEqual((self.root / '.codex/pstack-models.json').read_bytes(), before)
         self.assertEqual(runtime.load_choices(self.root)['roles']['feature'], {'model': 'parent-model', 'effort': 'low'})
 
+    def test_panel_resolution_validates_all_choices_and_preserves_preferences(self):
+        runtime.install(self.root)
+        role = 'interrogate-reviewer'
+        runtime.configure(self.root, role, 'role-model', 'medium', CATALOG)
+        path = self.root / '.codex/pstack-models.json'
+        before = path.read_bytes()
+        def panel(selections=None):
+            return runtime.resolve_panel(self.root, role, 'parent-model', 'high', selections, CATALOG)
+        inherited = panel()
+        self.assertEqual(inherited['distinctModels'], 1)
+        self.assertFalse(inherited['modelDiversity'])
+        self.assertEqual(inherited['reviewers'], [{'source': 'role', 'model': 'role-model', 'reasoning_effort': 'medium'}] * 2)
+        mixed = panel([{'model': 'inherit'}, {'model': 'role-model'}])
+        self.assertTrue(mixed['modelDiversity'])
+        self.assertEqual(mixed['reviewers'], [
+            {'source': 'task', 'model': 'parent-model', 'reasoning_effort': 'high'},
+            {'source': 'task', 'model': 'role-model', 'reasoning_effort': 'medium'}])
+        for invalid in [[], [{}], {}, [None, {}], [{'effort': 'high'}, {}],
+                        [{'model': None}, {}], [{'effort': 1}, {}],
+                        [{}, {'model': 'missing'}], [{}, {'model': 'parent-model', 'effort': 'medium'}],
+                        [{}, {'unknown': True}]]:
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                panel(invalid)
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_panel_cli_rejects_a_bad_later_member_without_partial_output(self):
+        runtime.install(self.root)
+        runtime.configure(self.root, 'interrogate-reviewer', 'role-model', None, CATALOG)
+        preferences = self.root / '.codex/pstack-models.json'
+        before = preferences.read_bytes()
+        catalog = self.root / 'catalog.json'
+        catalog.write_text(json.dumps({'source': 'codex/model/list', 'capturedAt': time.time(), 'models': CATALOG}))
+        command = [sys.executable, '-B', str(SCRIPT), 'resolve-panel', str(self.root), 'interrogate-reviewer',
+                   '--parent-model', 'parent-model', '--parent-effort', 'high', '--catalog', str(catalog)]
+        good = subprocess.run(command, capture_output=True, text=True)
+        self.assertEqual(good.returncode, 0, good.stderr)
+        self.assertFalse(json.loads(good.stdout)['modelDiversity'])
+        bad = subprocess.run([*command, '--selections', json.dumps([{}, {'model': 'missing'}])],
+                             capture_output=True, text=True)
+        self.assertNotEqual(bad.returncode, 0)
+        self.assertEqual(bad.stdout, '')
+        self.assertIn('Unavailable model', bad.stderr)
+        self.assertEqual(preferences.read_bytes(), before)
+
     def test_invalid_selection_does_not_change_preferences(self):
         runtime.configure(self.root, 'bug-fix', 'role-model', 'high', CATALOG)
         path = self.root / '.codex/pstack-models.json'
