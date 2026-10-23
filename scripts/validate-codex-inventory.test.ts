@@ -128,3 +128,14 @@ test("transitive package targets cannot escape distribution", () => {
   writeFileSync(file, JSON.stringify(catalog));
   expect(() => validateCodexInventory(root)).toThrow("escapes root");
 });
+
+test("How and Why cannot drop their complete reference maps", () => {
+  for (const id of ["skill:how", "skill:why"]) {
+    const root = fixture();
+    const file = join(root, catalogPath);
+    const catalog = JSON.parse(readFileSync(file, "utf8"));
+    delete catalog.units.find((unit: { id: string }) => unit.id === id).sourceReferences;
+    writeFileSync(file, JSON.stringify(catalog));
+    expect(() => validateCodexInventory(root)).toThrow("Complete reference map required");
+  }
+});

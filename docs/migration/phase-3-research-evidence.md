@@ -54,3 +54,7 @@ Final local checks: 28 Bun tests / 41 assertions (including 10 Python runtime te
 An earlier parallel run hit Bun's 5-second per-test limit in the subprocess-based runtime test and three inherited Git fixture tests. The new role test was reduced to the necessary CLI boundary calls, while direct precedence/immutability checks remain for all four keys. Its subprocess wrapper now has a bounded 30-second timeout. With suites run separately, all 28 and all 69 passed at the normal CLI test settings; inherited tests and assertions were unchanged.
 
 To repeat native checks, refresh a real host catalog and run `python3 -B scripts/accept-codex-research.py --codex /absolute/codex --model gpt-6.1-sol --effort low --catalog /absolute/fresh-catalog.json`. Use `--case` to scope a rerun. The harness's artifact result is intentionally narrower than this manual behavior assessment.
+
+## Independent pre-merge correction
+
+Independent review found that removing an entire How/Why `sourceReferences` property bypassed the optional reference checker. A regression test reproduced the failure before the fix. The inventory now requires both complete maps for the packaged research ports, including Why's partial live-runtime state. Bounded earlier-phase ports do not falsely claim complete reference coverage. The two omission cases now fail validation, while all source digests/targets remain unchanged. The current package suite contains 29 tests / 43 assertions. This is a structural validation fix; it changes no model workflow or runtime settings.
