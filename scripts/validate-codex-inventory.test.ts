@@ -13,7 +13,7 @@ function fixture(): string {
   directories.push(root);
   const catalog = JSON.parse(readFileSync(join(repository, catalogPath), "utf8"));
   const evidence = [...new Set<string>(catalog.units.map((unit: { evidencePath: string | null }) => unit.evidencePath).filter(Boolean))];
-  for (const path of [catalogPath, ...evidence, ...catalog.units.map((unit: { sourcePath: string }) => unit.sourcePath)]) {
+  for (const path of [catalogPath, ...evidence, ...catalog.units.flatMap((unit: { sourcePath: string; sourceReferences?: Record<string, unknown> }) => [unit.sourcePath, ...Object.keys(unit.sourceReferences ?? {})])]) {
     mkdirSync(dirname(join(root, path)), { recursive: true });
     cpSync(join(repository, path), join(root, path));
   }
@@ -58,8 +58,8 @@ test("rejects source drift without a provenance update", () => {
 test("does not accept supported claims without a packaged artifact", () => {
   const root = fixture();
   change(root, (value) => {
-    const unit = value.units.find((unit: { id: string }) => unit.id === "skill:how");
-    if (!unit) throw new Error("Fixture is missing how");
+    const unit = value.units.find((unit: { id: string }) => unit.id === "skill:architect");
+    if (!unit) throw new Error("Fixture is missing architect");
     unit.status = "adapted";
   });
   expect(() => validateCodexInventory(root)).toThrow("in-package target");
@@ -98,5 +98,33 @@ test("package targets cannot escape the isolated distribution", () => {
     if (!unit) throw new Error("Fixture is missing poteto-agent");
     Object.assign(unit, { packagePath: "plugins/pstack/../../skills/how/SKILL.md" });
   });
+  expect(() => validateCodexInventory(root)).toThrow("escapes root");
+});
+
+test("rejects drift in a migrated skill's transitive source reference", () => {
+  const root = fixture();
+  writeFileSync(join(root, "skills/how/references/explorer-prompt.md"), "changed source reference");
+  expect(() => validateCodexInventory(root)).toThrow("Reference source changed");
+});
+
+test("rejects a newly unaccounted transitive reference", () => {
+  const root = fixture();
+  writeFileSync(join(root, "skills/how/references/new.md"), "new source reference");
+  expect(() => validateCodexInventory(root)).toThrow("Reference source coverage changed");
+});
+
+test("rejects a missing packaged research prompt", () => {
+  const root = fixture();
+  rmSync(join(root, "plugins/pstack/skills/poteto-mode/references/how/explorer-prompt.md"));
+  expect(() => validateCodexInventory(root)).toThrow();
+});
+
+test("transitive package targets cannot escape distribution", () => {
+  const root = fixture();
+  const file = join(root, catalogPath);
+  const catalog = JSON.parse(readFileSync(file, "utf8"));
+  catalog.units.find((unit: { id: string }) => unit.id === "skill:how")
+    .sourceReferences["skills/how/references/explorer-prompt.md"].packagePath = "plugins/pstack/../../skills/how/SKILL.md";
+  writeFileSync(file, JSON.stringify(catalog));
   expect(() => validateCodexInventory(root)).toThrow("escapes root");
 });

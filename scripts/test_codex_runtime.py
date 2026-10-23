@@ -81,6 +81,36 @@ class RuntimeTest(unittest.TestCase):
         runtime.configure(self.root, 'feature', 'inherit', None, CATALOG)
         self.assertEqual(resolve()['reasoning_effort'], 'high')
 
+    def test_research_roles_resolve_through_cli_without_changing_other_choices(self):
+        runtime.install(self.root)
+        runtime.configure(self.root, 'feature', 'parent-model', 'low', CATALOG)
+        catalog = self.root / 'catalog.json'
+        catalog.write_text(json.dumps({'source': 'codex/model/list', 'capturedAt': time.time(), 'models': CATALOG}))
+        for role in ('how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer'):
+            with self.subTest(role=role):
+                base = [sys.executable, '-B', str(SCRIPT)]
+                resolve = [*base, 'resolve', str(self.root), role, '--parent-model', 'parent-model',
+                           '--parent-effort', 'high', '--catalog', str(catalog)]
+                def result(arguments):
+                    process = subprocess.run(arguments, capture_output=True, text=True)
+                    self.assertEqual(process.returncode, 0, process.stderr)
+                    return json.loads(process.stdout)
+                def selected(model=None, effort=None):
+                    return runtime.resolve_choice(self.root, role, 'parent-model', 'high', model, effort, CATALOG)
+                self.assertEqual(selected(), {'source': 'parent', 'model': 'parent-model', 'reasoning_effort': 'high'})
+                result([*base, 'configure', str(self.root), role, 'role-model', '--catalog', str(catalog)])
+                before = (self.root / '.codex/pstack-models.json').read_bytes()
+                self.assertEqual(result(resolve), {'source': 'role', 'model': 'role-model', 'reasoning_effort': 'medium'})
+                self.assertEqual(selected('parent-model', 'low'),
+                                 {'source': 'task', 'model': 'parent-model', 'reasoning_effort': 'low'})
+                self.assertEqual(selected('inherit'),
+                                 {'source': 'task', 'model': 'parent-model', 'reasoning_effort': 'high'})
+                self.assertEqual((self.root / '.codex/pstack-models.json').read_bytes(), before)
+                with self.assertRaises(ValueError):
+                    selected('missing')
+                self.assertEqual((self.root / '.codex/pstack-models.json').read_bytes(), before)
+        self.assertEqual(runtime.load_choices(self.root)['roles']['feature'], {'model': 'parent-model', 'effort': 'low'})
+
     def test_invalid_selection_does_not_change_preferences(self):
         runtime.configure(self.root, 'bug-fix', 'role-model', 'high', CATALOG)
         path = self.root / '.codex/pstack-models.json'

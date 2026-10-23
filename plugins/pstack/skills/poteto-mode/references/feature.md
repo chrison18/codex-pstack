@@ -3,7 +3,7 @@
 The primary owns the design, checklist, every delegation, verification and final reply.
 
 1. Map the affected subsystem by reading its actual call paths. State the requested outcome and acceptance check. Choose the data shape before writing logic; read the relevant [principles](principles.md).
-2. Compare plausible design choices and choose the smallest justified shape. Full `how`, `architect`, `arena` and `interrogate` panels are phase 3 work. Do not claim those skills ran. If the task requires them, report the limitation before promising coverage.
+2. Compare plausible design choices and choose the smallest justified shape. Use the packaged [How](how.md) reference when architectural explanation is needed. Full `architect`, `arena` and `interrogate` panels remain phase 3 work. Do not claim unavailable skills ran. If the task requires them, report the limitation before promising coverage.
 3. Write the throughput checkpoint as four checklist entries: blocking first steps, independent workstreams, shared mutable state, and smallest safe decomposition. Retain an inapplicable item with `skip: <reason>`.
 4. Delegate implementation to registered `poteto-agent` with the absolute entry path, named files, chosen data shape, success criteria and resolved model/effort. The primary owns the workflow. Use one writer per checkout; do not edit concurrently with the worker. Review the returned diff yourself. A missing role or rejected spawn blocks the delegated step; stop the workflow and report it without substituting another role or primary implementation.
 5. Verify actual behavior on the relevant UI or CLI surface. Run focused checks and inspect the final diff. Record failures, limitations and skipped steps; a failure is not completion.

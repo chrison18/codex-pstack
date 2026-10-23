@@ -213,10 +213,20 @@
       "sourcePath": "skills/how/SKILL.md",
       "sourceSha256": "6737bb16e3f70171d3eb3b9b63558895bc28c8873b9badfaead07b6efa5c57f0",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/how.md",
+      "note": "Simple, complex explorer/synthesis and disclosed primary-only read paths passed local native checks. Actual starts confirmed role selection and exact parent model/effort inheritance. Exposed under explicit Poteto Investigation, not a new native entry.",
+      "evidencePath": "docs/migration/phase-3-research-evidence.md",
+      "sourceReferences": {
+        "skills/how/references/explainer-prompt.md": {
+          "sourceSha256": "c87b7e16880bc18d3fe1850c041a8f5132c05df3b8eaafc266ff9dbef5137f2b",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/how/explainer-prompt.md"
+        },
+        "skills/how/references/explorer-prompt.md": {
+          "sourceSha256": "56ff5c4327674f601cd6f9f9b97a67dde7cc8a982714f5f5a732939e04fb14f9",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/how/explorer-prompt.md"
+        }
+      }
     },
     {
       "id": "skill:in-your-own-words",
@@ -961,10 +971,60 @@
       "sourcePath": "skills/why/SKILL.md",
       "sourceSha256": "b45161d4e7a437df84c59f401d0626248f9000f63b419ade49b0a07c8af6759f",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/why.md",
+      "note": "All prompt/source references ported. Local Git investigator/synthesizer, task model override, seven-category exclusions and confidence calibration passed native checks. Live connector access and cross-source synthesis remain unverified; no live vendor coverage claimed.",
+      "evidencePath": "docs/migration/phase-3-research-evidence.md",
+      "sourceReferences": {
+        "skills/why/references/epistemics.md": {
+          "sourceSha256": "d54a2361b2d5973bc3fe2edf62f446d87935974d4b40d47f23b9529f956ca758",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/epistemics.md"
+        },
+        "skills/why/references/investigator-prompt.md": {
+          "sourceSha256": "c44afba186f899094f3694e6c9d6de5d14ff7c4ce28b787a9f50fc789c9a7fc3",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/investigator-prompt.md"
+        },
+        "skills/why/references/source-playbook.md": {
+          "sourceSha256": "9ae9dcb9d09111c9facc68510331c5aba4aed9b1b057314ff1fc0e166ad3993a",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/source-playbook.md"
+        },
+        "skills/why/references/sources/code-archaeology.md": {
+          "sourceSha256": "a4a3970e9db448054aed676f3f7feeee667b4b69f0bd57c8fd72b751be687cc7",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/code-archaeology.md"
+        },
+        "skills/why/references/sources/databricks.md": {
+          "sourceSha256": "236ede7aab6454662a992db088a5393537a5233a4c26719c93188f9e174488f6",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/databricks.md"
+        },
+        "skills/why/references/sources/datadog.md": {
+          "sourceSha256": "b139faac5dc11b8f26c8255dce6033c1a6ac143b038d3dd103f2034c5dbec9cd",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/datadog.md"
+        },
+        "skills/why/references/sources/incident-postmortem.md": {
+          "sourceSha256": "bf2661f1a81c37700884a45b77d6289be0c802b065febced31990e6564510839",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/incident-postmortem.md"
+        },
+        "skills/why/references/sources/linear.md": {
+          "sourceSha256": "01304e7f1badfcfb78babbb0edcadeb3cc8dd3f713793420cdff24ba190f907c",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/linear.md"
+        },
+        "skills/why/references/sources/notion.md": {
+          "sourceSha256": "3bcfa695c49dfad4ac036d5d7181c12585f55ac04f1936198d16ab75a2788997",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/notion.md"
+        },
+        "skills/why/references/sources/sentry.md": {
+          "sourceSha256": "2d4f83048eac1df530b399e2aed75dd7c9c18577b7665420aaeb96d0ceb0b702",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/sentry.md"
+        },
+        "skills/why/references/sources/slack.md": {
+          "sourceSha256": "3bc6309f5c7b26ace3b919dbd7f7b048861dd2020f910fe24f656cc74b3b661c",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/sources/slack.md"
+        },
+        "skills/why/references/synthesizer-prompt.md": {
+          "sourceSha256": "11c62671aa7b7a6e3d36929ffe2b59bf95e6ca664eee4d93e6ee527dd3390ddb",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/why/synthesizer-prompt.md"
+        }
+      }
     }
   ]
 }

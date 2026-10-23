@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from "node:fs";
-import { isAbsolute, join, relative, resolve, sep } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 
 type ObjectValue = Record<string, unknown>;
 const baselineCounts = { skill: 59, agent: 2, playbook: 23, "automation-skill": 3 };
@@ -82,7 +82,40 @@ export function validateCodexInventory(repository: string): Record<Kind, number>
       if ((source.kind === "skill" || source.kind === "automation-skill") && unit.packagePath.endsWith("/SKILL.md")) {
         packagedSkills.add(unit.packagePath);
       }
-    } else if (unit.packagePath !== null || unit.evidencePath !== null) {
+      if (unit.sourceReferences !== undefined) {
+        if (source.kind !== "skill" && source.kind !== "automation-skill") throw new Error("Reference sources require a skill unit");
+        const references = object(unit.sourceReferences, "reference sources");
+        const referenceRoot = contained(repository, join(repository, dirname(unit.sourcePath), "references"));
+        const referencePaths = new Set<string>();
+        const visitedReferences = new Set<string>();
+        function discoverReferences(directory: string) {
+          const actual = contained(referenceRoot, directory);
+          if (visitedReferences.has(actual)) throw new Error("Repeated source reference directory");
+          visitedReferences.add(actual);
+          for (const name of readdirSync(directory)) {
+            const path = join(directory, name);
+            const target = contained(referenceRoot, path);
+            if (statSync(target).isDirectory()) discoverReferences(path);
+            else if (name.endsWith(".md")) referencePaths.add(relative(repository, path).split("\\").join("/"));
+          }
+        }
+        discoverReferences(referenceRoot);
+        if (Object.keys(references).length !== referencePaths.size || Object.keys(references).some((path) => !referencePaths.has(path))) {
+          throw new Error(`Reference source coverage changed: ${unit.sourcePath}`);
+        }
+        for (const [path, rawReference] of Object.entries(references)) {
+          const reference = object(rawReference, "source reference");
+          const bytes = readFileSync(contained(referenceRoot, join(repository, path)));
+          if (reference.sourceSha256 !== createHash("sha256").update(bytes).digest("hex")) {
+            throw new Error(`Reference source changed; reconcile provenance: ${path}`);
+          }
+          if (typeof reference.packagePath !== "string" || !reference.packagePath.startsWith("plugins/pstack/") ||
+              !statSync(contained(packageRoot, join(repository, reference.packagePath))).isFile()) {
+            throw new Error(`Reference needs an in-package target: ${path}`);
+          }
+        }
+      }
+    } else if (unit.packagePath !== null || unit.evidencePath !== null || unit.sourceReferences !== undefined) {
       throw new Error(`Pending/deferred unit cannot claim a package target or passed evidence: ${unit.sourcePath}`);
     }
   }
