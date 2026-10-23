@@ -15,7 +15,7 @@ import time
 PANEL_ROLES = ('interrogate-reviewer', 'arena-runner', 'architect-runner')
 ROLES = ('feature', 'bug-fix', 'investigation', 'comment-sicko',
          'how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer',
-         'arena-judge') + PANEL_ROLES
+         'arena-judge', 'swarm-worker') + PANEL_ROLES
 AGENTS = ('poteto-agent', 'comment-sicko')
 RESOURCE = Path(__file__).resolve().parent.parent / 'resources/agents'
 

@@ -9,10 +9,10 @@ Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda
 - [x] Add whole-panel model validation, explicit task choices, saved reviewer role and exact parent inheritance. Reject any bad member before returning a usable panel. Distinguish independent same-model review from model diversity.
 - [x] Inspect native Interrogate acceptance: actual independent starts, calibrated lead verdict, concrete evidence and unchanged workspace/HEAD/index.
 - [x] Port Arena/Architect with full alternatives and explicit checkpoint choices; bounded native synthesis/checkpoint/default-implementation probes passed, with remaining negative/desktop/worktree gaps retained below.
-- [ ] Port Swarm with write ownership, explicit base refs, integration and local-state access boundaries.
+- [x] Port Swarm with write ownership, explicit base refs, integration and local-state access boundaries; see [native evidence](phase-3b-swarm-evidence.md) and remaining race/recovery/desktop limits.
 - [ ] Port remaining quality/prose/verification/control/authoring skills and expand the bounded playbooks.
 - [ ] Complete available live Why source checks and genuine cross-source synthesis; preserve unavailable-source gaps.
-- [ ] Run actual A7 concurrent-writer, A8 non-default-base and A9 local-state checks; spawn alone is not isolation proof.
+- [x] Run actual bounded native A7 concurrent-writer, A8 pushed non-default-base and A9 local-process/auth checks; inspect live-PID/clock receipts, real worktree metadata, combined verification and authenticated requests. Desktop/browser variants remain NOT RUN; see [evidence](phase-3b-swarm-evidence.md).
 - [ ] Reconcile every phase 3 inventory entry, complete applicable desktop/native evidence, independent review and CI before phase 3B merge.
 
 ## First candidate: read-only adversarial review
@@ -41,7 +41,7 @@ Arena and Architect are internal references under the same explicit Poteto entry
 
 The runtime adds `arena-runner` and `architect-runner` panel roles and singular `arena-judge`, sharing existing precedence and whole-pool rejection. The legacy `reviewers` result field is retained for panels of runners as well as reviewers. Defaults permit independent same-model runners and do not claim model diversity. A model ID or effort does not prove structural diversity. Source vendor aliases and global rule paths are removed; the inherited source tree and baseline hashes remain untouched. Architect reference maps cannot be omitted from CI, including while the unit remains partial.
 
-Artifact candidates use separate owned scratch directories; repository code candidates require separate worktrees and explicit base refs. Directory assignments do not establish independent host sandboxes. The native acceptance below exercises artifact ownership under a workspace-write parent, not concurrent code-worktree isolation. A7/A8/A9 remain unchecked.
+Artifact candidates use separate owned scratch directories; repository code candidates require separate worktrees and explicit base refs. Directory assignments do not establish independent host sandboxes. The native acceptance below exercises artifact ownership under a workspace-write parent, not concurrent code-worktree isolation. Those design probes did not clear A7/A8/A9; the subsequent [Swarm increment](phase-3b-swarm-evidence.md) supplies bounded native evidence.
 
 ### Arena native result
 
@@ -92,4 +92,8 @@ Changes were limited to `app.py` and candidate/synthesis artifact paths. `check.
 
 ### Checks for this design increment
 
-PASS: 13 Python runtime tests; 29 package Bun tests / 45 assertions; 69 inherited Bun tests / 247 assertions; strict inventory TypeScript and inherited typecheck; package/inventory validation; all 24 principle transformations; all three Architect transitive-source hashes independently compared with the inherited Git baseline; skill validation; Bash syntax and diff checks. Isolated CLI smoke passed installation, both explicit entry forms, ordinary-prompt exclusion and removal. The smoke does not call a model; native model evidence is recorded separately above. Native probe failures are retained and excluded from the final three passing behavior cases. PR #5 remains draft; phase 3B and A7/A8/A9 are not complete.
+PASS: 13 Python runtime tests; 29 package Bun tests / 45 assertions; 69 inherited Bun tests / 247 assertions; strict inventory TypeScript and inherited typecheck; package/inventory validation; all 24 principle transformations; all three Architect transitive-source hashes independently compared with the inherited Git baseline; skill validation; Bash syntax and diff checks. Isolated CLI smoke passed installation, both explicit entry forms, ordinary-prompt exclusion and removal. The smoke does not call a model; native model evidence is recorded separately above. Native probe failures are retained and excluded from the final three passing behavior cases. PR #5 remains draft; those design checks did not complete phase 3B or A7/A8/A9. Subsequent native Swarm results are recorded below.
+
+## Swarm increment
+
+[Swarm and A7/A8/A9 evidence](phase-3b-swarm-evidence.md) records the initial instrument failure, two instrument regressions, fresh native pass and remaining limits. Current validation includes 30 package Bun tests / 47 assertions and 13 runtime tests (including singular Swarm selection), separate from the two new publisher-instrument tests. These passes do not complete the remaining 3B work or change PR #5 from draft.

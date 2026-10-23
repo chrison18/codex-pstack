@@ -11,6 +11,7 @@ Activate only on explicit invocation for a new task. Follow-ups continue that ac
 
 Read [the runtime contract](references/runtime.md) before executing a task or configuring roles. Read only the applicable playbook. Select and read the full applicable leaves through the [principle index](references/principles.md):
 
+- Parallel coverage, races and isolated code slices: [Swarm](references/swarm.md).
 - Independent alternatives and synthesis: [Arena](references/arena.md); structural design and implementation: [Architect](references/architect.md).
 - New or changed behavior: [Feature](references/feature.md).
 - Reported defect: [Bug fix](references/bug-fix.md).

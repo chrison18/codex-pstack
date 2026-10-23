@@ -31,3 +31,7 @@ Copy the selected playbook's steps into a checklist before work. Use a host chec
 ## Design pools
 
 `resolve-panel` also accepts `arena-runner` and `architect-runner`, with the same atomic validation, precedence and `reviewers` result field as review panels. `arena-judge` uses singular `resolve`. Pools do not spawn agents or establish write isolation. Follow [Arena](arena.md) for candidate ownership, completed-writer ordering and primary synthesis, and [Architect](architect.md) for structural diversity and optional checkpoints.
+
+## Swarm slices
+
+`swarm-worker` uses singular `resolve` for each worker, allowing any positive worker count and distinct task choices per race arm. Resolve the full set before spawning. Follow [Swarm](swarm.md) for explicit base refs, one writer per actual worktree, bounded shared local-state verification and combined integration proof. The resolver does not create worktrees, grant machine-state access or execute workers.

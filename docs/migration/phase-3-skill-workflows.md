@@ -26,8 +26,8 @@ Each row records its source path and SHA256 at the inherited migration baseline,
 | Status | Current count | Meaning |
 | --- | --- | --- |
 | adapted | 27 | Two native agents, 24 full principles and How; see scoped native evidence for representative checks |
-| partial | 9 | Two bounded entries, three initial playbooks, Why, Interrogate, Arena and Architect candidates; local Why checks passed, live source access remains unverified |
-| pending | 32 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
+| partial | 10 | Two bounded entries, three initial playbooks, Why, Interrogate, Arena, Architect and Swarm candidates; local Why checks passed, live source access remains unverified |
+| pending | 31 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
 | deferred | 19 | Full lifecycle/history or autonomous/Benny runtime belongs to phase 4 or 5 |
 
 Full lifecycle ownership of automate-me/reflect remains phase 4. Phase 3 must review any portable content needed by an earlier dependency and record its narrower scope rather than claiming the whole unit is supported. The same boundary applies to phase 5 automation overlays.
@@ -45,7 +45,7 @@ The validator compares the catalog with actual source discovery and pinned conte
 - [ ] Port the remaining design/review/delegation workflows.
 - [ ] Port remaining phase 3 code-quality, prose, verification/control and authoring skills. Check all transitive references and mark unavailable host capabilities explicitly.
 - [ ] Expand the bounded playbooks to consume the migrated skills without claiming that later-phase lifecycle or automation works.
-- [ ] Exercise parallel writers in separate worktrees, an explicit non-default starting ref, result integration and local-process/browser/auth access. Record gaps; a spawn alone is not proof of isolation or local-state access.
+- [x] Exercise bounded native parallel writers in separate worktrees, a pushed non-default starting ref, integration and local-process/auth access. See [Swarm evidence](phase-3b-swarm-evidence.md); desktop/browser variants remain NOT RUN. A spawn alone is not proof.
 - [ ] Complete the per-unit support/evidence classification, real client checks, independent review and phase 3 CI before requesting merge approval.
 
 These units ship no new native skill entry and change no project/global model settings. Poteto-mode remains explicitly activated per task. The inherited Antigravity source is retained for comparison; it is not automatically loaded by the Codex package.
@@ -62,3 +62,5 @@ bun test ./scripts/
 The inventory is source control metadata. Intentional upstream changes require reconciling the pinned source, ownership and provenance together; do not regenerate hashes merely to hide unexplained changes. A new package claim needs a real artifact and a cited evidence file, followed by behavior checks appropriate to that capability.
 
 Initial-unit observations: Bun 1.4.3 passed 23 tests with 35 assertions, including 9 inventory regressions; strict TypeScript checks passed. All 87 recorded source digests were independently compared with git show at the inherited baseline and matched. Both package and inventory validators passed. No new phase 3 client-runtime behavior is claimed by this source-accounting unit.
+
+Swarm now has bounded native [A7/A8/A9 evidence](phase-3b-swarm-evidence.md): real concurrent worktrees, a pushed non-default base and an authenticated local process probe. Desktop/browser variants and the remaining source units are not covered by those fixture passes.

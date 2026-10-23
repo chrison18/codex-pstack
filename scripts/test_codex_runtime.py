@@ -81,12 +81,12 @@ class RuntimeTest(unittest.TestCase):
         runtime.configure(self.root, 'feature', 'inherit', None, CATALOG)
         self.assertEqual(resolve()['reasoning_effort'], 'high')
 
-    def test_research_roles_resolve_through_cli_without_changing_other_choices(self):
+    def test_research_and_swarm_roles_resolve_through_cli_without_changing_other_choices(self):
         runtime.install(self.root)
         runtime.configure(self.root, 'feature', 'parent-model', 'low', CATALOG)
         catalog = self.root / 'catalog.json'
         catalog.write_text(json.dumps({'source': 'codex/model/list', 'capturedAt': time.time(), 'models': CATALOG}))
-        for role in ('how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer'):
+        for role in ('how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer', 'swarm-worker'):
             with self.subTest(role=role):
                 base = [sys.executable, '-B', str(SCRIPT)]
                 resolve = [*base, 'resolve', str(self.root), role, '--parent-model', 'parent-model',

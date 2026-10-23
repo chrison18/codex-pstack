@@ -937,10 +937,10 @@
       "sourcePath": "skills/swarm/SKILL.md",
       "sourceSha256": "598170bc09bf2e5d847a4add7ec47a920b539e50fb449bd50a71561ce87ade6d",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/swarm.md",
+      "note": "Codex-native worktree slices, explicit starting refs, bounded shared local-state verifier and primary integration; acceptance scope and remaining limits recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-swarm-evidence.md"
     },
     {
       "id": "skill:tdd",
