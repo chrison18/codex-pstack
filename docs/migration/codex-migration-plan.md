@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2 merged in PR #1, PR #2 and PR #3. Phase 3 has started on `feat/codex-skill-workflows` from merged main `a25255330be51548e27c4a2bda4e9ca5af86dfcf`; see the [phase 3 work plan](phase-3-skill-workflows.md). The phase 2 qualified desktop discovery/version-display evidence limit remains assigned to the phase 6 release walkthrough.
+Status: phases 0 through 2 merged in PR #1, PR #2 and PR #3. Phase 3 is split into consecutive increments: 3A on `feat/codex-skill-workflows` (PR #4, inventory/principles/local research) and 3B on `feat/codex-remaining-workflows` (remaining skills and parallel-workflow gates). The owner requested independent review and merge of PR #4 before continuing. This split does not mark phase 3 complete or waive its remaining gates; see the [phase 3 work plan](phase-3-skill-workflows.md). The phase 2 qualified desktop discovery/version-display evidence limit remains assigned to the phase 6 release walkthrough.
 
 ## Outcome and scope
 
@@ -34,14 +34,15 @@ Target mechanisms are proposals until verified against the selected client versi
 
 ## Phases and branches
 
-One phase uses one branch and PR from latest merged `main`. Wait for dependencies to merge. Update this plan before splitting a phase into additional PRs.
+Each listed increment uses one branch and PR from latest merged `main`. Wait for its dependency to merge. Phase 3 is explicitly split below so the verified foundation can land while its remaining capability gates stay visible. Update this plan before any further split; phases 4–6 still depend on completion of phase 3B.
 
 | Phase | Branch | Deliverables | Exit gate |
 | --- | --- | --- | --- |
 | 0 | `docs/codex-migration-plan` | Plan, Git rules, upstream ledger, baseline | Inventory/ownership documented; checks run; failures and unavailable checks distinguished |
 | 1 | `feat/codex-plugin-entry` | Package, invocation policy, minimal setup, structural CI | Clean install/discovery/removal in both clients; explicit invocation works; ordinary prompts do not activate; no developer-machine paths |
 | 2 | `feat/codex-core-workflow` | Router, both agents, checklist, model setup; Feature/Bug fix/Investigation | One real task of each kind completes; roles load correct instructions; model/effort rules hold; primary owns workflow |
-| 3 | `feat/codex-skill-workflows` | Remaining core skills and parallel workflows | Every skill classified and structurally checked; changed host mechanisms exercised; isolated writers, base refs, local-state verification work |
+| 3A | `feat/codex-skill-workflows` | Complete source inventory, full principles, How/Why local research | Source/provenance and explicit invocation guards; representative principles and local research checks; independent review and CI; live-source and remaining-skill gaps explicit |
+| 3B | `feat/codex-remaining-workflows` | Remaining core skills, design/review/delegation, expanded playbooks and parallel workflows | Original phase 3 exit gate: every skill classified and structurally checked; changed host mechanisms exercised; isolated writers, base refs and local-state verification work; unavailable live-source coverage explicitly limited |
 | 4 | `feat/codex-session-lifecycle` | Recall, pickup, history mining, decision trail, worktree audit | Interrupted task resumes from evidence; scoped history; active/dirty/uncertain worktrees not declared safe |
 | 5 | `feat/codex-autonomous-workflows` | Autonomous run, babysit, orchestrate, autopilot, Benny, bot UI | Continuation, wake, cancel, restart, completion, duplicate delivery tested; missing dependencies reported |
 | 6 | `chore/codex-release-readiness` | Final docs/CI, client matrix, install/update/remove instructions | Clean walkthrough; all release claims have evidence; supported versions and limits explicit |
@@ -52,7 +53,7 @@ Phase 1 uses `plugins/pstack/` as the Codex package root and retains inherited s
 
 ## Inventory ownership
 
-Baseline inventory is 59 top-level skills, 2 agent definitions, 23 playbooks, plus 3 Benny skills. Phase 1 owns package/invocation metadata across the inventory. Phase 2 owns both agents, setup-pstack, poteto-mode, and its three initial playbooks. Phase 3 owns all remaining top-level skills' portable content and host dependencies, with these runtime overlays assigned later:
+Baseline inventory is 59 top-level skills, 2 agent definitions, 23 playbooks, plus 3 Benny skills. Phase 1 owns package/invocation metadata across the inventory. Phase 2 owns both agents, setup-pstack, poteto-mode, and its three initial playbooks. Phase 3 (3A plus 3B; inventory `ownerPhase: 3` remains unchanged) owns all remaining top-level skills' portable content and host dependencies, with these runtime overlays assigned later:
 
 - Phase 4 owns recall, history-reading portions of automate-me/reflect, show-me-your-work, session-pickup, pause-safely, trace/runtime forensics, and worktree-cleanup.
 - Phase 5 owns autonomous-run, babysit, orchestrate, autopilot-full/stack, shipping continuation, make-bot-ui, and `automations/benny/`.

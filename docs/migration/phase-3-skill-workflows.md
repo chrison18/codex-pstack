@@ -1,5 +1,12 @@
 # Phase 3 skills and parallel workflows
 
+## Increment boundaries
+
+PR #4 is phase **3A**: source inventory, full principle references and local How/Why research. Its merge gate is independent review of the exact head, passing CI and the recorded scoped acceptance; it does not claim completion of all phase 3 skills or A7/A8/A9. The owner requested review and merge of this increment before continuing.
+
+Phase **3B** starts only after PR #4 merges, on `feat/codex-remaining-workflows` from the latest `main`. It owns the unchecked work below: live Why coverage where available, design/review/delegation, remaining core skills, expanded playbooks and actual A7/A8/A9 checks. Phase 4 remains dependent on those gates. The inventory keeps integer phase ownership `3` across both increments, and existing pending/partial states remain unchanged.
+
+
 Status: started on `feat/codex-skill-workflows` from phase 2 squash merge `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #3 has merged. The first unit established an executable inventory and provenance guard. The second unit replaces six principle summaries with all 24 full principle references; How/Why references and model roles are now ported; four local native research cases and two integrated principle regressions passed. Live Why connector coverage remains unverified. Remaining design and parallel workflows are pending.
 
 ## Inventory contract

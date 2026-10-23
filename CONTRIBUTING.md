@@ -5,7 +5,7 @@ This fork is migrating to Codex-only support. Read the [migration plan](docs/mig
 ## Branch and PR workflow
 
 1. Fetch `origin` and start each phase from the latest `origin/main`. Do not develop directly on `main`.
-2. Use one branch and one PR per migration phase. Wait for the preceding phase to merge before starting its dependent phase. Split unrelated defects into `fix/<topic>` branches and upstream updates into `sync/<topic>` branches.
+2. Use one branch and one PR per increment listed in the migration plan. Phase 3 is explicitly split into 3A and 3B; do not treat the 3A merge as completion of phase 3. Wait for the preceding increment to merge before starting its dependent increment. Split unrelated defects into `fix/<topic>` branches and upstream updates into `sync/<topic>` branches.
 3. Use the phase branch names in the migration plan. Other topic branches use `docs/`, `feat/`, `fix/`, `test/`, or `chore/`.
 4. Keep commits focused, with subjects prefixed by `docs:`, `feat:`, `fix:`, `test:`, or `chore:`. Separate upstream synchronization from Codex adaptations.
 5. Run relevant checks and attach observed results to the PR. A historical passing result is not evidence for the current head.
