@@ -4,8 +4,8 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 
 type ObjectValue = Record<string, unknown>;
 const baselineCounts = { skill: 59, agent: 2, playbook: 23, "automation-skill": 3 };
-// These research ports claim complete reference content even while live-source runtime remains partial.
-const completeReferenceUnits = new Set(["skill:how", "skill:why", "skill:interrogate"]);
+// These ports claim complete reference content even while runtime coverage remains partial.
+const completeReferenceUnits = new Set(["skill:how", "skill:why", "skill:interrogate", "skill:architect"]);
 type Kind = keyof typeof baselineCounts;
 
 function object(value: unknown, label: string): ObjectValue {

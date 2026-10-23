@@ -27,3 +27,7 @@ Copy the selected playbook's steps into a checklist before work. Use a host chec
 ## Read-only review panels
 
 `resolve-panel PROJECT interrogate-reviewer --parent-model MODEL --parent-effort EFFORT [--selections JSON] [--catalog PATH]` returns the full validated `reviewers` array, `distinctModels` and `modelDiversity`. Task selections are ephemeral and contain only `model` and optional `effort`; `{}` uses the saved role or parent. At least two are required. Without selections, two reviewers use that same saved/parent pair. No panel is spawned or preference written by this command; the primary starts delegates only after the whole call succeeds. Model diversity counts distinct model IDs, not differing efforts.
+
+## Design pools
+
+`resolve-panel` also accepts `arena-runner` and `architect-runner`, with the same atomic validation, precedence and `reviewers` result field as review panels. `arena-judge` uses singular `resolve`. Pools do not spawn agents or establish write isolation. Follow [Arena](arena.md) for candidate ownership, completed-writer ordering and primary synthesis, and [Architect](architect.md) for structural diversity and optional checkpoints.

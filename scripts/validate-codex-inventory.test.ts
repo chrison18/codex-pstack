@@ -21,7 +21,7 @@ function fixture(): string {
   return root;
 }
 
-function change(root: string, edit: (value: { units: { id: string; status: string }[] }) => void) {
+function change(root: string, edit: (value: { units: { id: string; status: string; packagePath?: string | null }[] }) => void) {
   const file = join(root, catalogPath);
   const value = JSON.parse(readFileSync(file, "utf8"));
   edit(value);
@@ -61,6 +61,7 @@ test("does not accept supported claims without a packaged artifact", () => {
     const unit = value.units.find((unit: { id: string }) => unit.id === "skill:architect");
     if (!unit) throw new Error("Fixture is missing architect");
     unit.status = "adapted";
+    unit.packagePath = null;
   });
   expect(() => validateCodexInventory(root)).toThrow("in-package target");
 });
@@ -129,8 +130,8 @@ test("transitive package targets cannot escape distribution", () => {
   expect(() => validateCodexInventory(root)).toThrow("escapes root");
 });
 
-test("Complete research and review ports cannot drop their reference maps", () => {
-  for (const id of ["skill:how", "skill:why", "skill:interrogate"]) {
+test("Complete reference ports cannot drop their reference maps", () => {
+  for (const id of ["skill:how", "skill:why", "skill:interrogate", "skill:architect"]) {
     const root = fixture();
     const file = join(root, catalogPath);
     const catalog = JSON.parse(readFileSync(file, "utf8"));

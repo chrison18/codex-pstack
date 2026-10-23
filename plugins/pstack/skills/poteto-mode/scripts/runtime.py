@@ -12,9 +12,10 @@ import tempfile
 import threading
 import time
 
+PANEL_ROLES = ('interrogate-reviewer', 'arena-runner', 'architect-runner')
 ROLES = ('feature', 'bug-fix', 'investigation', 'comment-sicko',
          'how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer',
-         'interrogate-reviewer')
+         'arena-judge') + PANEL_ROLES
 AGENTS = ('poteto-agent', 'comment-sicko')
 RESOURCE = Path(__file__).resolve().parent.parent / 'resources/agents'
 
@@ -230,7 +231,7 @@ def resolve_panel(root, role, parent_model, parent_effort, selections, catalog):
     if selections is None:
         selections = [{}, {}]
     if not isinstance(selections, list) or len(selections) < 2:
-        raise ValueError('A review panel requires at least two selections')
+        raise ValueError('A panel requires at least two selections')
     for item in selections:
         if not isinstance(item, dict) or set(item) - {'model', 'effort'}:
             raise ValueError('Each panel selection accepts only model and effort')
@@ -264,7 +265,7 @@ def main():
             command.add_argument('--catalog', type=Path)
     panel = commands.add_parser('resolve-panel')
     panel.add_argument('project', type=project_root)
-    panel.add_argument('role', choices=('interrogate-reviewer',))
+    panel.add_argument('role', choices=PANEL_ROLES)
     panel.add_argument('--parent-model', required=True)
     panel.add_argument('--parent-effort', required=True)
     panel.add_argument('--selections', type=json.loads, help='JSON array of ephemeral model/effort selections')

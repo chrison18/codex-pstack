@@ -26,13 +26,13 @@ Each row records its source path and SHA256 at the inherited migration baseline,
 | Status | Current count | Meaning |
 | --- | --- | --- |
 | adapted | 27 | Two native agents, 24 full principles and How; see scoped native evidence for representative checks |
-| partial | 7 | Two bounded entries, three initial playbooks, Why and the Interrogate candidate; local Why checks passed, live source access remains unverified |
-| pending | 34 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
+| partial | 9 | Two bounded entries, three initial playbooks, Why, Interrogate, Arena and Architect candidates; local Why checks passed, live source access remains unverified |
+| pending | 32 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
 | deferred | 19 | Full lifecycle/history or autonomous/Benny runtime belongs to phase 4 or 5 |
 
 Full lifecycle ownership of automate-me/reflect remains phase 4. Phase 3 must review any portable content needed by an earlier dependency and record its narrower scope rather than claiming the whole unit is supported. The same boundary applies to phase 5 automation overlays.
 
-The validator compares the catalog with actual source discovery and pinned content. It rejects missing/new units, source drift, duplicate identities, invalid phases/statuses, unsupported package claims, absent evidence, escaping paths and distributed skill entries without matching inventory targets. How/Why also pin and validate all 14 transitive reference sources and package targets. The package's existing structural checker remains responsible for manifest, role and invocation-policy validation. An evidence reference makes a claim reviewable; neither a file path nor a green structural check proves runtime behavior.
+The validator compares the catalog with actual source discovery and pinned content. It rejects missing/new units, source drift, duplicate identities, invalid phases/statuses, unsupported package claims, absent evidence, escaping paths and distributed skill entries without matching inventory targets. How/Why pin and validate all 14 transitive reference sources and package targets; Interrogate adds four and Architect adds three, with complete mappings required for each port. The package's existing structural checker remains responsible for manifest, role and invocation-policy validation. An evidence reference makes a claim reviewable; neither a file path nor a green structural check proves runtime behavior.
 
 ## Implementation sequence
 

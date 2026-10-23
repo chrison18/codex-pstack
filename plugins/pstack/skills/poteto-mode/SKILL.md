@@ -1,6 +1,6 @@
 ---
 name: poteto-mode
-description: Run the staged Codex pstack Feature, Bug fix or read-only Investigation workflow when explicitly invoked as $poteto-mode.
+description: Run staged Codex pstack implementation, design and read-only research/review workflows when explicitly invoked as $poteto-mode.
 ---
 
 # Poteto mode
@@ -11,6 +11,7 @@ Activate only on explicit invocation for a new task. Follow-ups continue that ac
 
 Read [the runtime contract](references/runtime.md) before executing a task or configuring roles. Read only the applicable playbook. Select and read the full applicable leaves through the [principle index](references/principles.md):
 
+- Independent alternatives and synthesis: [Arena](references/arena.md); structural design and implementation: [Architect](references/architect.md).
 - New or changed behavior: [Feature](references/feature.md).
 - Reported defect: [Bug fix](references/bug-fix.md).
 - Read-only adversarial code review: [Interrogate](references/interrogate.md), within the [Investigation](references/investigation.md) no-mutation boundary.

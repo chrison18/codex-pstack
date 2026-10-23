@@ -155,6 +155,32 @@ class RuntimeTest(unittest.TestCase):
         self.assertIn('Unavailable model', bad.stderr)
         self.assertEqual(preferences.read_bytes(), before)
 
+    def test_design_pools_and_judge_use_shared_precedence_through_cli(self):
+        runtime.install(self.root)
+        catalog = self.root / 'catalog.json'
+        catalog.write_text(json.dumps({'source': 'codex/model/list', 'capturedAt': time.time(), 'models': CATALOG}))
+        for role in ('arena-runner', 'architect-runner', 'arena-judge'):
+            with self.subTest(role=role):
+                runtime.configure(self.root, role, 'role-model', 'high', CATALOG)
+                before = (self.root / '.codex/pstack-models.json').read_bytes()
+                command = [sys.executable, '-B', str(SCRIPT),
+                           'resolve-panel' if role in runtime.PANEL_ROLES else 'resolve', str(self.root), role,
+                           '--parent-model', 'parent-model', '--parent-effort', 'low', '--catalog', str(catalog)]
+                if role in runtime.PANEL_ROLES:
+                    command += ['--selections', json.dumps([{}, {'model': 'inherit'}])]
+                process = subprocess.run(command, capture_output=True, text=True)
+                self.assertEqual(process.returncode, 0, process.stderr)
+                result = json.loads(process.stdout)
+                choices = result['reviewers'] if role in runtime.PANEL_ROLES else [result]
+                self.assertEqual(choices[0], {'source': 'role', 'model': 'role-model', 'reasoning_effort': 'high'})
+                if role in runtime.PANEL_ROLES:
+                    self.assertEqual(choices[1], {'source': 'task', 'model': 'parent-model', 'reasoning_effort': 'low'})
+                    self.assertTrue(result['modelDiversity'])
+                    bad = subprocess.run([*command[:-2], '--selections', '[{}, {"model":"missing"}]'], capture_output=True, text=True)
+                    self.assertNotEqual(bad.returncode, 0)
+                    self.assertEqual(bad.stdout, '')
+                self.assertEqual((self.root / '.codex/pstack-models.json').read_bytes(), before)
+
     def test_invalid_selection_does_not_change_preferences(self):
         runtime.configure(self.root, 'bug-fix', 'role-model', 'high', CATALOG)
         path = self.root / '.codex/pstack-models.json'

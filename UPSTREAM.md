@@ -66,6 +66,12 @@ IDs resolve in this repository and are listed in ancestry order.
 
 The preview package version starts at `0.1.0-alpha.1`. The inherited source pin remains pstack 0.15.29. The package does not include root agy workflows or the bundled cursor-team-kit skills yet. Keeping the package root separate permits incremental migration without exposing unported skills as supported Codex workflows.
 
+## Phase 3B design adaptation
+
+At the same inherited baseline `a06537a883278a63132e2518971166002f3de5de`, PR #5 adopts Arena's six-step comparison/synthesis workflow and Architect's grounding, structural alternatives, caller-first sketches, red-flag screen, opt-in checkpoint, implementation and scrap loop. All three Architect reference hashes are pinned in the [inventory](docs/migration/codex-skill-inventory.json) and independently match that baseline. No upstream pin is advanced and inherited files are unchanged.
+
+Codex adaptation replaces Antigravity task files, tool names, vendor model aliases and global rule paths with scoped checklists, native delegation and project model resolution. Runner/parent ownership is explicit; prose paths are not advertised as separate sandboxes. Both workflows remain internal to explicit Poteto mode. [3B evidence](docs/migration/phase-3b-remaining-workflows.md) distinguishes actual artifact tests from unrun code-worktree, dropout/scrap and desktop paths. Swarm and other remaining units are retained as pending rather than silently bundled or removed.
+
 ## Future synchronization
 
 1. Open a `sync/<topic>` branch from current `origin/main`.

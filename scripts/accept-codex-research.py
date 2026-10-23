@@ -60,12 +60,12 @@ class Client:
                     raise RuntimeError(json.dumps(value['error']))
                 return value['result']
 
-    def run(self, workspace, model, effort, prompt):
+    def run(self, workspace, model, effort, prompt, sandbox="read-only"):
         self.rpc('initialize', {'clientInfo': {'name': 'pstack-research-acceptance', 'version': '0.3.0'},
                                 'capabilities': {'experimentalApi': True}})
         self.send({'method': 'initialized'})
         started = self.rpc('thread/start', {'cwd': str(workspace), 'model': model,
-            'approvalPolicy': 'never', 'sandbox': 'read-only', 'ephemeral': True,
+            'approvalPolicy': 'never', 'sandbox': sandbox, 'ephemeral': True,
             'config': {'model_reasoning_effort': effort}, 'experimentalRawEvents': True})
         thread = started['thread']['id']
         self.rpc('turn/start', {'threadId': thread, 'effort': effort,
