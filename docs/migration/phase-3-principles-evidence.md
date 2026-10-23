@@ -46,17 +46,26 @@ The first completed premise response found the correct key collision, but claime
 | First completed premise run: correct diagnosis but unexecuted replay claimed and unread leaf named | FAIL |
 | Second completed premise run: actual replay, but unread leaf still named | FAIL |
 | Completed isolation response before the final audit change | PASS for that earlier revision only; proposed checks clearly separated from executed proof |
-| Final candidate premise and isolation rerun after the audit change | NOT RUN: both exited 1 with `workspace routing discovery failed`, with no model reply |
-| Final candidate behavior acceptance | BLOCKED by unavailable model routing; no pass claimed |
+| First final-candidate rerun after the audit change | NOT RUN: both exited 1 with `workspace routing discovery failed`, with no model reply |
+| 2026-10-23 retry of unchanged f5032db: premise and isolation | PASS: both exit 0, unchanged snapshots, no named-but-unread principle leaves; actual commands and final claims manually matched |
+| Representative final-candidate behavior acceptance | PASS on f5032db after routing recovered; earlier failures are retained above |
 
 Local final-attempt evidence directory: `/private/var/folders/47/vjdx7cgs6kgd9bxf146wm1ph0000gn/T/pstack-principles-live-gj7suvm9`. Earlier completed premise evidence: `pstack-principles-live-2yegqnff` and `pstack-principles-live-q84yk_v9` under the same temporary root. Earlier completed isolation evidence: `pstack-principles-live-aljsvfqm`. These disposable raw files may expire; the summarized failures above are retained in Git.
 
-Static/regression results on the final candidate: 23 Bun tests with 35 assertions; 69 inherited tests with 247 assertions; strict TypeScript checks for the package/inventory tooling and inherited typecheck; source inventory and all 24 transformation checks; CLI context-injection installation/qualified invocation/implicit exclusion/short alias/removal smoke; shell syntax and `git diff --check`. Static checks do not resolve the blocked behavior audit.
+Static/regression results on the final candidate: 23 Bun tests with 35 assertions; 69 inherited tests with 247 assertions; strict TypeScript checks for the package/inventory tooling and inherited typecheck; source inventory and all 24 transformation checks; CLI context-injection installation/qualified invocation/implicit exclusion/short alias/removal smoke; shell syntax and `git diff --check`. Static checks are separate from the real-client behavior audit.
 
 The earlier completed isolation response did read the shared-state and verification leaves, reject branch-only isolation, and propose either one serialized writer or separate worktrees with named bases. It explicitly labeled the worktree checks as proposed rather than executed. The workspace snapshot was unchanged. This is evidence of reasoning about isolation, not execution of phase 3 A7/A8/A9.
 
 ## Scope and remaining work
 
-These 24 inventory units remain `partial`: their full portable advice is packaged with reviewed host adaptations and traceable source mappings, while final candidate behavior acceptance remains blocked. Even after representative checks pass, they will not establish that every principle works in every context. Source completeness is established separately by the transformation check and all 87 pinned source digests.
+These 24 inventory units are now `adapted`: their full portable advice is packaged with reviewed host adaptations and traceable source mappings, and the two representative claim-audit cases passed. These checks do not establish that every principle works in every context. Source completeness is established separately by the transformation check and all 87 pinned source digests.
 
 How/why, design panels, remaining quality/prose/control/authoring skills, expanded playbooks, real parallel writers, non-default base refs and local-state access remain phase 3 work. No phase 3 merge or desktop acceptance is claimed here.
+
+## Successful retry on unchanged f5032db
+
+Evidence directory: `/private/var/folders/47/vjdx7cgs6kgd9bxf146wm1ph0000gn/T/pstack-principles-live-brudjm2i`. Both harness results: `exit: 0`, `changed: []`, `namedButUnreadLeaves: []`, `leafClaimChecksPassed: true`, `artifactChecksPassed: true`. The temporary authentication reference was removed. Client/model/effort and prompts were unchanged.
+
+Premise inspection: tool item 4 returned the attack/root-cause/measurement/laziness/proof/lever leaves; item 6 returned shared-state/domain/foundational leaves. Item 7 actually executed the original `store` function with both write orders and 1, 3, 10 repetitions. The output retained only the last regional value for each customer. The reply correctly identified key collision, proposed a composite `(customer, region)` key without implementing it, and marked reader compatibility unverified. Every named applied principle had an observed full-leaf read.
+
+Isolation inspection: the shared-state/proof and other selected leaves were read in full. The answer rejected branch-only isolation, recommended separate worktrees with recorded starting refs or one writer for the entire edit/test/stage/commit cycle, and explicitly called the proposed worktree checks unexecuted. Actual `shasum -a 256 jobs.py` output matched before and after. Git status failed because this deliberately minimal fixture is not a Git repository; the reply reported that limitation instead of counting it as passed. Harness snapshots independently matched all workspace entries. This remains reasoning evidence, not A7/A8/A9 execution evidence.
