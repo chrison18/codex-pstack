@@ -70,10 +70,24 @@
       "sourcePath": "skills/architect/SKILL.md",
       "sourceSha256": "71fb79b4285699130553aea4f406ec5e7fef22c20efe7622da40199ba6e1816b",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/architect.md",
+      "note": "Codex-native isolated candidate artifacts, validated pools, read-only crossjudge and primary synthesis; real acceptance and remaining scope recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md",
+      "sourceReferences": {
+        "skills/architect/references/design-red-flags.md": {
+          "sourceSha256": "d0e639e4cc588ec865f930d3a4111faad60987ae36925917e319d7ceca7c69ce",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/architect/design-red-flags.md"
+        },
+        "skills/architect/references/rationale-template.md": {
+          "sourceSha256": "0cedfccdc7b47fc881febd5a8293eecbc542c20f8df825639904a8102d2eb5d3",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/architect/rationale-template.md"
+        },
+        "skills/architect/references/runner-prompt.md": {
+          "sourceSha256": "21dd5314aab778c5007228027a4591d97693fbec6ab86524037772b63f40948e",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/architect/runner-prompt.md"
+        }
+      }
     },
     {
       "id": "skill:arena",
@@ -81,10 +95,10 @@
       "sourcePath": "skills/arena/SKILL.md",
       "sourceSha256": "5a1a4d024c68afa468d2859a675c8dfaf68d7fd9b9016e55af320f9f093e9073",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/arena.md",
+      "note": "Codex-native isolated candidate artifacts, validated pools, read-only crossjudge and primary synthesis; real acceptance and remaining scope recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md"
     },
     {
       "id": "skill:automate-me",
@@ -245,10 +259,28 @@
       "sourcePath": "skills/interrogate/SKILL.md",
       "sourceSha256": "2a48e35f50896e3e0ed0382f07858c95d8246b41274e30b439cf030827606798",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate.md",
+      "note": "Read-only review reference and all four lenses ported. One actual independent Sol/Luna review and unchanged-state checks passed; panel validation covers atomic failure and diversity reporting. Empty reviews, dropouts and negative client paths remain unverified, so support stays partial.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md",
+      "sourceReferences": {
+        "skills/interrogate/references/code-quality-review.md": {
+          "sourceSha256": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/code-quality-review.md"
+        },
+        "skills/interrogate/references/lead-judgment.md": {
+          "sourceSha256": "355f5195a76bc75a655125292369f2a8231a2b61fabe5188d8f1386060922b87",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/lead-judgment.md"
+        },
+        "skills/interrogate/references/reviewer-prompt.md": {
+          "sourceSha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/reviewer-prompt.md"
+        },
+        "skills/interrogate/references/rubric.md": {
+          "sourceSha256": "465804c3f1d58bd1efaa49488676f1120e410fa5fa653f96b67cc5db95845374",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/rubric.md"
+        }
+      }
     },
     {
       "id": "skill:ketchup",
@@ -905,10 +937,10 @@
       "sourcePath": "skills/swarm/SKILL.md",
       "sourceSha256": "598170bc09bf2e5d847a4add7ec47a920b539e50fb449bd50a71561ce87ade6d",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/swarm.md",
+      "note": "Codex-native worktree slices, explicit starting refs, bounded shared local-state verifier and primary integration; acceptance scope and remaining limits recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-swarm-evidence.md"
     },
     {
       "id": "skill:tdd",
