@@ -1,6 +1,6 @@
 # Phase 3 skills and parallel workflows
 
-Status: started on `feat/codex-skill-workflows` from phase 2 squash merge `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #3 has merged. This phase's first unit establishes an executable inventory and provenance guard; it does not add supported runtime capabilities to the installed package.
+Status: started on `feat/codex-skill-workflows` from phase 2 squash merge `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #3 has merged. The first unit established an executable inventory and provenance guard. The second unit replaces six principle summaries with all 24 full principle references; how/why and parallel workflows remain pending.
 
 ## Inventory contract
 
@@ -19,8 +19,8 @@ Each row records its source path and SHA256 at the inherited migration baseline,
 | Status | Current count | Meaning |
 | --- | --- | --- |
 | adapted | 2 | Both native agent resources were adapted and exercised in phase 2 |
-| partial | 11 | Two bounded skill entries, three initial playbooks and six principle summaries have packaged counterparts; full upstream coverage remains unfinished |
-| pending | 55 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
+| partial | 29 | Two bounded entries, three playbooks and 24 full principle references; principle content is ported, but final evidence-claim behavior is not accepted yet |
+| pending | 37 | Phase 3 source units need review and adaptation; no package target or runtime pass is claimed |
 | deferred | 19 | Full lifecycle/history or autonomous/Benny runtime belongs to phase 4 or 5 |
 
 Full lifecycle ownership of automate-me/reflect remains phase 4. Phase 3 must review any portable content needed by an earlier dependency and record its narrower scope rather than claiming the whole unit is supported. The same boundary applies to phase 5 automation overlays.
@@ -30,20 +30,22 @@ The validator compares the catalog with actual source discovery and pinned conte
 ## Implementation sequence
 
 - [x] Account for all 87 inherited source units, distinguish bounded phase 2 adaptations and later-phase runtime ownership, and wire inventory validation into CI.
-- [ ] Review and port full principle leaves, replacing the six bounded summaries with references to the actual applicable leaves. Preserve provenance and inspect permission/autonomy wording before adopting it.
+- [x] Review and port all 24 full principle leaves, replacing the six bounded summaries with an applicable-leaf index. Preserve applicability metadata, provenance and explicit host adaptations. See [principles evidence](phase-3-principles-evidence.md) for representative behavior checks and their limits.
+- [ ] Pass the final principle evidence-claim audit in the real client. Earlier replies overclaimed execution or leaf reads; the final correction could not be evaluated because workspace routing failed. These 24 units remain partial.
 - [ ] Port how/why and the design/review/delegation workflows. Extend role model resolution deliberately; retain task overrides and exact parent model/effort inheritance.
 - [ ] Port remaining phase 3 code-quality, prose, verification/control and authoring skills. Check all transitive references and mark unavailable host capabilities explicitly.
 - [ ] Expand the bounded playbooks to consume the migrated skills without claiming that later-phase lifecycle or automation works.
 - [ ] Exercise parallel writers in separate worktrees, an explicit non-default starting ref, result integration and local-process/browser/auth access. Record gaps; a spawn alone is not proof of isolation or local-state access.
 - [ ] Complete the per-unit support/evidence classification, real client checks, independent review and phase 3 CI before requesting merge approval.
 
-The initial unit ships no new native skill entry and changes no project/global model settings. Poteto-mode remains explicitly activated per task. The inherited Antigravity source is retained for comparison; it is not automatically loaded by the Codex package.
+These units ship no new native skill entry and changes no project/global model settings. Poteto-mode remains explicitly activated per task. The inherited Antigravity source is retained for comparison; it is not automatically loaded by the Codex package.
 
 ## Validation
 
 ```sh
 bun scripts/validate-codex-plugin.ts
 bun scripts/validate-codex-inventory.ts
+python3 -B scripts/sync-codex-principles.py
 bun test ./scripts/
 ```
 

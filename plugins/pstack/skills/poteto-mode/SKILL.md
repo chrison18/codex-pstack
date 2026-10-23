@@ -9,7 +9,7 @@ This is the staged Codex core workflow. Read [status](references/status.md) when
 
 Activate only on explicit invocation for a new task. Follow-ups continue that active task. Installing this plugin or roles does not activate the workflow for ordinary new prompts. The primary chat owns the playbook, checklist, delegations, evidence and final answer.
 
-Read [the runtime contract](references/runtime.md) before executing a task or configuring roles. Read only the applicable playbook and principle sections:
+Read [the runtime contract](references/runtime.md) before executing a task or configuring roles. Read only the applicable playbook. Select and read the full applicable leaves through the [principle index](references/principles.md):
 
 - New or changed behavior: [Feature](references/feature.md).
 - Reported defect: [Bug fix](references/bug-fix.md).

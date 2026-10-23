@@ -61,7 +61,7 @@ IDs resolve in this repository and are listed in ancestry order.
 | 0 | Plan, Git rules, provenance, observed test baseline | Merged in [PR #1](https://github.com/chrison18/codex-pstack/pull/1), `30a666d6fb473caea211fbb750079afbee19d30f` |
 | 1 | Isolated Codex package under `plugins/pstack/`, repo marketplace, explicit invocation policy, safe project short-name alias, structural CI | Merged in [PR #2](https://github.com/chrison18/codex-pstack/pull/2), `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`; CLI evidence and owner-reported desktop acceptance complete |
 | 2 | Router, both agents, model setup, checklist, three bounded playbooks | Merged in [PR #3](https://github.com/chrison18/codex-pstack/pull/3), `a25255330be51548e27c4a2bda4e9ca5af86dfcf`; core-task exit gates met; qualified desktop distribution capture retained for phase 6 |
-| 3 | Full skills and parallel workflows | Started on `feat/codex-skill-workflows`; [87-unit inventory and guard](docs/migration/phase-3-skill-workflows.md); runtime migration in progress |
+| 3 | Full skills and parallel workflows | Started on `feat/codex-skill-workflows`; [87-unit inventory and guard](docs/migration/phase-3-skill-workflows.md), [24 full principle references](docs/migration/phase-3-principles-evidence.md); remaining skill/runtime migration in progress |
 | 4 through 6 | Lifecycle, automation and release | Pending; see the [plan](docs/migration/codex-migration-plan.md) |
 
 The preview package version starts at `0.1.0-alpha.1`. The inherited source pin remains pstack 0.15.29. The package does not include root agy workflows or the bundled cursor-team-kit skills yet. Keeping the package root separate permits incremental migration without exposing unported skills as supported Codex workflows.

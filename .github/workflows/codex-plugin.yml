@@ -22,4 +22,5 @@ jobs:
           bun-version: 1.4.3
       - run: bun scripts/validate-codex-plugin.ts
       - run: bun scripts/validate-codex-inventory.ts
+      - run: python3 -B scripts/sync-codex-principles.py
       - run: bun test ./scripts/
