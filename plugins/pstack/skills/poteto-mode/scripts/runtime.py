@@ -12,7 +12,8 @@ import tempfile
 import threading
 import time
 
-ROLES = ('feature', 'bug-fix', 'investigation', 'comment-sicko')
+ROLES = ('feature', 'bug-fix', 'investigation', 'comment-sicko',
+         'how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer')
 AGENTS = ('poteto-agent', 'comment-sicko')
 RESOURCE = Path(__file__).resolve().parent.parent / 'resources/agents'
 

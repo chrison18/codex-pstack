@@ -1,6 +1,6 @@
 # Phase 2 core workflow
 
-Status: candidate implementation committed; CLI artifact and native role observations are recorded in [the evidence report](phase-2-core-evidence.md). Acceptance remains incomplete. Branch `feat/codex-core-workflow` starts at phase 1 squash merge `c303a74e4e5e6f7e9f055b5eed49507bc59ddfbd`. The branch packages a 0.2.0-alpha.1 development candidate; main remains the accepted phase 1 entry preview until phase 2 passes its gates.
+Status: phase 2 core-task acceptance completed and merged in [PR #3](https://github.com/chrison18/codex-pstack/pull/3), squash commit `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. The [evidence report](phase-2-core-evidence.md) retains the qualified desktop discovery/version-display limit for phase 6. Overall migration continues in phase 3.
 
 ## Source mapping
 

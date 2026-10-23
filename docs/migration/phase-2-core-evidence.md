@@ -1,6 +1,6 @@
 # Phase 2 core candidate evidence
 
-Status: phase 2 core-task exit gates are complete: CLI/native checks, independent review, owner-operated desktop routes, follow-up, negative control and plugin removal are recorded. On October 22 the owner conditionally authorized merging PR #3 after a final independent review and green CI. Preserve the qualified desktop discovery/version-display evidence limit for phase 6; do not claim full migration or unrestricted client parity.
+Status: phase 2 core-task exit gates completed and merged in [PR #3](https://github.com/chrison18/codex-pstack/pull/3), squash commit `a25255330be51548e27c4a2bda4e9ca5af86dfcf`, after final independent review and green CI at `0292ea1b62a75af1ceb17752803d331076a16cf8`. CLI/native checks, owner-operated desktop routes, follow-up, negative control and plugin removal are recorded. Qualified desktop discovery/version display remains a phase 6 evidence limit; full migration and unrestricted client parity are not claimed.
 
 ## Candidate and source
 
@@ -81,7 +81,7 @@ Desktop automation was denied for the Codex app during phase 1. The restriction 
 
 The catalog helper starts a native app-server with its own effective configuration; it does not replay arbitrary command-line provider overrides from a different parent process. Use a snapshot from the same provider/configuration as the task. Cross-provider parity is not established by these account-backed tests.
 
-On October 22 the owner initially deferred desktop acceptance, then provided the routed-task screenshots described below. The owner later authorized merging PR #3 conditional on a final independent review and green CI. The operation remains pending that final check.
+On October 22 the owner initially deferred desktop acceptance, then provided the routed-task screenshots described below. The owner later authorized merging PR #3 conditional on a final independent review and green CI. The final check passed at `0292ea1`, and the authorized merge completed as recorded above.
 
 ## PR #3 independent review correction
 
