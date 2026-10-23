@@ -9,7 +9,7 @@ Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda
 - [x] Add whole-panel model validation, explicit task choices, saved reviewer role and exact parent inheritance. Reject any bad member before returning a usable panel. Distinguish independent same-model review from model diversity.
 - [x] Inspect native Interrogate acceptance: actual independent starts, calibrated lead verdict, concrete evidence and unchanged workspace/HEAD/index.
 - [x] Port Arena/Architect with full alternatives and explicit checkpoint choices; bounded native synthesis/checkpoint/default-implementation probes passed, with remaining negative/desktop/worktree gaps retained below.
-- [x] Port Swarm with write ownership, explicit base refs, integration and local-state access boundaries; see [native evidence](phase-3b-swarm-evidence.md) and remaining race/recovery/desktop limits.
+- [x] Port Swarm with write ownership, explicit base refs, integration and local-state access boundaries; see [native evidence](phase-3b-swarm-evidence.md) and [race/recovery evidence](phase-3b-swarm-recovery-evidence.md), with desktop limits retained.
 - [ ] Port remaining quality/prose/verification/control/authoring skills and expand the bounded playbooks.
 - [ ] Complete available live Why source checks and genuine cross-source synthesis; preserve unavailable-source gaps.
 - [x] Run actual bounded native A7 concurrent-writer, A8 pushed non-default-base and A9 local-process/auth checks; inspect live-PID/clock receipts, real worktree metadata, combined verification and authenticated requests. Desktop/browser variants remain NOT RUN; see [evidence](phase-3b-swarm-evidence.md).
@@ -97,3 +97,7 @@ PASS: 13 Python runtime tests; 29 package Bun tests / 45 assertions; 69 inherite
 ## Swarm increment
 
 [Swarm and A7/A8/A9 evidence](phase-3b-swarm-evidence.md) records the initial instrument failure, two instrument regressions, fresh native pass and remaining limits. Current validation includes 30 package Bun tests / 47 assertions and 13 runtime tests (including singular Swarm selection), separate from the two new publisher-instrument tests. These passes do not complete the remaining 3B work or change PR #5 from draft.
+
+### Swarm race/recovery increment
+
+[Native race/recovery evidence](phase-3b-swarm-recovery-evidence.md) records three selection rules, actual overlapping patch integration, controlled incomplete reports and native interruption, including an excluded first recovery probe. The instrument has five regression tests, invoked in CI through the package suite. Swarm remains partial, remaining 3B gates remain pending and PR #5 stays draft.

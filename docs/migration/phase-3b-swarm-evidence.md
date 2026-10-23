@@ -65,7 +65,7 @@ python3 -B scripts/accept-codex-swarm.py --model gpt-6.1-sol --effort low --cata
 
 Use `--codex /absolute/path/to/codex` when the CLI is not on PATH. The fixture requires those model pairs to exist in the fresh native catalog, Git worktrees, loopback binding and the explicitly configured disposable host access. Missing support must fail/report a gap rather than substitute a model or count an isolated check as local-state proof. Inspect native events in addition to artifact checks.
 
-Swarm remains partial: first-pass/rank-all/best-of races, worker dropout, a second evidence miss, conflict integration, genuine missing/rejected capability and desktop/browser variants remain NOT RUN. The A7/A8/A9 native fixture passes do not complete all phase 3B skills/playbooks/live-source work or authorize phase 4. PR #5 stays draft and must not merge.
+Subsequent [race and recovery evidence](phase-3b-swarm-recovery-evidence.md) records first-pass/rank-all/best-of and conflict integration, recovery probes and their retained failures. Swarm remains partial; genuine missing/rejected capability and desktop/browser variants remain NOT RUN. The A7/A8/A9 native fixture passes do not complete all phase 3B skills/playbooks/live-source work or authorize phase 4. PR #5 stays draft and must not merge.
 
 ## Local regression checks
 

@@ -4,7 +4,7 @@ Use within explicitly active Poteto mode for partitioned coverage, races or mixe
 
 ## Frame
 
-State the done predicate, required slices and delivered artifact/report. Choose partitioned coverage, identical-brief race or a mixed shape. For any race, declare `first pass`, `rank all` or `best-of` before spawning. Define how a passing result will be checked; do not choose the race rule after seeing results.
+State the done predicate, required slices and delivered artifact/report. Choose partitioned coverage, identical-brief race or a mixed shape. For any race, declare `first pass`, `rank all` or `best-of` before spawning. Define how a passing result will be checked and the scoring/tie-break policy before seeing results. `first pass` selects the earliest completed eligible result after independent validation, not the earliest self-reported PASS; drain later workers without changing that winner. `rank all` waits for all results and returns an ordered eligible set. `best-of` waits for all results and selects one against the declared rubric. Keep invalid arms and ties visible.
 
 Resolve every worker with `python3 <entry-dir>/scripts/runtime.py resolve PROJECT swarm-worker --parent-model MODEL --parent-effort EFFORT [--model MODEL --effort EFFORT] [--catalog PATH]`. Validate all settings before spawning. Each race arm may have a different explicit pair. Task choices override saved `swarm-worker`, then the actual observed parent pair. Do not guess foreign vendor aliases or silently replace rejected settings. Swarm can have one or more workers; a review panel's minimum-two constraint does not apply.
 
@@ -22,7 +22,7 @@ Workers report `PASS`, `ISSUES` or `BLOCKED`, with branch/base/verified SHAs, co
 
 ## Aggregate
 
-Inspect every terminal result and its actual evidence. If a result omits named SHAs or the specified measurement method, discard it and ask that worker once to repeat the missing evidence; after a second miss, record a gap. Coverage requires a valid result for every required slice. N−1 may be useful progress but does not satisfy missing required coverage. Apply the predeclared rule for races; never equate fastest response with a verified pass.
+Inspect every terminal result and its actual evidence. If a result omits named SHAs, the specified measurement method or reproducible command evidence (including unresolved placeholders), discard it and ask that worker once to repeat the missing evidence; after a second miss, record a gap. Do not fill missing evidence from the primary's knowledge or an unpublished proposal. Coverage requires a valid result for every required slice. N−1 may be useful progress but does not satisfy missing required coverage. Apply the predeclared rule for races; never equate fastest response with a verified pass.
 
 After every writer finishes, inspect actual per-worktree diffs against the named base and integrate the accepted changes into the designated integration checkout under one primary writer. Keep unrelated default-branch or user-local changes out. Resolve conflicts deliberately and rerun the combined verification there; individually passing slices do not prove integration. Drain remaining race workers before cleanup. Do not remove dirty/active/uncertain worktrees or rewrite history as a side effect; cleanup authorization and lifecycle evidence remain separate.
 

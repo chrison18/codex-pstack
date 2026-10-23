@@ -60,7 +60,7 @@ class Client:
                     raise RuntimeError(json.dumps(value['error']))
                 return value['result']
 
-    def run(self, workspace, model, effort, prompt, sandbox="read-only"):
+    def run(self, workspace, model, effort, prompt, sandbox="read-only", timeout_seconds=900):
         self.rpc('initialize', {'clientInfo': {'name': 'pstack-research-acceptance', 'version': '0.3.0'},
                                 'capabilities': {'experimentalApi': True}})
         self.send({'method': 'initialized'})
@@ -70,7 +70,7 @@ class Client:
         thread = started['thread']['id']
         self.rpc('turn/start', {'threadId': thread, 'effort': effort,
                                'input': [{'type': 'text', 'text': prompt}]})
-        deadline = time.monotonic() + 900
+        deadline = time.monotonic() + timeout_seconds
         while True:
             value = self.receive(deadline)
             params = value.get('params', {})
