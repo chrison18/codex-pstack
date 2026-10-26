@@ -21,7 +21,7 @@ function fixture(): string {
   return root;
 }
 
-function change(root: string, edit: (value: { units: { id: string; status: string }[] }) => void) {
+function change(root: string, edit: (value: { units: { id: string; status: string; packagePath?: string | null }[] }) => void) {
   const file = join(root, catalogPath);
   const value = JSON.parse(readFileSync(file, "utf8"));
   edit(value);
@@ -61,6 +61,7 @@ test("does not accept supported claims without a packaged artifact", () => {
     const unit = value.units.find((unit: { id: string }) => unit.id === "skill:architect");
     if (!unit) throw new Error("Fixture is missing architect");
     unit.status = "adapted";
+    unit.packagePath = null;
   });
   expect(() => validateCodexInventory(root)).toThrow("in-package target");
 });
@@ -129,8 +130,8 @@ test("transitive package targets cannot escape distribution", () => {
   expect(() => validateCodexInventory(root)).toThrow("escapes root");
 });
 
-test("How and Why cannot drop their complete reference maps", () => {
-  for (const id of ["skill:how", "skill:why"]) {
+test("Complete reference ports cannot drop their reference maps", () => {
+  for (const id of ["skill:how", "skill:why", "skill:interrogate", "skill:architect", "skill:create-verification-skill", "skill:poteto-help", "skill:typescript-best-practices"]) {
     const root = fixture();
     const file = join(root, catalogPath);
     const catalog = JSON.parse(readFileSync(file, "utf8"));
@@ -138,4 +139,27 @@ test("How and Why cannot drop their complete reference maps", () => {
     writeFileSync(file, JSON.stringify(catalog));
     expect(() => validateCodexInventory(root)).toThrow("Complete reference map required");
   }
+});
+
+
+test("rejects unavailable execution dependencies before advertising a workflow", () => {
+  for (const id of ["skill:missing", "skill:recall"]) {
+    const root = fixture();
+    change(root, (value) => {
+      const unit = value.units.find((unit) => unit.id === "skill:technical-writing");
+      if (!unit) throw new Error("Missing writing fixture");
+      Object.assign(unit, { dependencies: [id] });
+    });
+    expect(() => validateCodexInventory(root)).toThrow("Unavailable workflow dependency");
+  }
+});
+
+test("rejects cyclic workflow dependencies", () => {
+  const root = fixture();
+  change(root, (value) => {
+    const unit = value.units.find((unit) => unit.id === "skill:unslop");
+    if (!unit) throw new Error("Missing prose fixture");
+    Object.assign(unit, { dependencies: ["skill:technical-writing"] });
+  });
+  expect(() => validateCodexInventory(root)).toThrow("Cyclic workflow dependency");
 });

@@ -12,8 +12,10 @@ import tempfile
 import threading
 import time
 
+PANEL_ROLES = ('interrogate-reviewer', 'arena-runner', 'architect-runner')
 ROLES = ('feature', 'bug-fix', 'investigation', 'comment-sicko',
-         'how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer')
+         'how-explorer', 'how-explainer', 'why-investigator', 'why-synthesizer',
+         'arena-judge', 'swarm-worker') + PANEL_ROLES
 AGENTS = ('poteto-agent', 'comment-sicko')
 RESOURCE = Path(__file__).resolve().parent.parent / 'resources/agents'
 
@@ -225,6 +227,24 @@ def resolve_choice(root, role, parent_model, parent_effort, model, effort, catal
     return {'source': source, 'model': chosen['model'], 'reasoning_effort': chosen['effort']}
 
 
+def resolve_panel(root, role, parent_model, parent_effort, selections, catalog):
+    if selections is None:
+        selections = [{}, {}]
+    if not isinstance(selections, list) or len(selections) < 2:
+        raise ValueError('A panel requires at least two selections')
+    for item in selections:
+        if not isinstance(item, dict) or set(item) - {'model', 'effort'}:
+            raise ValueError('Each panel selection accepts only model and effort')
+        if 'model' in item and not isinstance(item['model'], str):
+            raise ValueError('Panel model must be a string')
+        if 'effort' in item and not isinstance(item['effort'], str):
+            raise ValueError('Panel effort must be a string')
+    reviewers = [resolve_choice(root, role, parent_model, parent_effort,
+                               item.get('model'), item.get('effort'), catalog) for item in selections]
+    distinct = len({item['model'] for item in reviewers})
+    return {'reviewers': reviewers, 'distinctModels': distinct, 'modelDiversity': distinct > 1}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
@@ -243,6 +263,13 @@ def main():
                 command.add_argument('--parent-effort', required=True)
             command.add_argument('--effort')
             command.add_argument('--catalog', type=Path)
+    panel = commands.add_parser('resolve-panel')
+    panel.add_argument('project', type=project_root)
+    panel.add_argument('role', choices=PANEL_ROLES)
+    panel.add_argument('--parent-model', required=True)
+    panel.add_argument('--parent-effort', required=True)
+    panel.add_argument('--selections', type=json.loads, help='JSON array of ephemeral model/effort selections')
+    panel.add_argument('--catalog', type=Path)
     args = parser.parse_args()
     try:
         if args.command == 'models':
@@ -256,6 +283,9 @@ def main():
         elif args.command == 'verify':
             verify_install(args.project)
             result = {'status': 'verified'}
+        elif args.command == 'resolve-panel':
+            result = resolve_panel(args.project, args.role, args.parent_model, args.parent_effort,
+                                   args.selections, read_catalog(args.catalog))
         elif args.command == 'configure':
             result = configure(args.project, args.role, args.model, args.effort, read_catalog(args.catalog))
         else:

@@ -1,5 +1,7 @@
 # Phase 3: How and Why research workflows
 
+Historical 3A evidence follows. The [2026-10-26 live source supplement](phase-3b-live-source-evidence.md) records primary-host GitHub access and an advertised Slack dispatch failure. It does not establish native delegate access or genuine cross-category synthesis; Why remains partial.
+
 Candidate on `feat/codex-skill-workflows`, based on `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #4 remains draft; no merge is authorized. The preceding principle gate passed on unchanged `f5032db` before this implementation began, recorded by `15f3413`.
 
 ## Package and source scope

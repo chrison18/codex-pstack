@@ -24,3 +24,27 @@ test("research capture separates requested models, resolved starts and final ans
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 });
+
+test("Swarm acceptance rejects wrong bases and proves live writer overlap with a shared clock", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_swarm_fixture.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);
+
+test("Swarm fault instruments preserve retry limits, declared races and actual Git conflicts", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_swarm_recovery.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);
+
+test("portable fixtures expose a real consumer regression, PTY flow and bounded property fault", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_portable_fixture.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);

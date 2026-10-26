@@ -70,10 +70,24 @@
       "sourcePath": "skills/architect/SKILL.md",
       "sourceSha256": "71fb79b4285699130553aea4f406ec5e7fef22c20efe7622da40199ba6e1816b",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/architect.md",
+      "note": "Codex-native isolated candidate artifacts, validated pools, read-only crossjudge and primary synthesis; real acceptance and remaining scope recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md",
+      "sourceReferences": {
+        "skills/architect/references/design-red-flags.md": {
+          "sourceSha256": "d0e639e4cc588ec865f930d3a4111faad60987ae36925917e319d7ceca7c69ce",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/architect/design-red-flags.md"
+        },
+        "skills/architect/references/rationale-template.md": {
+          "sourceSha256": "0cedfccdc7b47fc881febd5a8293eecbc542c20f8df825639904a8102d2eb5d3",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/architect/rationale-template.md"
+        },
+        "skills/architect/references/runner-prompt.md": {
+          "sourceSha256": "21dd5314aab778c5007228027a4591d97693fbec6ab86524037772b63f40948e",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/architect/runner-prompt.md"
+        }
+      }
     },
     {
       "id": "skill:arena",
@@ -81,10 +95,10 @@
       "sourcePath": "skills/arena/SKILL.md",
       "sourceSha256": "5a1a4d024c68afa468d2859a675c8dfaf68d7fd9b9016e55af320f9f093e9073",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/arena.md",
+      "note": "Codex-native isolated candidate artifacts, validated pools, read-only crossjudge and primary synthesis; real acceptance and remaining scope recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md"
     },
     {
       "id": "skill:automate-me",
@@ -103,10 +117,10 @@
       "sourcePath": "skills/benchmark-checklist/SKILL.md",
       "sourceSha256": "ba109e96c8f6c1c391baccf19e5d11e14370df7b3f2605e1572cd565a6c0fca0",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/benchmark-checklist.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:blast-radius",
@@ -114,10 +128,16 @@
       "sourcePath": "skills/blast-radius/SKILL.md",
       "sourceSha256": "2e10745b97f5862323dcda3b29ca60d56b5c3c98e37020085d26b48efbe0a436",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/blast-radius.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:how",
+        "skill:why",
+        "skill:arena",
+        "skill:unslop"
+      ]
     },
     {
       "id": "skill:bro",
@@ -125,10 +145,13 @@
       "sourcePath": "skills/bro/SKILL.md",
       "sourceSha256": "aa329d0ceeeecb6822a7174ad76bb07a7826a3c52ceb6a588dec4138815084bb",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/bro.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:unslop"
+      ]
     },
     {
       "id": "skill:control-cli",
@@ -136,10 +159,10 @@
       "sourcePath": "skills/control-cli/SKILL.md",
       "sourceSha256": "13ac93e595bbda2000849bdb815d5f2ca03f7c2ca63788c8335f9212b9b422a2",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/control-cli.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:control-ui",
@@ -147,10 +170,10 @@
       "sourcePath": "skills/control-ui/SKILL.md",
       "sourceSha256": "410cae25bdb1e5d2323b126abc5047b0213be7fdb0195710213fa8de8a751871",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/control-ui.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:correct",
@@ -158,10 +181,13 @@
       "sourcePath": "skills/correct/SKILL.md",
       "sourceSha256": "e347045d00c967a0b831ef883cc6ac79d21329aa10b5968637df95de7febf0ba",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/correct.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:tdd"
+      ]
     },
     {
       "id": "skill:create-formal-verification-skill",
@@ -169,10 +195,10 @@
       "sourcePath": "skills/create-formal-verification-skill/SKILL.md",
       "sourceSha256": "6c934cd15a9583533ff9b7a9cad62775d7e80402d26d3ba7f74f79ea21a1d8eb",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/create-formal-verification-skill.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:create-verification-skill",
@@ -180,10 +206,28 @@
       "sourcePath": "skills/create-verification-skill/SKILL.md",
       "sourceSha256": "eebbb33a0be8a07750f06a46c0704b383199e15cfb45c18050066777d6d71be6",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/create-verification-skill.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "sourceReferences": {
+        "skills/create-verification-skill/references/feature-map-example/search.md": {
+          "sourceSha256": "6e87b9e7f2791a7776ba1bb83f371cd285c306c67f19d245cc4dd6ca3015c823",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/create-verification-skill/feature-map-example/search.md"
+        },
+        "skills/create-verification-skill/references/feature-map-example/create-note.md": {
+          "sourceSha256": "644a44c74f35d38c2feb7cd05a0121fdebbb623e8dc376c185b565a581d1ccf7",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/create-verification-skill/feature-map-example/create-note.md"
+        },
+        "skills/create-verification-skill/references/feature-map-example/README.md": {
+          "sourceSha256": "cb7bd782cf89968a4ba3d58a5151db837430db92d19a6f52a906973b77b516ba",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/create-verification-skill/feature-map-example/README.md"
+        }
+      },
+      "dependencies": [
+        "skill:control-cli",
+        "skill:control-ui"
+      ]
     },
     {
       "id": "skill:deslop",
@@ -191,10 +235,10 @@
       "sourcePath": "skills/deslop/SKILL.md",
       "sourceSha256": "2f7b7def74af7ed11f5b44b4d32f0f91fca8c5d1f92bf2171e8d12fd33a0f810",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/deslop.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:figure-it-out",
@@ -202,10 +246,14 @@
       "sourcePath": "skills/figure-it-out/SKILL.md",
       "sourceSha256": "019e686fceb68e67474c20930d5e3cb6b04c6af76fdc0180a4f068ffed918ecc",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/figure-it-out.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:architect",
+        "skill:swarm"
+      ]
     },
     {
       "id": "skill:how",
@@ -234,10 +282,13 @@
       "sourcePath": "skills/in-your-own-words/SKILL.md",
       "sourceSha256": "fa8ba74e27d7be371dc270ec78bbf816411477d0dfab185356c861ac8dd413ad",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/in-your-own-words.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:bro"
+      ]
     },
     {
       "id": "skill:interrogate",
@@ -245,10 +296,28 @@
       "sourcePath": "skills/interrogate/SKILL.md",
       "sourceSha256": "2a48e35f50896e3e0ed0382f07858c95d8246b41274e30b439cf030827606798",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate.md",
+      "note": "Read-only review reference and all four lenses ported. One actual independent Sol/Luna review and unchanged-state checks passed; panel validation covers atomic failure and diversity reporting. Empty reviews, dropouts and negative client paths remain unverified, so support stays partial.",
+      "evidencePath": "docs/migration/phase-3b-remaining-workflows.md",
+      "sourceReferences": {
+        "skills/interrogate/references/code-quality-review.md": {
+          "sourceSha256": "79162fda183eafd40d51661fbb5e151c7ba250f89e506ba17f5bd135dcbd50a8",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/code-quality-review.md"
+        },
+        "skills/interrogate/references/lead-judgment.md": {
+          "sourceSha256": "355f5195a76bc75a655125292369f2a8231a2b61fabe5188d8f1386060922b87",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/lead-judgment.md"
+        },
+        "skills/interrogate/references/reviewer-prompt.md": {
+          "sourceSha256": "f6005cc2b535006fca97a96c5bfda49df57312eedf1ffd8d1aaaf3eb33817c25",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/reviewer-prompt.md"
+        },
+        "skills/interrogate/references/rubric.md": {
+          "sourceSha256": "465804c3f1d58bd1efaa49488676f1120e410fa5fa653f96b67cc5db95845374",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate/rubric.md"
+        }
+      }
     },
     {
       "id": "skill:ketchup",
@@ -256,10 +325,13 @@
       "sourcePath": "skills/ketchup/SKILL.md",
       "sourceSha256": "02f1e74ae1f880d386d7bc136009ad7d9c2c26827724c317f04ac9a5fc5e1a71",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/ketchup.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:bro"
+      ]
     },
     {
       "id": "skill:maintain-formal-verification-skill",
@@ -267,10 +339,13 @@
       "sourcePath": "skills/maintain-formal-verification-skill/SKILL.md",
       "sourceSha256": "0c96f54293542d3818b68754562b338073958781a9684454611dca37592e2d2c",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/maintain-formal-verification-skill.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:create-formal-verification-skill"
+      ]
     },
     {
       "id": "skill:maintain-verification-skill",
@@ -278,10 +353,14 @@
       "sourcePath": "skills/maintain-verification-skill/SKILL.md",
       "sourceSha256": "014d7fd610fb4f74fe48da488037522176d3c460dfe69c16179903eccae3b5c4",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/maintain-verification-skill.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:create-verification-skill",
+        "skill:swarm"
+      ]
     },
     {
       "id": "skill:make-bot-ui",
@@ -300,10 +379,16 @@
       "sourcePath": "skills/no-comments/SKILL.md",
       "sourceSha256": "054c67d51fe1794d6b22e89f582dce8eeb1c8097da2c7984ee78ae23cba8cc8e",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/no-comments.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "agent:comment-sicko",
+        "skill:architect",
+        "skill:how",
+        "skill:why"
+      ]
     },
     {
       "id": "skill:poteto-help",
@@ -311,10 +396,20 @@
       "sourcePath": "skills/poteto-help/SKILL.md",
       "sourceSha256": "077ef5436d44f819252e1677562d0728def6ed15857e6e7607408a41af49e1ff",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/poteto-help.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "sourceReferences": {
+        "skills/poteto-help/references/recipes.md": {
+          "sourceSha256": "ff78c14694d44e962d1ef6f54f76db8164a03ee839fdf9ede71deee102f7d95f",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/poteto-help/recipes.md"
+        },
+        "skills/poteto-help/references/prompting.md": {
+          "sourceSha256": "f7067e2a6316084717c4471f0ebae1d023d04a119f5eb3e834a1b7224a0461e0",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/poteto-help/prompting.md"
+        }
+      }
     },
     {
       "id": "skill:poteto-mode",
@@ -333,10 +428,13 @@
       "sourcePath": "skills/poteto-mode/playbooks/authoring-a-skill.md",
       "sourceSha256": "ab6b5b47d46f937d6cb5c30b93e9e2e38a526e03f23a0adcbb7bc65280e7d042",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/authoring-a-skill.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:unslop"
+      ]
     },
     {
       "id": "playbook:autonomous-run",
@@ -399,10 +497,13 @@
       "sourcePath": "skills/poteto-mode/playbooks/eval.md",
       "sourceSha256": "82f33544e185e0a26c204e9327488fa30b81e247023306108a96ed86673e49b1",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/eval.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:arena"
+      ]
     },
     {
       "id": "playbook:feature",
@@ -421,10 +522,15 @@
       "sourcePath": "skills/poteto-mode/playbooks/hillclimb.md",
       "sourceSha256": "c2de0093ba99195241f5251e2df172f89e8ddeb69ff5a79522fc3ac0ef086e91",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/hillclimb.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "playbook:perf-issue",
+        "skill:benchmark-checklist",
+        "skill:swarm"
+      ]
     },
     {
       "id": "playbook:investigation",
@@ -443,10 +549,15 @@
       "sourcePath": "skills/poteto-mode/playbooks/multi-phase-plan.md",
       "sourceSha256": "7c74f2763e18080c0c583fcaeb61d94d3add02ed1343c24709afae6ccc8e970e",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/multi-phase-plan.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "playbook:prototype",
+        "skill:how",
+        "skill:technical-writing"
+      ]
     },
     {
       "id": "playbook:opening-a-pr",
@@ -454,10 +565,15 @@
       "sourcePath": "skills/poteto-mode/playbooks/opening-a-pr.md",
       "sourceSha256": "699d7abcc8cbafb6f0ad81d7431c4bb39229e5c76da2d23be21cb329dd23aaff",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/opening-a-pr.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:deslop",
+        "skill:no-comments",
+        "skill:technical-writing"
+      ]
     },
     {
       "id": "playbook:orchestrate",
@@ -487,10 +603,17 @@
       "sourcePath": "skills/poteto-mode/playbooks/perf-issue.md",
       "sourceSha256": "dadcb05d4c17b6fd1b5233380ad1301c880bfa0bd6b734b26572a0de73e61c7b",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/perf-issue.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:how",
+        "skill:architect",
+        "skill:benchmark-checklist",
+        "skill:control-cli",
+        "skill:control-ui"
+      ]
     },
     {
       "id": "playbook:prototype",
@@ -498,10 +621,14 @@
       "sourcePath": "skills/poteto-mode/playbooks/prototype.md",
       "sourceSha256": "7aa1f52c691c3d46d5afc527b23f90977fce869ce33573c73c81a4c7f0cde962",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/prototype.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:control-cli",
+        "skill:control-ui"
+      ]
     },
     {
       "id": "playbook:refactoring",
@@ -509,10 +636,15 @@
       "sourcePath": "skills/poteto-mode/playbooks/refactoring.md",
       "sourceSha256": "9786220113a61ebd7356fef86d0ca0de748e9cf1558c0c2ae9eea52586d0042f",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/refactoring.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:how",
+        "skill:architect",
+        "skill:deslop"
+      ]
     },
     {
       "id": "playbook:runtime-forensics",
@@ -564,10 +696,14 @@
       "sourcePath": "skills/poteto-mode/playbooks/visual-parity.md",
       "sourceSha256": "149dfbe29f177345ca74cdf198b52db594a908cf41692ada0633fc2f382b39ab",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/playbooks/visual-parity.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:control-ui",
+        "skill:swarm"
+      ]
     },
     {
       "id": "playbook:worktree-cleanup",
@@ -883,10 +1019,13 @@
       "sourcePath": "skills/sharpen/SKILL.md",
       "sourceSha256": "563dfc460c605d311e650726288e2f1cbd61eab817db178d6e7e29643e07e7a2",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/sharpen.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:in-your-own-words"
+      ]
     },
     {
       "id": "skill:show-me-your-work",
@@ -905,10 +1044,10 @@
       "sourcePath": "skills/swarm/SKILL.md",
       "sourceSha256": "598170bc09bf2e5d847a4add7ec47a920b539e50fb449bd50a71561ce87ade6d",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/swarm.md",
+      "note": "Codex-native worktree slices, explicit starting refs, bounded shared local-state verifier and primary integration; acceptance scope and remaining limits recorded in evidence.",
+      "evidencePath": "docs/migration/phase-3b-swarm-evidence.md"
     },
     {
       "id": "skill:tdd",
@@ -916,10 +1055,10 @@
       "sourcePath": "skills/tdd/SKILL.md",
       "sourceSha256": "eeb868e2dfebee528d730a67d7b17498fac4bb85dec2e38bc5c5176aca4d5d2f",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/tdd.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:teach",
@@ -927,10 +1066,15 @@
       "sourcePath": "skills/teach/SKILL.md",
       "sourceSha256": "bd286e5a6290673be2cd28aef7af2ec7f1fb138e6bce156ea657368c7e7fc8a4",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/teach.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:how",
+        "skill:why",
+        "skill:unslop"
+      ]
     },
     {
       "id": "skill:technical-writing",
@@ -938,10 +1082,13 @@
       "sourcePath": "skills/technical-writing/SKILL.md",
       "sourceSha256": "61fe9c424a798ebf36ad94941f87be049cb8827bdf86d21474a0dde37b513c43",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/technical-writing.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "dependencies": [
+        "skill:unslop"
+      ]
     },
     {
       "id": "skill:typescript-best-practices",
@@ -949,10 +1096,20 @@
       "sourcePath": "skills/typescript-best-practices/SKILL.md",
       "sourceSha256": "827145b1bd795b2b03ba0d1ca6087fe20c37aacd1b367e6a37c87ce4a2b4a6bf",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "partial",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/typescript-best-practices.md",
+      "note": "Complete portable candidate content; native evidence and precise remaining host/negative-path limits are recorded per case. Lifecycle/automation overlays and native discovery are not implied.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md",
+      "sourceReferences": {
+        "skills/typescript-best-practices/references/patterns.md": {
+          "sourceSha256": "12e70c9419a8b3f5d6a1ab80e272c1f00a43ac0b3bbf72d68199033570e5de77",
+          "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/typescript-best-practices/patterns.md"
+        }
+      },
+      "dependencies": [
+        "skill:principle-type-system-discipline",
+        "skill:principle-boundary-discipline"
+      ]
     },
     {
       "id": "skill:unslop",
@@ -960,10 +1117,10 @@
       "sourcePath": "skills/unslop/SKILL.md",
       "sourceSha256": "ccab208e315ce05e2fab8eeee2f7879f1289b5c6844840b2d307adf31c79144f",
       "ownerPhase": 3,
-      "status": "pending",
-      "packagePath": null,
-      "note": "Requires source review and Codex adaptation before distribution.",
-      "evidencePath": null
+      "status": "adapted",
+      "packagePath": "plugins/pstack/skills/poteto-mode/references/skills/unslop.md",
+      "note": "Complete portable reference under explicit Poteto; representative native prose or fail/pass/consumer checks passed. See scoped evidence; this is not a new native entry.",
+      "evidencePath": "docs/migration/phase-3b-portable-evidence.md"
     },
     {
       "id": "skill:why",
@@ -973,7 +1130,7 @@
       "ownerPhase": 3,
       "status": "partial",
       "packagePath": "plugins/pstack/skills/poteto-mode/references/why.md",
-      "note": "All prompt/source references ported. Local Git investigator/synthesizer, task model override, seven-category exclusions and confidence calibration passed native checks. Live connector access and cross-source synthesis remain unverified; no live vendor coverage claimed.",
+      "note": "All prompt/source references ported. Local Git investigator/synthesizer, task model override, seven-category exclusions and confidence calibration passed native checks. A linked primary-host supplement observed live GitHub reads and a failed advertised Slack tool. Native delegate connector access and genuine cross-category synthesis remain unverified; status stays partial.",
       "evidencePath": "docs/migration/phase-3-research-evidence.md",
       "sourceReferences": {
         "skills/why/references/epistemics.md": {
