@@ -72,6 +72,33 @@ class RecoveryInstrumentTest(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError,'Declare before'):
             self.invoke('declare',stage='first-pass')
 
+    def test_tied_races_follow_declared_order_not_completion_order(self):
+        entry = SCRIPT.parent.parent/'plugins/pstack/skills/poteto-mode'
+        contract = fixture.prepare(self.root,'race-ties',entry)
+        workspace=Path(contract['workspace'])
+        before={'workspace':fixture.snapshot(workspace)}
+        heads={'workspace':fixture.git(workspace,'rev-parse','HEAD')}
+        indexes={'workspace':fixture.git(workspace,'diff','--cached','--binary')}
+        report=copy.deepcopy(self.report);report['baseSha']=contract['baseSha']
+        for stage in ('rank-all','best-of'):
+            self.invoke('declare',stage=stage)
+            for arm in ('b','a'):
+                folder=self.root/'cases'/stage/arm
+                fixture.save(folder/'proposal.json',report)
+                self.invoke('publish',arm,stage)
+                self.assertEqual(fixture.grade(json.loads((folder/'report-1.json').read_text()),contract['baseSha']),{'valid':True,'score':4})
+            fixture.save(self.root/'cases'/stage/'selection.json',{'rule':stage,'selected':['a','b'] if stage=='rank-all' else ['a'],'drained':['a','b'],'invalid':[]})
+        result=fixture.audit(self.root,contract,[],None,'completed',before,heads,indexes)
+        self.assertTrue(result['artifactChecksPassed'])
+        for stage,wrong in [('rank-all',['b','a']),('best-of',['b'])]:
+            with self.subTest(stage=stage):
+                path=self.root/'cases'/stage/'selection.json'
+                selected=json.loads(path.read_text());selected['selected']=wrong;fixture.save(path,selected)
+                result=fixture.audit(self.root,contract,[],None,'completed',before,heads,indexes)
+                self.assertFalse(result['checks'][stage])
+                self.assertFalse(result['artifactChecksPassed'])
+                selected['selected']=['a','b'] if stage=='rank-all' else ['a'];fixture.save(path,selected)
+
     def test_second_git_patch_actually_conflicts_without_partial_apply(self):
         entry = SCRIPT.parent.parent/'plugins/pstack/skills/poteto-mode'
         contract = fixture.prepare(self.root,'conflict',entry)

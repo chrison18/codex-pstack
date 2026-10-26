@@ -20,6 +20,9 @@ from codex_acceptance_state import snapshot
 spec = importlib.util.spec_from_file_location('research', Path(__file__).with_name('accept-codex-research.py'))
 research = importlib.util.module_from_spec(spec); spec.loader.exec_module(research)
 
+RACE_STAGES = {'race': ('first-pass', 'rank-all', 'best-of'),
+               'race-ties': ('rank-all', 'best-of')}
+
 
 def git(path, *args):
     return subprocess.run(['git', '-C', str(path), *args], check=True, capture_output=True, text=True).stdout.strip()
@@ -83,7 +86,7 @@ def operation(root, args):
     contract = json.loads((root / 'contract.json').read_text()); case = contract['case']
     stage = getattr(args, 'stage', None)
     if args.operation == 'declare':
-        assert case == 'race' and stage in ('first-pass', 'rank-all', 'best-of')
+        assert case in RACE_STAGES and stage in RACE_STAGES[case]
         folder = root / 'cases' / stage
         assert not list(folder.glob('*/receipt-*.json')), 'Declare before any submissions'
         save(folder / 'rule.json', {'rule': stage, 'declaredAtNs': time.time_ns(), 'tieBreak': 'arm id ascending', 'score': 'four mandatory cases plus up to two correct unique extra examples'})
@@ -108,13 +111,15 @@ def operation(root, args):
         print(json.dumps(record)); return result.returncode
     if args.operation == 'publish':
         arm = args.arm
-        if case == 'race':
-            assert stage in ('first-pass', 'rank-all', 'best-of')
+        if case in RACE_STAGES:
+            assert stage in RACE_STAGES[case]
             folder = root / 'cases' / stage / arm
             assert (folder.parent / 'rule.json').exists(), 'No declared rule'
-            if stage == 'first-pass' and arm == 'b':
+            earlier = ('a' if case == 'race' and stage == 'first-pass' and arm == 'b' else
+                       'b' if case == 'race-ties' and arm == 'a' else None)
+            if earlier:
                 deadline = time.monotonic() + 300
-                while not (folder.parent / 'a/receipt-1.json').exists():
+                while not (folder.parent / earlier / 'receipt-1.json').exists():
                     if time.monotonic() > deadline: raise TimeoutError('Earlier arm did not submit')
                     time.sleep(0.1)
                 time.sleep(0.1)
@@ -123,12 +128,14 @@ def operation(root, args):
             folder = root / 'cases' / arm
         proposal = json.loads((folder / 'proposal.json').read_text())
         attempt = len(list(folder.glob('receipt-*.json'))) + 1
-        assert attempt <= (1 if case == 'race' or arm == 'healthy' else 2), 'Retry budget exhausted'
+        assert attempt <= (1 if case in RACE_STAGES or arm == 'healthy' else 2), 'Retry budget exhausted'
         injected = None
         if case == 'race' and stage == 'first-pass' and arm == 'a':
             proposal['total'] = proposal.get('total', 0) + 1; injected = 'corrupt-total'
         if case == 'race' and ((stage == 'rank-all' and arm == 'a') or (stage == 'best-of' and arm == 'b')):
             proposal.pop('extraChecks', None); injected = 'remove-optional-quality-evidence'
+        if case == 'race-ties':
+            proposal.pop('extraChecks', None); injected = 'remove-optional-quality-evidence-for-tie'
         if case == 'recovery' and arm == 'once' and attempt == 1:
             proposal.pop('baseSha', None); injected = 'missing-sha'
         if case == 'recovery' and arm == 'twice':
@@ -138,7 +145,7 @@ def operation(root, args):
         print(json.dumps({'published': str(folder / ('report-' + str(attempt) + '.json')), 'attempt': attempt}))
         return 0
     if args.operation == 'validate':
-        folder = root / 'cases' / stage / args.arm if case == 'race' else root / 'cases' / args.arm
+        folder = root / 'cases' / stage / args.arm if case in RACE_STAGES else root / 'cases' / args.arm
         files = sorted(folder.glob('report-*.json'))
         result = grade(json.loads(files[-1].read_text()), contract['baseSha']) if files else {'valid': False, 'score': 0}
         print(json.dumps(result)); return 0
@@ -166,9 +173,9 @@ def prepare(root, case, entry):
         contract.update(workers=workers, integration=str(target))
     link = workspace / '.agents/skills/poteto-mode'; link.parent.mkdir(parents=True); link.symlink_to(entry)
     subprocess.run(['python3','-B',str(entry / 'scripts/runtime.py'),'install',str(workspace)],check=True,capture_output=True)
-    stages = ('first-pass','rank-all','best-of') if case == 'race' else ('healthy','once','twice')
+    stages = RACE_STAGES.get(case, ('healthy','once','twice'))
     for stage in stages:
-        if case == 'race':
+        if case in RACE_STAGES:
             for arm in ('a','b'): (root / 'cases' / stage / arm).mkdir(parents=True)
         else: (root / 'cases' / stage).mkdir(parents=True)
     (root / 'reports').mkdir()
@@ -203,6 +210,15 @@ def common_prompt(root, contract, args, entry):
             'rank every eligible arm for rank-all, and choose one highest-scoring eligible arm for best-of; invalid arms are excluded but reported. Drain both workers every stage. '
             'After each stage write cases/STAGE/selection.json as {rule,selected:[arm ids],drained:[arm ids],invalid:[arm ids]} under primary ownership. '
             'This selection file is the one exception to the primary reports-only path. Do not change the rule after outcomes. Report convergence/ties honestly.')
+    elif contract['case'] == 'race-ties':
+        text += ('Run two consecutive identical-brief races, rank-all then best-of, with independent arms a and b. Reuse the same two agents via followup_task after draining each stage. '
+            'Declare each stage rule before spawning or sending its briefs: call declare --stage STAGE. Eligibility requires four correct mandatory cases, total, exact SHA and method. '
+            'The publisher removes optional extraChecks from BOTH arms, so eligible reports tie at score 4; it holds a until b publishes, making b the earlier completed report. '
+            'Tie-break is arm id ascending, declared before outcomes. Completion time must not replace this tie-break. One publish per arm per stage; no repair of published reports. '
+            'Validate and inspect every published artifact, wait for both terminal results, and drain both workers before advancing. '
+            'For rank-all return the complete ordered eligible set; for best-of select one highest-scoring eligible arm using the same tie-break. Do not invent a quality difference. '
+            'After each stage write cases/STAGE/selection.json as {rule,selected:[arm ids],drained:[arm ids],invalid:[arm ids]}; this is the one exception to primary reports-only ownership. '
+            'Report the actual scores, submission order and declared tie decision, retaining any incomplete/invalid arm as a gap rather than fabricating coverage.')
     elif contract['case'] == 'recovery':
         text += ('Partition into four required slices with exact native task names healthy, once, twice, dropout; do not replace missing coverage. Resolve/start four independent workers. '
             'healthy publishes one full report; once loses baseSha on its first publish and can restore it on the second; twice loses method on both allowed publishes. '
@@ -231,8 +247,8 @@ def audit(root, contract, events, thread, status, before, heads, indexes):
     checks = {'scope':all(not paths if n=='workspace' else set(paths)=={'calc.py'} for n,paths in changed.items()),
               'headsAndIndexes':all(git(p,'rev-parse','HEAD')==heads[n] and git(p,'diff','--cached','--binary')==indexes[n] for n,p in scopes.items())}
     try:
-        if contract['case']=='race':
-            for stage in ('first-pass','rank-all','best-of'):
+        if contract['case'] in RACE_STAGES:
+            for stage in RACE_STAGES[contract['case']]:
                 folder=root/'cases'/stage; rule=json.loads((folder/'rule.json').read_text())
                 submissions=[]
                 for arm in ('a','b'):
@@ -244,7 +260,11 @@ def audit(root, contract, events, thread, status, before, heads, indexes):
                     [x[0] for x in sorted(valid,key=lambda x:(-x[3],x[0]))][:1 if stage=='best-of' else len(valid)])
                 selection=json.loads((folder/'selection.json').read_text())
                 checks[stage]=selection['rule']==stage and rule['rule']==stage and rule['declaredAtNs']<min(x[1] for x in submissions) and selection['selected']==expected and sorted(selection['drained'])==['a','b'] and sorted(selection['invalid'])==sorted(x[0] for x in submissions if not x[2])
-                if stage != 'first-pass': checks[stage+'-score-separation'] = len({x[3] for x in valid}) > 1
+                if contract['case']=='race-ties':
+                    checks[stage+'-tied-valid-scores'] = len(valid)==2 and all(x[3]==4 for x in valid)
+                    checks[stage+'-reverse-completion'] = submissions[1][1] < submissions[0][1]
+                    checks[stage+'-declared-tie-break'] = rule['tieBreak']=='arm id ascending'
+                elif stage != 'first-pass': checks[stage+'-score-separation'] = len({x[3] for x in valid}) > 1
                 checks[stage+'-single-publish']=all(len(list((folder/a).glob('receipt-*.json')))==1 for a in ('a','b'))
         elif contract['case']=='recovery':
             summary=json.loads((root/'reports/summary.json').read_text()); statuses=summary['statuses']
@@ -271,7 +291,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--fixture',type=Path); parser.add_argument('--operation',choices=('declare','publish','validate','hold','apply-a','check-b'))
     parser.add_argument('--stage'); parser.add_argument('--arm')
-    parser.add_argument('--case',choices=('race','recovery','conflict')); parser.add_argument('--codex',default='codex')
+    parser.add_argument('--case',choices=('race','race-ties','recovery','conflict')); parser.add_argument('--codex',default='codex')
     parser.add_argument('--model'); parser.add_argument('--effort'); parser.add_argument('--catalog',type=Path)
     parser.add_argument('--auth-file',type=Path,default=Path.home()/'.codex/auth.json')
     args=parser.parse_args()

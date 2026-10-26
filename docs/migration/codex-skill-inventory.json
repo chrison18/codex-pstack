@@ -1046,7 +1046,7 @@
       "ownerPhase": 3,
       "status": "partial",
       "packagePath": "plugins/pstack/skills/poteto-mode/references/swarm.md",
-      "note": "Codex-native worktree slices, explicit starting refs, bounded shared local-state verifier and primary integration; acceptance scope and remaining limits recorded in evidence.",
+      "note": "Codex-native worktree slices, explicit starting refs, bounded shared local-state verifier and primary integration; tied-score and actual HTTP rejection supplements in docs/migration/phase-3b2-acceptance.md. Acceptance remains partial.",
       "evidencePath": "docs/migration/phase-3b-swarm-evidence.md"
     },
     {
