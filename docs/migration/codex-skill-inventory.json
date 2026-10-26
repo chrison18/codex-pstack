@@ -298,7 +298,7 @@
       "ownerPhase": 3,
       "status": "partial",
       "packagePath": "plugins/pstack/skills/poteto-mode/references/interrogate.md",
-      "note": "Read-only review reference and all four lenses ported. One actual independent Sol/Luna review and unchanged-state checks passed; panel validation covers atomic failure and diversity reporting. Empty reviews, dropouts and negative client paths remain unverified, so support stays partial.",
+      "note": "Read-only review reference and all four lenses ported. Native Sol/Luna defect review, explicit-model rejection, missing-role fallback and actual capacity-dropout disclosure have scoped evidence. Full two-completed-reviewer empty-panel and desktop coverage remain unverified; support stays partial. See linked 3B2 acceptance evidence.",
       "evidencePath": "docs/migration/phase-3b-remaining-workflows.md",
       "sourceReferences": {
         "skills/interrogate/references/code-quality-review.md": {

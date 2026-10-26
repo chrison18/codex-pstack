@@ -92,3 +92,7 @@ Host changes preserve substantive quality/writing/verification advice while repl
 ## Phase 3B1 review and continuation boundary
 
 On 2026-10-26 the owner authorized PR #5 merge after validation and review. The [migration plan](docs/migration/codex-migration-plan.md) explicitly separates 3B1 candidate delivery from 3B2 acceptance closure; partial capability claims and all original phase 3 gates remain. The [merge review](docs/migration/phase-3b1-merge-review.md) records the independently found/fixed temporary-auth cleanup defect, regression and local checks. The [live-source supplement](docs/migration/phase-3b-live-source-evidence.md) records scoped GitHub reads without claiming native multi-source acceptance. The inherited pin is unchanged.
+
+## Phase 3B2 acceptance start
+
+PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb`; `test/codex-3b-acceptance` starts from that actual main. The [3B2 evidence](docs/migration/phase-3b2-acceptance.md) adds native rejection and missing-role fallback probes, retaining two real capacity failures as partial/dropout evidence rather than full empty-review passes. No inherited source pin or runtime workflow instruction changes; full 3B/phase 4 gates remain open.

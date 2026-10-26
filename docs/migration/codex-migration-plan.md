@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2 and phase 3A are merged. PR #5 on `feat/codex-remaining-workflows` is phase **3B1**, the portable candidate implementation increment. On 2026-10-26 the owner authorized validation, review and merge if passing, then continuation. Phase **3B2** on `test/codex-3b-acceptance` owns the remaining acceptance after 3B1 merges. All portable sources have classified candidates and bounded evidence; this split does not claim full 3B completion, desktop parity or live-source coverage. Phase 4 remains blocked until 3B2 closes the original gates. See the [3B work and evidence](phase-3b-remaining-workflows.md). Qualified desktop discovery/version-display capture remains assigned to phase 6.
+Status: phases 0 through 2, 3A and **3B1** are merged. PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb` after review and current-head CI. **3B2** is active on `test/codex-3b-acceptance` from that actual main; see the [acceptance queue](phase-3b2-acceptance.md). All portable sources have classified candidates and bounded evidence. Remaining live-source/desktop/blinding and other partial gates are retained, not waived. Phase 4 remains blocked until full 3B acceptance closes. Qualified desktop discovery/version-display capture remains assigned to phase 6.
 
 ## Outcome and scope
 
