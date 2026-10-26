@@ -1130,7 +1130,7 @@
       "ownerPhase": 3,
       "status": "partial",
       "packagePath": "plugins/pstack/skills/poteto-mode/references/why.md",
-      "note": "All prompt/source references ported. Local Git investigator/synthesizer, task model override, seven-category exclusions and confidence calibration passed native checks. Live connector access and cross-source synthesis remain unverified; no live vendor coverage claimed.",
+      "note": "All prompt/source references ported. Local Git investigator/synthesizer, task model override, seven-category exclusions and confidence calibration passed native checks. A linked primary-host supplement observed live GitHub reads and a failed advertised Slack tool. Native delegate connector access and genuine cross-category synthesis remain unverified; status stays partial.",
       "evidencePath": "docs/migration/phase-3-research-evidence.md",
       "sourceReferences": {
         "skills/why/references/epistemics.md": {

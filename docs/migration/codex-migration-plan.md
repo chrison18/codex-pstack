@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2 merged in PR #1, PR #2 and PR #3. Phase 3 is split into consecutive increments: 3A merged in PR #4 as `288561b1feda1cf199f46ae36745ec47df6fb4ba` (inventory/principles/local research) and 3B on `feat/codex-remaining-workflows` (remaining skills and parallel-workflow gates). The owner authorized independent review and merge of PR #4; 3B continues from that main on `feat/codex-remaining-workflows` in draft PR #5; all portable source units now have classified candidates and scoped native evidence, with partial/live-source/desktop gates retained. This split does not mark phase 3 complete or waive its remaining gates; see the [phase 3 work plan](phase-3-skill-workflows.md). The phase 2 qualified desktop discovery/version-display evidence limit remains assigned to the phase 6 release walkthrough.
+Status: phases 0 through 2 and phase 3A are merged. PR #5 on `feat/codex-remaining-workflows` is phase **3B1**, the portable candidate implementation increment. On 2026-10-26 the owner authorized validation, review and merge if passing, then continuation. Phase **3B2** on `test/codex-3b-acceptance` owns the remaining acceptance after 3B1 merges. All portable sources have classified candidates and bounded evidence; this split does not claim full 3B completion, desktop parity or live-source coverage. Phase 4 remains blocked until 3B2 closes the original gates. See the [3B work and evidence](phase-3b-remaining-workflows.md). Qualified desktop discovery/version-display capture remains assigned to phase 6.
 
 ## Outcome and scope
 
@@ -34,7 +34,7 @@ Target mechanisms are proposals until verified against the selected client versi
 
 ## Phases and branches
 
-Each listed increment uses one branch and PR from latest merged `main`. Wait for its dependency to merge. Phase 3 is explicitly split below so the verified foundation can land while its remaining capability gates stay visible. Update this plan before any further split; phases 4–6 still depend on completion of phase 3B.
+Each listed increment uses one branch and PR from latest merged `main`. Wait for its dependency to merge. Phase 3 is explicitly split below so reviewed candidate implementations can land while remaining capability gates stay visible. The 3B1/3B2 split preserves the original phase 3 exit gate. Update this plan before any further split; phases 4–6 still depend on completion of 3B2.
 
 | Phase | Branch | Deliverables | Exit gate |
 | --- | --- | --- | --- |
@@ -42,7 +42,8 @@ Each listed increment uses one branch and PR from latest merged `main`. Wait for
 | 1 | `feat/codex-plugin-entry` | Package, invocation policy, minimal setup, structural CI | Clean install/discovery/removal in both clients; explicit invocation works; ordinary prompts do not activate; no developer-machine paths |
 | 2 | `feat/codex-core-workflow` | Router, both agents, checklist, model setup; Feature/Bug fix/Investigation | One real task of each kind completes; roles load correct instructions; model/effort rules hold; primary owns workflow |
 | 3A | `feat/codex-skill-workflows` | Complete source inventory, full principles, How/Why local research | Source/provenance and explicit invocation guards; representative principles and local research checks; independent review and CI; live-source and remaining-skill gaps explicit |
-| 3B | `feat/codex-remaining-workflows` | Remaining core skills, design/review/delegation, expanded playbooks and parallel workflows | Original phase 3 exit gate: every skill classified and structurally checked; changed host mechanisms exercised; isolated writers, base refs and local-state verification work; unavailable live-source coverage explicitly limited |
+| 3B1 | `feat/codex-remaining-workflows` | Remaining portable candidates, design/review/delegation, expanded playbooks and bounded parallel workflows | Complete source classification and dependency checks; scoped native evidence; independent latest-change review, resolved findings and current-head CI; all partial/blocked surfaces retained |
+| 3B2 | `test/codex-3b-acceptance` | Remaining 3B acceptance and capability reconciliation | Original phase 3 exit gate: every skill classified and structurally checked; changed host mechanisms exercised; isolated writers, base refs and local-state verification work; applicable desktop/native checks and cross-source synthesis; unavailable live-source coverage explicitly limited |
 | 4 | `feat/codex-session-lifecycle` | Recall, pickup, history mining, decision trail, worktree audit | Interrupted task resumes from evidence; scoped history; active/dirty/uncertain worktrees not declared safe |
 | 5 | `feat/codex-autonomous-workflows` | Autonomous run, babysit, orchestrate, autopilot, Benny, bot UI | Continuation, wake, cancel, restart, completion, duplicate delivery tested; missing dependencies reported |
 | 6 | `chore/codex-release-readiness` | Final docs/CI, client matrix, install/update/remove instructions | Clean walkthrough; all release claims have evidence; supported versions and limits explicit |

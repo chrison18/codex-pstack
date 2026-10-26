@@ -9,6 +9,8 @@ Phase **3A** merged in PR #4 as `288561b1feda1cf199f46ae36745ec47df6fb4ba` after
 
 History: 3A started on `feat/codex-skill-workflows` from phase 2 squash merge `a25255330be51548e27c4a2bda4e9ca5af86dfcf`. PR #3 has merged. The first unit established an executable inventory and provenance guard. The second unit replaces six principle summaries with all 24 full principle references; How/Why references and model roles are now ported; four local native research cases and two integrated principle regressions passed. Live Why connector coverage remains unverified. Subsequent 3B design/parallel and portable candidates have scoped evidence; their partial gates remain visible.
 
+The 2026-10-26 [migration-plan update](codex-migration-plan.md) splits 3B into PR #5 candidate delivery (3B1) and acceptance closure (3B2). Historical evidence below is unchanged; full phase 3 completion still requires the retained gates.
+
 ## Inventory contract
 
 The [machine-readable inventory](codex-skill-inventory.json) accounts for all inherited units, not only files currently shipped by the Codex plugin:

@@ -1,6 +1,6 @@
 # Phase 3B: remaining skills and parallel workflows
 
-Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda1cf199f46ae36745ec47df6fb4ba` after PR #4 squash merge. The preceding head `74691947a83376563cccfb936a35e06aadab4bd3` was independently reviewed, its reference-map gap fixed, and both exact-head CI jobs passed before merge. This increment retains all original phase 3 remaining gates; phase 4 has not started.
+Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda1cf199f46ae36745ec47df6fb4ba` after PR #4 squash merge. The preceding head `74691947a83376563cccfb936a35e06aadab4bd3` was independently reviewed, its reference-map gap fixed, and both exact-head CI jobs passed before merge. This branch delivers the 3B1 candidate increment. The owner authorized review and merge if checks pass on 2026-10-26. Remaining acceptance continues as 3B2 on `test/codex-3b-acceptance` after merge, as recorded in the migration plan. All original phase 3 gates remain; phase 4 has not started.
 
 ## Work sequence
 
@@ -11,9 +11,11 @@ Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda
 - [x] Port Arena/Architect with full alternatives and explicit checkpoint choices; bounded native synthesis/checkpoint/default-implementation probes passed, with remaining negative/desktop/worktree gaps retained below.
 - [x] Port Swarm with write ownership, explicit base refs, integration and local-state access boundaries; see [native evidence](phase-3b-swarm-evidence.md) and [race/recovery evidence](phase-3b-swarm-recovery-evidence.md), with desktop limits retained.
 - [x] Port all remaining quality/prose/verification/control/authoring candidates and expand bounded playbooks; see [portable evidence](phase-3b-portable-evidence.md) for dependency order, native results and precise partial limits.
-- [ ] Complete available live Why source checks and genuine cross-source synthesis; preserve unavailable-source gaps.
+- [x] Inspect live GitHub source access in the current primary host; record successful PR/commit reads, bounded empty issue results and the failed advertised Slack tool in the [live source supplement](phase-3b-live-source-evidence.md).
+- [ ] Complete native live Why investigator/synthesizer access and genuine cross-source synthesis; the primary host supplement does not close this gate. Preserve unavailable-source gaps.
 - [x] Run actual bounded native A7 concurrent-writer, A8 pushed non-default-base and A9 local-process/auth checks; inspect live-PID/clock receipts, real worktree metadata, combined verification and authenticated requests. Desktop/browser variants remain NOT RUN; see [evidence](phase-3b-swarm-evidence.md).
-- [ ] Reconcile every phase 3 inventory entry, complete applicable desktop/native evidence, independent review and CI before phase 3B merge.
+- [ ] Close 3B1 with independent latest-change review, resolved findings and current-head CI before merging PR #5.
+- [ ] In 3B2, reconcile every phase 3 inventory entry, complete applicable desktop/native evidence and cross-source synthesis, then review and validate before claiming full 3B completion or entering phase 4.
 
 ## First candidate: read-only adversarial review
 
@@ -105,3 +107,9 @@ PASS: 13 Python runtime tests; 29 package Bun tests / 45 assertions; 69 inherite
 ## Portable skills and playbooks increment
 
 [Portable evidence](phase-3b-portable-evidence.md) records 22 additional skill references, nine playbooks, six pinned transitive references, dependency guards and native forward tests. Pending source units are now zero; adapted/partial/deferred counts are 37/31/19. This does not clear native installation restrictions, desktop coverage, strict Eval blinding, full formal-tool coverage, live Why or later-phase overlays. PR #5 remains draft and phase 4 remains blocked on the remaining 3B gates.
+
+## 3B1 merge and 3B2 continuation
+
+The owner's 2026-10-26 instruction replaces the earlier draft-only authorization for PR #5, conditional on successful verification and review. Earlier evidence sections retain their historical draft status. The explicit split in the migration plan permits merging bounded candidate code while retaining the original full-phase acceptance requirements. It does not convert any partial unit to adapted.
+
+3B2 starts from the actual merged main. Its queue retains live Why delegate/cross-category evidence, protected installation/native discovery, applicable desktop/browser coverage, Eval blinding/family/observable-chain limits, formal-tool limits and documented review/design/Swarm negative paths. Missing client capabilities remain BLOCKED or NOT RUN, never passed by structural tests. Scope exclusions must retain concrete reasons. No phase 4 branch is authorized by this split alone.

@@ -1,12 +1,14 @@
 """Exercise actual fixture contracts without models, accounts or a browser installation."""
 import importlib.util
 import json
+import os
 from pathlib import Path
 import runpy
 import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 spec=importlib.util.spec_from_file_location('portable',Path(__file__).with_name('accept-codex-portable.py'))
 portable=importlib.util.module_from_spec(spec);spec.loader.exec_module(portable)
@@ -27,6 +29,26 @@ class PortableFixtures(unittest.TestCase):
         self.assertFalse(portable.allowed('verification','verification-skills/other/SKILL.md'))
         self.assertFalse(portable.allowed('verification','verification-skills/verify-slots/SKILL.md'))
         self.assertFalse(portable.allowed('quality','verification-skills'))
+
+    def test_invalid_dependency_paths_leave_no_auth_link_or_environment_change(self):
+        auth=self.root/'fake-auth.json';auth.write_text('{}')
+        catalog=self.root/'catalog.json';catalog.write_text('{}')
+        for missing in ('node-modules','tool-path'):
+            with self.subTest(missing=missing):
+                run_root=self.root/missing;run_root.mkdir()
+                absent=self.root/'absent'
+                args=['accept-codex-portable.py','--case','writing','--model','unused',
+                      '--effort','low','--catalog',str(catalog),'--auth-file',str(auth),
+                      '--node-modules',str(absent if missing=='node-modules' else self.root),
+                      '--tool-path',str(absent if missing=='tool-path' else self.root)]
+                with patch.dict(os.environ,{'NODE_PATH':'original-node-path'}):
+                    before={key:os.environ.get(key) for key in ('NODE_PATH','PATH')}
+                    with patch('sys.argv',args), patch.object(portable.tempfile,'mkdtemp',return_value=str(run_root)), patch.object(portable.research,'Client') as client:
+                        with self.assertRaises(FileNotFoundError):portable.main()
+                    client.assert_not_called()
+                    self.assertFalse(os.path.lexists(run_root/'writing/home/auth.json'))
+                    self.assertEqual({key:os.environ.get(key) for key in before},before)
+                    self.assertEqual(auth.read_text(),'{}')
 
     def test_line_metric_counts_generator_work_instead_of_hiding_it(self):
         self.prepare('measurement')

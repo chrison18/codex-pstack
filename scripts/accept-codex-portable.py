@@ -194,11 +194,12 @@ def main():
     before=snapshot(workspace);head=git(workspace,'rev-parse','HEAD');index=git(workspace,'diff','--cached','--binary');save(logs/'before.json',before)
     for name in ('app.py','app.ts','slots.py'):
         if (workspace/name).exists(): (logs/('baseline-'+name)).write_bytes((workspace/name).read_bytes())
-    auth=home/'auth.json';auth.symlink_to(a.auth_file.resolve(strict=True));client=None;thread=None;status='error';turns=[]
+    auth=home/'auth.json';client=None;thread=None;status='error';turns=[]
     previous_env={k:os.environ.get(k) for k in ('NODE_PATH','PATH')}
-    os.environ['NODE_PATH']=str(a.node_modules.resolve(strict=True))
-    os.environ['PATH']=os.pathsep.join([str(path.resolve(strict=True)) for path in a.tool_path]+[os.environ['PATH']])
     try:
+        auth.symlink_to(a.auth_file.resolve(strict=True))
+        os.environ['NODE_PATH']=str(a.node_modules.resolve(strict=True))
+        os.environ['PATH']=os.pathsep.join([str(path.resolve(strict=True)) for path in a.tool_path]+[os.environ['PATH']])
         client=research.Client(a.codex,workspace,home,logs)
         thread,status=client.run(workspace,a.model,a.effort,prompt,sandbox='workspace-write',timeout_seconds=1800);turns.append(status)
         if status=='completed' and a.case in ('verification','formal'):
@@ -219,11 +220,15 @@ def main():
         status='error'
         (logs/'harness-error.txt').write_text(str(error))
     finally:
-        if client:client.close()
-        auth.unlink(missing_ok=True)
-        for key,value in previous_env.items():
-            if value is None:os.environ.pop(key,None)
-            else:os.environ[key]=value
+        try:
+            if client:client.close()
+        finally:
+            try:
+                auth.unlink(missing_ok=True)
+            finally:
+                for key,value in previous_env.items():
+                    if value is None:os.environ.pop(key,None)
+                    else:os.environ[key]=value
     after=snapshot(workspace);save(logs/'after.json',after);changed=[n for n in set(before)|set(after) if before.get(n)!=after.get(n)]
     first_bad=[]
     if (logs/'first-after.json').exists():
