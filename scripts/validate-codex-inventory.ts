@@ -5,7 +5,7 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 type ObjectValue = Record<string, unknown>;
 const baselineCounts = { skill: 59, agent: 2, playbook: 23, "automation-skill": 3 };
 // These ports claim complete reference content even while runtime coverage remains partial.
-const completeReferenceUnits = new Set(["skill:how", "skill:why", "skill:interrogate", "skill:architect"]);
+const completeReferenceUnits = new Set(["skill:how", "skill:why", "skill:interrogate", "skill:architect", "skill:create-verification-skill", "skill:poteto-help", "skill:typescript-best-practices"]);
 type Kind = keyof typeof baselineCounts;
 
 function object(value: unknown, label: string): ObjectValue {
@@ -125,6 +125,31 @@ export function validateCodexInventory(repository: string): Record<Kind, number>
     }
   }
   if (seen.size !== sources.size) throw new Error("Inventory is missing inherited source units");
+  const unitsById = new Map(catalog.units.map((raw) => {
+    const unit = object(raw, "inventory unit");
+    return [unit.id, unit];
+  }));
+  const visiting = new Set<unknown>();
+  const visitedDependencies = new Set<unknown>();
+  function inspectDependencies(unit: ObjectValue) {
+    if (visiting.has(unit.id)) throw new Error(`Cyclic workflow dependency: ${unit.id}`);
+    if (visitedDependencies.has(unit.id)) return;
+    visiting.add(unit.id);
+    if (unit.dependencies !== undefined) {
+      if (!Array.isArray(unit.dependencies) || unit.dependencies.some((id) => typeof id !== "string") ||
+          new Set(unit.dependencies).size !== unit.dependencies.length) throw new Error(`Invalid workflow dependencies: ${unit.id}`);
+      for (const id of unit.dependencies) {
+        const dependency = unitsById.get(id);
+        if (!dependency || !["adapted", "partial"].includes(String(dependency.status))) {
+          throw new Error(`Unavailable workflow dependency: ${unit.id} -> ${id}`);
+        }
+        inspectDependencies(dependency);
+      }
+    }
+    visiting.delete(unit.id);
+    visitedDependencies.add(unit.id);
+  }
+  for (const unit of unitsById.values()) inspectDependencies(unit);
   for (const kind of Object.keys(baselineCounts) as Kind[]) {
     if (actualCounts[kind] !== baselineCounts[kind] || counts[kind] !== baselineCounts[kind]) {
       throw new Error(`Inherited ${kind} inventory changed; reconcile the baseline explicitly`);

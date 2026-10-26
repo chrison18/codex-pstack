@@ -80,3 +80,11 @@ Codex adaptation replaces Antigravity task files, tool names, vendor model alias
 4. Recheck adapted files against the capability matrix and regression scenarios. Avoid importing another host's generated harness trees.
 5. Run applicable checks; record tested head, runtime versions, and resulting PR or merge commit in this ledger.
 6. Advance a source pin only after accounting for the claimed range.
+
+## Phase 3B portable sources
+
+At the unchanged inherited pin, the next PR #5 increment classifies the remaining 22 skills and nine playbooks as internal Codex references, including all six transitive source documents. The [dependency index](plugins/pstack/skills/poteto-mode/references/workflow-index.md) and inventory guard keep packaged consumers from relying on missing/deferred execution dependencies or cycles. No new native entry is published.
+
+Host changes preserve substantive quality/writing/verification advice while replacing foreign checklist/log paths, role/model tiers, transcript scraping and built-ins. PR delivery respects explicit drafts, phase branches and unrelated WIP; inherited reset/ready/rewrite defaults are removed. Manual multi-phase planning is explicitly narrower than the phase 5 standing-program template/checker. History, automated wakes and shipping overlays remain deferred. A copied TypeScript duration example now accurately states that a plain number does not prevent negative values; the source remains pinned rather than silently edited.
+
+[Portable native evidence](docs/migration/phase-3b-portable-evidence.md) retains interrupted probes, observed How/brief omissions and instrument faults alongside fresh scoped passes. Protected skill installation, native browser launch, Eval blinding/family coverage and formal/tool/desktop variants are not claimed by scratch candidates or supplementary host replay. Neither zero pending source units nor successful CI completes phase 3B or authorizes phase 4/merge.

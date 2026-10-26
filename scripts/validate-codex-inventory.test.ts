@@ -131,7 +131,7 @@ test("transitive package targets cannot escape distribution", () => {
 });
 
 test("Complete reference ports cannot drop their reference maps", () => {
-  for (const id of ["skill:how", "skill:why", "skill:interrogate", "skill:architect"]) {
+  for (const id of ["skill:how", "skill:why", "skill:interrogate", "skill:architect", "skill:create-verification-skill", "skill:poteto-help", "skill:typescript-best-practices"]) {
     const root = fixture();
     const file = join(root, catalogPath);
     const catalog = JSON.parse(readFileSync(file, "utf8"));
@@ -139,4 +139,27 @@ test("Complete reference ports cannot drop their reference maps", () => {
     writeFileSync(file, JSON.stringify(catalog));
     expect(() => validateCodexInventory(root)).toThrow("Complete reference map required");
   }
+});
+
+
+test("rejects unavailable execution dependencies before advertising a workflow", () => {
+  for (const id of ["skill:missing", "skill:recall"]) {
+    const root = fixture();
+    change(root, (value) => {
+      const unit = value.units.find((unit) => unit.id === "skill:technical-writing");
+      if (!unit) throw new Error("Missing writing fixture");
+      Object.assign(unit, { dependencies: [id] });
+    });
+    expect(() => validateCodexInventory(root)).toThrow("Unavailable workflow dependency");
+  }
+});
+
+test("rejects cyclic workflow dependencies", () => {
+  const root = fixture();
+  change(root, (value) => {
+    const unit = value.units.find((unit) => unit.id === "skill:unslop");
+    if (!unit) throw new Error("Missing prose fixture");
+    Object.assign(unit, { dependencies: ["skill:technical-writing"] });
+  });
+  expect(() => validateCodexInventory(root)).toThrow("Cyclic workflow dependency");
 });

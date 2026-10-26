@@ -40,3 +40,11 @@ test("Swarm fault instruments preserve retry limits, declared races and actual G
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 }, 30000);
+
+test("portable fixtures expose a real consumer regression, PTY flow and bounded property fault", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_portable_fixture.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);

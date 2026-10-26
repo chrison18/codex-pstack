@@ -10,3 +10,5 @@ The primary owns the design, checklist, every delegation, verification and final
 6. Obtain scoped comment review from `comment-sicko`, giving it the same entry path and exact diff. Evaluate its findings before changing code. Keep commits focused if commits are authorized. Open a PR only when requested or part of the authorized delivery; merge authorization is separate.
 
 Reply with the resulting behavior, design choice, verification and material limits. Include the throughput checkpoint and the actual PR link when one was created.
+
+Read [TypeScript practices](skills/typescript-best-practices.md) for TypeScript changes. Use [Deslop](skills/deslop.md) for scoped cleanup and [No comments](skills/no-comments.md) for the comment-review protocol. Verify user-facing behavior through an existing project verify skill or the matching [CLI](skills/control-cli.md)/[UI](skills/control-ui.md) reference. Deliver via [Opening a PR](playbooks/opening-a-pr.md) only when authorized.

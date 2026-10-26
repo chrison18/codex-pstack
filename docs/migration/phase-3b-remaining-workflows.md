@@ -10,7 +10,7 @@ Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda
 - [x] Inspect native Interrogate acceptance: actual independent starts, calibrated lead verdict, concrete evidence and unchanged workspace/HEAD/index.
 - [x] Port Arena/Architect with full alternatives and explicit checkpoint choices; bounded native synthesis/checkpoint/default-implementation probes passed, with remaining negative/desktop/worktree gaps retained below.
 - [x] Port Swarm with write ownership, explicit base refs, integration and local-state access boundaries; see [native evidence](phase-3b-swarm-evidence.md) and [race/recovery evidence](phase-3b-swarm-recovery-evidence.md), with desktop limits retained.
-- [ ] Port remaining quality/prose/verification/control/authoring skills and expand the bounded playbooks.
+- [x] Port all remaining quality/prose/verification/control/authoring candidates and expand bounded playbooks; see [portable evidence](phase-3b-portable-evidence.md) for dependency order, native results and precise partial limits.
 - [ ] Complete available live Why source checks and genuine cross-source synthesis; preserve unavailable-source gaps.
 - [x] Run actual bounded native A7 concurrent-writer, A8 pushed non-default-base and A9 local-process/auth checks; inspect live-PID/clock receipts, real worktree metadata, combined verification and authenticated requests. Desktop/browser variants remain NOT RUN; see [evidence](phase-3b-swarm-evidence.md).
 - [ ] Reconcile every phase 3 inventory entry, complete applicable desktop/native evidence, independent review and CI before phase 3B merge.
@@ -101,3 +101,7 @@ PASS: 13 Python runtime tests; 29 package Bun tests / 45 assertions; 69 inherite
 ### Swarm race/recovery increment
 
 [Native race/recovery evidence](phase-3b-swarm-recovery-evidence.md) records three selection rules, actual overlapping patch integration, controlled incomplete reports and native interruption, including an excluded first recovery probe. The instrument has five regression tests, invoked in CI through the package suite. Swarm remains partial, remaining 3B gates remain pending and PR #5 stays draft.
+
+## Portable skills and playbooks increment
+
+[Portable evidence](phase-3b-portable-evidence.md) records 22 additional skill references, nine playbooks, six pinned transitive references, dependency guards and native forward tests. Pending source units are now zero; adapted/partial/deferred counts are 37/31/19. This does not clear native installation restrictions, desktop coverage, strict Eval blinding, full formal-tool coverage, live Why or later-phase overlays. PR #5 remains draft and phase 4 remains blocked on the remaining 3B gates.

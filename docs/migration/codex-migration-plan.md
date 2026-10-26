@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2 merged in PR #1, PR #2 and PR #3. Phase 3 is split into consecutive increments: 3A merged in PR #4 as `288561b1feda1cf199f46ae36745ec47df6fb4ba` (inventory/principles/local research) and 3B on `feat/codex-remaining-workflows` (remaining skills and parallel-workflow gates). The owner authorized independent review and merge of PR #4; 3B now starts from that latest main on `feat/codex-remaining-workflows`. This split does not mark phase 3 complete or waive its remaining gates; see the [phase 3 work plan](phase-3-skill-workflows.md). The phase 2 qualified desktop discovery/version-display evidence limit remains assigned to the phase 6 release walkthrough.
+Status: phases 0 through 2 merged in PR #1, PR #2 and PR #3. Phase 3 is split into consecutive increments: 3A merged in PR #4 as `288561b1feda1cf199f46ae36745ec47df6fb4ba` (inventory/principles/local research) and 3B on `feat/codex-remaining-workflows` (remaining skills and parallel-workflow gates). The owner authorized independent review and merge of PR #4; 3B continues from that main on `feat/codex-remaining-workflows` in draft PR #5; all portable source units now have classified candidates and scoped native evidence, with partial/live-source/desktop gates retained. This split does not mark phase 3 complete or waive its remaining gates; see the [phase 3 work plan](phase-3-skill-workflows.md). The phase 2 qualified desktop discovery/version-display evidence limit remains assigned to the phase 6 release walkthrough.
 
 ## Outcome and scope
 

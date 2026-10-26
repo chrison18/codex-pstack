@@ -8,4 +8,6 @@ The primary owns reproduction, causal judgment, review and verification.
 4. Run the same reproduction again after the fix. Retain failing and passing output and focused regression checks. Compilation alone is insufficient. For a cheap local test, commit the failing test before the fix if commits are authorized.
 5. Review the actual diff and obtain scoped `comment-sicko` findings. Apply only justified changes. Open a PR within the authorized delivery scope; do not infer merge approval.
 
-Reply with the defect, observed cause, fix, failing-then-passing output and limitations. Timers, autonomous hunts and full upstream design panels remain later-phase work.
+Reply with the defect, observed cause, fix, failing-then-passing output and limitations. Timers and autonomous hunts remain later-phase work.
+
+Use [TDD](skills/tdd.md) when the defect has a cheap local regression path. For effects beyond the diff use [Blast radius](skills/blast-radius.md), within the execution scope. Apply [Deslop](skills/deslop.md) and the [No comments](skills/no-comments.md) protocol to accepted cleanup; preserve read-only reviewer boundaries. App reproduction uses the matching control reference from the [index](workflow-index.md). Delivery follows [Opening a PR](playbooks/opening-a-pr.md) within authorization.
