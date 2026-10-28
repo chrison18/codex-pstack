@@ -26,7 +26,7 @@ def main():
     parser.add_argument('--effort', required=True)
     parser.add_argument('--catalog', type=Path, required=True)
     parser.add_argument('--auth-file', type=Path, default=Path.home() / '.codex/auth.json')
-    parser.add_argument('--case', action='append', choices=('arena', 'architect-checkpoint', 'architect-implement'))
+    parser.add_argument('--case', action='append', choices=('arena', 'arena-same-model', 'arena-invalid-pool', 'architect-checkpoint', 'architect-implement'))
     args = parser.parse_args()
     repo = Path(__file__).resolve().parent.parent
     entry = repo / 'plugins/pstack/skills/poteto-mode'
@@ -34,7 +34,9 @@ def main():
     catalog = args.catalog.resolve(strict=True)
     print(json.dumps({'evidenceDirectory': str(root)}), flush=True)
     results = []
-    for case in ('arena', 'architect-checkpoint', 'architect-implement'):
+    for case in ('arena', 'arena-same-model', 'arena-invalid-pool', 'architect-checkpoint', 'architect-implement'):
+        if not args.case and case in ('arena-same-model', 'arena-invalid-pool'):
+            continue
         if args.case and case not in args.case:
             continue
         logs = root / case
@@ -56,7 +58,7 @@ def main():
         (home / 'config.toml').write_text('[projects.' + json.dumps(str(workspace)) + ']\ntrust_level="trusted"\n'
             '[agents]\ndefault_subagent_model="gpt-6-luna"\ndefault_subagent_reasoning_effort="high"\n')
         before = snapshot(workspace); head = git('rev-parse', 'HEAD'); index = git('diff', '--cached', '--binary')
-        task = ('Use Arena to produce two independent Python artifact candidates for the total API, then crossjudge, synthesize into artifacts/synthesis/app.py and verify that exact synthesized file. ' if case == 'arena' else
+        task = ('Use Arena to produce two independent Python artifact candidates for the total API, then crossjudge, synthesize into artifacts/synthesis/app.py and verify that exact synthesized file. ' if case in ('arena', 'arena-same-model', 'arena-invalid-pool') else
                 'Use Architect for the total API: compare at least two structurally different designs (for example validated records versus a pure functional boundary), then crossjudge and synthesize the design package. ')
         task += ('Preserve total(items) callers with (price, quantity) tuples, sum price*quantity, empty input 0, zero quantity 0; reject negative quantity with ValueError. '
                  'Candidate outputs are non-production artifact packages under the precreated artifacts/candidate-1 and artifacts/candidate-2 only. '
@@ -68,13 +70,22 @@ def main():
             task += 'Continue through the default implementation phase without an extra approval checkpoint. Grounding, candidate and judge work must be static: no delegate may execute or import app.py or check.py. Pass that restriction explicitly to every assignment, including the How explainer. After design synthesis, primary alone may implement app.py and run python3 -B check.py; do not change check.py. '
         else:
             task += 'Do not change production app.py or check.py. Verify the synthesized artifact by loading its absolute path and applying the check.py contract. '
-        pool = 'arena-runner' if case == 'arena' else 'architect-runner'
-        task += ('Resolve the complete ' + pool + ' pool with task selections [{"model":"gpt-6.1-sol","effort":"low"},{"model":"gpt-6-luna","effort":"medium"}]. '
+        pool = 'arena-runner' if case in ('arena', 'arena-same-model', 'arena-invalid-pool') else 'architect-runner'
+        selections = ([{'model': args.model, 'effort': args.effort}] * 2 if case == 'arena-same-model' else
+                      [{'model': 'gpt-6.1-sol', 'effort': 'low'}, {'model': 'gpt-6-luna', 'effort': 'medium'}])
+        if case == 'arena-invalid-pool':
+            selections = [{'model': args.model, 'effort': args.effort},
+                          {'model': 'pstack-unavailable-acceptance-model', 'effort': args.effort}]
+        task += ('Resolve the complete ' + pool + ' pool with task selections ' + json.dumps(selections) + '. '
                  'Resolve arena-judge with task model gpt-6-luna and effort medium. These choices are ephemeral. '
                  'The observed parent model/effort is ' + args.model + '/' + args.effort + '; use --catalog ' + str(catalog) + '. '
                  'Native role installation is already complete. Use explicit resolved model and reasoning_effort in native spawn; global defaults deliberately differ. '
                  'No external services, nested app-server, commits, PRs, role installation, model preference writes or configuration changes. '
                  'Keep checklist in conversation. This is a disposable workspace-write fixture; directory ownership is a task constraint, not a per-agent sandbox guarantee.')
+        if case == 'arena-same-model':
+            task += ' This is an explicitly same-model runner pool. Preserve both selections; independent candidates do not imply model diversity. Report pool diversity separately from judge identity. '
+        if case == 'arena-invalid-pool':
+            task += ' The exact explicit pool is mandatory: if resolution fails, stop before any delegation or artifact writes, disclose the prerequisite failure and do not substitute models, perform primary-only synthesis, or install/change configuration. '
         prompt = '$poteto-mode ' + task
         (logs / 'prompt.txt').write_text(prompt)
         auth = home / 'auth.json'; auth.symlink_to(args.auth_file.resolve(strict=True))
@@ -98,8 +109,8 @@ def main():
         summary, final = research.summarize_events(client.events if client else [], thread)
         (logs / 'final.txt').write_text(final)
         verify = None
-        if status == 'completed' and case != 'architect-checkpoint':
-            target = outputs / 'synthesis/app.py' if case == 'arena' else workspace / 'app.py'
+        if status == 'completed' and case not in ('architect-checkpoint', 'arena-invalid-pool'):
+            target = outputs / 'synthesis/app.py' if case in ('arena', 'arena-same-model', 'arena-invalid-pool') else workspace / 'app.py'
             code = 'import runpy\ntotal = runpy.run_path(' + repr(str(target)) + ')["total"]\n' + (workspace / 'check.py').read_text().split('\n', 1)[1]
             run = subprocess.run(['python3', '-B', '-c', code], cwd=workspace, capture_output=True, text=True)
             verify = {'exitCode': run.returncode, 'stdout': run.stdout, 'stderr': run.stderr}
@@ -110,6 +121,11 @@ def main():
                   'artifactChecksPassed': status == 'completed' and not unexpected and all(candidates)
                   and git('rev-parse', 'HEAD') == head and git('diff', '--cached', '--binary') == index
                   and (verify is None or verify['exitCode'] == 0)}
+        if case == 'arena-invalid-pool':
+            result['artifactChecksPassed'] = (status == 'completed' and not changed
+                and not summary['spawnRequests'] and not summary['resolvedAgentStarts']
+                and git('rev-parse', 'HEAD') == head and git('diff', '--cached', '--binary') == index)
+        result['behaviorVerdict'] = 'UNREVIEWED: inspect resolution, reads, delegation ordering and final claims'
         (logs / 'result.json').write_text(json.dumps(result, indent=2)); results.append(result)
         print(json.dumps(result), flush=True)
         if interrupted:

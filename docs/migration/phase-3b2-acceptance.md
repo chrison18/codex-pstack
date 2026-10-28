@@ -9,7 +9,7 @@ This increment owns acceptance closure, not phase 4. Inventory remains 37 adapte
 | Area | Existing evidence | Remaining work |
 | --- | --- | --- |
 | Interrogate | Concrete two-model defect; native rejected-selection and missing-role boundaries; actual capacity-dropout disclosure and completed empty panel below | Other dropout/recovery modes and desktop coverage |
-| Arena / Architect | Artifact synthesis, How grounding, checkpoint and default implementation | Scrap/reframe/dropout, same-model pools, code-worktree and desktop variants |
+| Arena / Architect | Artifact synthesis, How grounding, checkpoint and default implementation; invalid Arena pool rejection below | Scrap/reframe/dropout, same-model pools, code-worktree and desktop variants |
 | Swarm | Concurrent writers, non-default base, local-process/auth proof, races/conflicts, bounded retry/interruption; tied scores and actual local HTTP rejection below | Actual crash/network recovery and desktop/browser variants |
 | Why | Native local history and primary-host GitHub supplement | Actual native connector access and genuine cross-category synthesis; advertised Slack dispatch failed |
 | Verification authoring / maintenance | Ordinary-path PTY and bounded-property candidates | Protected installation/native discovery and broader formal-tool evidence |
@@ -104,3 +104,26 @@ Evidence: `/private/var/folders/47/vjdx7cgs6kgd9bxf146wm1ph0000gn/T/pstack-resea
 Each reviewer independently read the scoped shipping diff and head artifact (events 183 and 420), then returned no findings at 407 and 515. The primary's final at 658 reconciled both results with its own inspection, explicitly labeled model diversity false and limited its conclusion to static equivalence for nonnegative integers. No application code/tests ran or were claimed to have run. Git emitted sandbox cache warnings but returned the requested artifacts; those warnings are retained in the final evidence limits.
 
 The native capture completed with unchanged snapshots, HEAD and index; the temporary auth link was removed. Manual inspection confirmed exactly two role starts, both final reviews before primary synthesis, no replacement reviewers and no invented findings. This is a same-model independent panel, not cross-model diversity. Interrogate remains partial pending the other retained scenarios; full 3B and phase 4 gates are unchanged.
+
+## Fourth increment: Arena boundaries and Cursor comparison — 2026-10-28
+
+See the [scoped Cursor behavior comparison](cursor-behavior-delta.md) for material goal-carrying, delegation and autonomy differences; the upstream pin is unchanged. Acceptance code started from `612a111bf14106715364b40ed08fa1720b193631` plus the reviewable `accept-codex-design.py` changes adding two opt-in cases. Existing default cases remain unchanged. Native CLI was `0.164.0-alpha.11.1`, macOS; the catalog was refreshed before testing. Raw evidence stays local, not in the public repository.
+
+### Same-model Arena — BLOCKED by actual model capacity
+
+`arena-same-model` requests two independent Sol/low runners, with the existing Luna/medium judge choice; runner independence must not be labeled model diversity. The Sol/low parent read workflow guidance, then the native server returned `serverOverloaded`, `willRetry:false`, before any runner started (raw events 90/91). Capture status was failed, zero spawn requests/starts, no candidate rationales and no changed paths. The temporary auth link was removed. This is an infrastructure block, not a same-model workflow pass or a dropout test. No unchanged retry or silent selection substitution occurred.
+
+### Invalid Arena pool — scoped PASS
+
+An independent `arena-invalid-pool` case uses the existing available Luna/medium parent and an exact explicit pool containing Luna/medium plus `pstack-unavailable-acceptance-model`, absent from the fresh catalog. On resolution failure it must stop before delegation/artifact writes, without model substitution or primary-only synthesis. This is a different boundary scenario, not a successful rerun of the blocked same-model case.
+
+The parent read the actual entry/runtime/Arena instructions (event 66), then called the real `resolve-panel ... arena-runner` with both exact selections at 86. The tool returned `Unavailable model: pstack-unavailable-acceptance-model` at 92. The final at 227 reported the blocked prerequisite and explicitly skipped judge resolution, candidates, judging, synthesis and verification. There were zero spawn requests/starts, zero changed paths, unchanged HEAD/index and no candidate artifacts; auth link removed. Manual event inspection supports atomic rejection before fan-out, not successful candidate synthesis. Capture retains an UNREVIEWED label because guards alone cannot establish this semantic verdict.
+
+Reproduce with a freshly generated native catalog and the selected CLI:
+
+```sh
+python3 -B scripts/accept-codex-design.py --case arena-same-model --codex /absolute/codex --model gpt-6.1-sol --effort low --catalog /tmp/pstack-design-catalog.json
+python3 -B scripts/accept-codex-design.py --case arena-invalid-pool --codex /absolute/codex --model gpt-6-luna --effort medium --catalog /tmp/pstack-design-catalog.json
+```
+
+The new cases are opt-in so default runs do not silently consume extra model calls. Python parsing, package/inventory validators, the package regression suite (34 tests / 57 assertions), diff and local-link checks passed. No full-3B status is upgraded. Same-model success, design scrap/reframe/dropout, code-worktree variants, actual crash/network recovery, connector synthesis, protected discovery, strict Eval and applicable UI evidence remain open. Next feasible work is a bounded design dropout/reframe probe; goal-carrying guidance differences should be proposed separately with attribution and delegated-brief acceptance. Phases 4 and 5 remain dependent on full 3B closure.

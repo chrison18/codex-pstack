@@ -4,7 +4,9 @@ Status: phases 0 through 2, 3A and **3B1** are merged. PR #5 merged as `b9ad7434
 
 ## Outcome and scope
 
-Deliver a Codex-only pstack port for desktop and CLI. Preserve its principles, roles, and playbook outcomes while adapting host behavior. Keep `$poteto-mode` explicitly invoked for each new task. Ordinary prompts must not activate the full workflow. Follow-ups within an active task continue that task without repeating the invocation.
+The [user-outcome acceptance contract](user-outcome-acceptance.md), confirmed 2026-10-28, makes **Orca Codex Chat** the primary user-facing target: one maintained pstack workflow for all participating agents, convenient native `$poteto-mode` entry (the owner explicitly accepted this spelling), and sustained progress with durable recovery. It records current evidence, blockers and prioritized next work; standalone desktop and CLI checks cannot substitute for Orca Chat parity. Existing `$` entry evidence below remains valid within its tested scope but does not establish current Orca Chat UI discovery/loading. Mechanical nudges or supervised continuation do not constitute an autonomous pstack runtime.
+
+Deliver a Codex-only pstack port for desktop and CLI. Preserve its principles, roles, and playbook outcomes while adapting host behavior. Keep activation explicit for each new task; the currently verified native spelling is `$poteto-mode`, and the owner accepts this native spelling; actual Orca Chat discovery/loading remains an open acceptance requirement. Ordinary prompts must not activate the full workflow. Follow-ups within an active task continue that task without repeating the invocation.
 
 Keep persistent repository agreements and configuration separate from the skill's full workflow. Installing the package or adding `AGENTS.md` must not implicitly enable poteto-mode. Once explicitly invoked, its instructions may authorize subagents required by the selected workflow.
 
@@ -19,7 +21,7 @@ Target mechanisms are proposals until verified against the selected client versi
 | Surface | Inherited dependency | Codex work and proof | Phase |
 | --- | --- | --- | --- |
 | Distribution | agy manifest/installer | Codex package; clean install, discovery, update, removal | 1, 6 |
-| Invocation | Slash commands, frontmatter | Explicit `$poteto-mode`; positive and negative invocation tests | 1 |
+| Invocation | Slash commands, frontmatter | Historical native `$poteto-mode` evidence; prove accepted native `$poteto-mode` discovery/loading in Orca Codex Chat separately, plus positive/negative controls | 1 evidence; 3B2 reconciliation; 6 release |
 | Custom agents | Markdown agents, agy tool lists | Verify distribution/registration for both roles and actual instruction/tool loading | 2 |
 | Delegation | `invoke_subagent`, agent messages | Supported spawn, follow-up, wait, result collection; primary ownership | 2, 3 |
 | Models | agy tiers and inherit | Detect models; separate model/effort; test configuration precedence | 2 |
@@ -92,3 +94,5 @@ Run [script checks](../../CONTRIBUTING.md#verification) for affected code/depend
 Inherited Antigravity CI stays unchanged in phase 0. Phase 1 adds Codex packaging checks; phase 6 removes obsolete host checks. Authenticated checks unavailable in CI require explicit local evidence and must never appear as a CI pass.
 
 See the [initial baseline](baseline-2026-10-21.md). Review and owner approval are required before merge. This plan does not authorize deployment, automatic merging, or activation of recurring jobs.
+
+The owner requires a public learning history: meaningful increments must be committed and reflected in GitHub PR descriptions with verification and explicit limits after review. Follow the [public-history contract](user-outcome-acceptance.md#public-migration-history), keep raw private evidence local, verify the GitHub-associated author/committer identity, and preserve existing merge gates and published history.
