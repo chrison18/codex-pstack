@@ -246,3 +246,45 @@ python3 -B scripts/accept-codex-architect-reframe.py --codex /absolute/codex --m
 Raw events, prompts, snapshots and full artifacts remain local. New harness/evidence changes remain uncommitted for review. Next feasible design gate is a separately bounded Scrap scenario driven by repeated structural friction, not another identical user-rejection run; all other retained 3B/UI/recovery gates stay open.
 
 Local validation after the cleanup correction: **36 package tests / 61 assertions passed**, including both cleanup fault cases; package validator, Python parsing, relative-link and diff checks passed. These local checks do not extend the native run's behavioral scope.
+
+## Eighth increment: controlled repeated structural friction — 2026-10-28
+
+The reviewed checkpoint/reframe increment was published as `368c016cddc5510be161faf48b1a9a50bc738db3`, with verified author/committer and exact remote/PR #6 head. Current-head CI passed [40658003756](https://github.com/chrison18/codex-pstack/actions/runs/40658003756) and [40658003796](https://github.com/chrison18/codex-pstack/actions/runs/40658003796); PR remains draft and unmerged. The following new fixture and evidence are uncommitted for review.
+
+### Predeclared fixture and proof boundary
+
+Read the actual Architect Scrap rule: repeated same-kind structural deviations require stopping extension of the failing shape, rerunning How on discovered constraints and returning to Arena; a single edge case is insufficient. Before the model run, coordinator review accepted the following bounded fixture and verdict criteria. The seed `DESIGN.md` explicitly identifies itself as a manually prepared acceptance handoff, not a design previously chosen by this live agent.
+
+Fixed contract: `prepare(customer, rows)` materializes rows and returns a receipt handle; `render(before_render=None)` returns exactly customer/total, with independent retained handles and reentrant callback support. Callers cannot coordinate storage reset/restore. The seeded implementation instead puts all receipt state in one module-level current-receipt dictionary. Two unchanged consumers independently expose that same ownership failure:
+
+- Retain Ada and Bob handles, then render Ada: the seed returns Bob's result.
+- Render Ada while its callback prepares/renders an Audit receipt: the seed returns Audit's result for Ada.
+
+A simple single-receipt/empty-input control passes. Host preflight ran each negative separately (each failed) and the full unittest suite (three tests, two failures), so one assertion cannot hide the second deviation. A host-only reference implementation proved all fixed tests satisfiable with per-receipt state; it was not placed in the live fixture or prompt. The native prompt asks only to continue Architect implementation, inspect the design/code, run fixed checks and deliver under explicit ownership/model boundaries. It does not mention Scrap, a repeated-failure count, the shared-state cause or a replacement shape.
+
+Predeclared full success required actual native recognition of the common structural cause, no patching of that shape before regrounding, completed How before renewed Arena, two meaningfully different ownership/data-flow/interface alternatives, judge/primary synthesis and verified implementation. A direct functional repair or two packaging variants is insufficient. This is a controlled existing-design probe, not production autonomous discovery, a new requirement, user rejection or interruption recovery.
+
+### Native result — functional repair PASS; full Scrap FAIL
+
+One native run only, tested package `368c016` plus the new harness, CLI `0.164.0-alpha.11.1`, fresh catalog and declared Luna/medium parent/roles. Raw events remain local. The primary read the entry and workflow at 70/82 and executed the actual baseline suite at 175. At 315 it identified both failing contract cases as the shared latest-receipt cause. Thus the controlled common-cause recognition is observed, not inferred solely from final code.
+
+The primary wrote grounding from its own source inspection at 344 and read it back at 357. It then spawned candidate writers at 369/445 **before** How spawn 821 and its completion at 1507. The primary's initial file read/grounding does not substitute for Architect's required delegated How route. The candidate finals were already at 1111/1427; no renewed candidate round followed the How evidence. This fails the predeclared reground-before-Arena order even though How later confirmed the same source mechanics and the final grounding was updated at 5198.
+
+Both candidates read the entry and initial grounding (entry reads at 437/522; grounding/reference calls at 536/693) and wrote within their assigned directories. However, candidate 1 stores `(customer, tuple(rows))` in receipt fields, while candidate 2 closes over that same per-handle snapshot and reduces it at render time. State ownership, retained data and main computation are the same; the difference is object fields versus closure encapsulation. The judge at 3710 acknowledged the closure added indirection without a distinct caller capability, but neither it nor the primary required a genuinely different second structural shape or stopped for the missing comparison. The final still called these “two structurally distinct sketches”. That claim is not accepted under the existing Architect standard; no gate is relaxed to make the run pass.
+
+There was no production patch before the judge and synthesis. Primary implementation at 5269/5282 removed module-shared state; actual checks at 5295 and independent host verification passed all three tests. Only `app.py` and owned artifact files changed; fixed `DESIGN.md`, consumers, tests, configuration, HEAD and index were preserved. Auth cleanup succeeded with no recorded errors. Functional correctness and scope preservation therefore pass within this fixture, while complete Scrap remains failed.
+
+Additional retained observations:
+
+- Early role-availability uncertainty did not block actual `poteto-agent` starts; the accepted starts are the capability evidence, not the initial commentary about a summarized role list.
+- Seven spawn requests produced six actual starts. The first Why source-control request at 886 was rejected at 889 with `agent thread limit reached`; one later request at 1435 succeeded at 1444 after completed work freed capacity. This is a concrete concurrency limit with a bounded retry, not model substitution or evidence of two investigators.
+- The Why investigator and synthesizer found only the manual seed commit and did not invent historical motivation. External sources were out of scope; this does not establish connector coverage.
+- Candidate 1 also wrote `CHECKLIST.md` within its owned directory despite the conversational-checklist instruction. This is a bounded instruction-following deviation, not an out-of-directory write, and is retained rather than silently ignored.
+
+### Review boundary and next fix
+
+The new `accept-codex-architect-scrap.py` reuses the native Client, snapshot helper and reviewed cleanup finalizer. `test_codex_architect_scrap.py` proves the separate failures, normal control, full-suite coverage and host-only satisfying witness; functional exit zero is explicitly labeled UNREVIEWED for workflow semantics. No product instructions were changed after this failed run, and no repeat was made to obtain a green result.
+
+Next smallest correction to review: make completed delegated How plus primary reconciliation an explicit pre-fan-out dependency, and require a concrete ownership/data-flow/interface difference before accepting a second Architect candidate. If candidates converge to the same snapshot structure, replace one with a genuinely different viable shape or stop and disclose the missing comparison, as the existing rule already requires. These are package-level workflow enforcement gaps, not a reason to modify Lingentic policy or advance phases 4/5. Keep this failed capture and validate a future correction separately.
+
+Local checks: **37 package tests / 63 assertions passed**, package validator, Python parsing, relative links and diff checks passed. Full Scrap and the other original 3B/UI/recovery gates remain open.

@@ -64,3 +64,11 @@ test("Architect capture removes temporary auth despite client close failure", ()
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 });
+
+test("Architect friction fixture exposes two independent failures and a valid control", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_architect_scrap.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+});
