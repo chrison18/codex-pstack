@@ -96,3 +96,9 @@ On 2026-10-26 the owner authorized PR #5 merge after validation and review. The 
 ## Phase 3B2 acceptance start
 
 PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb`; `test/codex-3b-acceptance` starts from that actual main. The [3B2 evidence](docs/migration/phase-3b2-acceptance.md) adds native rejection and missing-role fallback probes, retaining two real capacity failures as partial/dropout evidence rather than full empty-review passes. No inherited source pin or runtime workflow instruction changes; full 3B/phase 4 gates remain open.
+
+## Phase 3B2 independent-start adapter
+
+At the unchanged inherited pin, the package runtime contract and Arena reference now describe the supported Codex fresh-start schema for explicitly modeled independent delegates, complete scoped briefs and existing grounding before Arena fan-out. This is a local host adaptation prompted by observed inherited-context launch errors and missing-context handoffs, not a Cursor source synchronization. The [3B2 evidence](docs/migration/phase-3b2-acceptance.md) separates coached historical runs, initially incomplete uncoached handoffs and the corrected package-driven native run. General Feature/Bug/Investigation behavior and Orca Chat UI are not recertified by the Arena fixture.
+
+The same 3B2 adapter now distinguishes directly declared native collaboration/role schemas from nested tool inventories before missing-role fallback. This responds to a reproduced false-absence inference in Investigation; the retained failed run and corrected role-present/role-absent native probes are in the same evidence record. No upstream source pin or global policy changed.

@@ -109,8 +109,6 @@ def main():
                      'Do not claim two candidates, a comparison victory, or process-crash recovery. Write artifacts/synthesis/coverage.json '
                      'as {complete:false,completed:["candidate-1"],missing:["candidate-2"],reason:TEXT}. '
                      'No replacement worker, no nested delegation, and no writing candidate-2 on its behalf.')
-        if case in ('arena-same-model', 'arena-dropout'):
-            task += ' All runner and judge spawns must use fork_turns none with a self-contained scoped brief and absolute entry/grounding pointers; do not inherit the parent conversation. '
         prompt = '$poteto-mode ' + task
         (logs / 'prompt.txt').write_text(prompt)
         auth = home / 'auth.json'; auth.symlink_to(args.auth_file.resolve(strict=True))
