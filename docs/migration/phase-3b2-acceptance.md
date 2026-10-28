@@ -288,3 +288,51 @@ The new `accept-codex-architect-scrap.py` reuses the native Client, snapshot hel
 Next smallest correction to review: make completed delegated How plus primary reconciliation an explicit pre-fan-out dependency, and require a concrete ownership/data-flow/interface difference before accepting a second Architect candidate. If candidates converge to the same snapshot structure, replace one with a genuinely different viable shape or stop and disclose the missing comparison, as the existing rule already requires. These are package-level workflow enforcement gaps, not a reason to modify Lingentic policy or advance phases 4/5. Keep this failed capture and validate a future correction separately.
 
 Local checks: **37 package tests / 63 assertions passed**, package validator, Python parsing, relative links and diff checks passed. Full Scrap and the other original 3B/UI/recovery gates remain open.
+
+### Post-probe workflow clarification — pending native verification
+
+The reviewed six-file fixture/evidence increment was published as `e9cb808c6ea90ed6a138af4ffad6c42c7e3b3ba5`; remote head matched and both workflows passed ([40660287288](https://github.com/chrison18/codex-pstack/actions/runs/40660287288), [40660287259](https://github.com/chrison18/codex-pstack/actions/runs/40660287259)). Author and committer use the repository owner's verified public noreply identity.
+
+The subsequent uncommitted package clarification makes delegated How completion and primary source reconciliation a prerequisite to freezing Architect grounding and launching candidates. Architect now defines concrete ownership/lifetime, data-flow/computation and interface-responsibility evidence for runners, judge and primary; equivalent encapsulations cannot establish structural diversity. One replacement is permitted for unchanged framing, followed by explicit incomplete stop if comparison still fails. Arena and runner instructions reference that central contract; ordinary Arena convergence, legitimate How fallback, greenfield exceptions and read-only boundaries remain intact.
+
+These are workflow constraints, not executable scheduling or semantic guarantees. No new native model run was started in this increment; the previous full Scrap FAIL remains unchanged. Next targeted verification: rerun the predeclared controlled fixture after review, inspect actual How completion/reconciliation before every candidate start, and inspect concrete candidate differences plus judge/primary comparison before implementation. If candidates converge, inspect the bounded replacement or honest stop instead of demanding a passing implementation. Full 3B, UI and recovery gates remain open.
+
+Post-change local checks: package validator, 37 package tests / 63 assertions, 34 relative Markdown link targets and `git diff --check` passed. These structural checks do not prove native ordering or semantic diversity.
+
+## Ninth increment: package-driven controlled Scrap verification — 2026-10-28
+
+**Verdict: scoped controlled Scrap repair PASS; convergence/replacement/stop branch NOT RUN.** This is one new run after review of the package clarification, not a retry of the unchanged failed package. The eighth increment remains FAIL. The manually seeded design and two independent fixed consumer failures remain controlled fixture evidence, not a claim of production-discovered friction or lifecycle recovery.
+
+Source was published `e9cb808c6ea90ed6a138af4ffad6c42c7e3b3ba5` plus the reviewed uncommitted Architect/Arena/runner guidance. Runtime was Codex CLI `0.164.0-alpha.11.1`; a fresh native catalog validated the predeclared parent, design and research/judge pool `gpt-6-luna/medium`, against isolated global Luna/high defaults. The unchanged committed `accept-codex-architect-scrap.py` supplied the same seed, fixed requirements, tests and user prompt; no prompt-level How-order, diversity or Scrap answer hints were added. Tested package SHA-256 identities:
+
+| Reference | SHA-256 |
+| --- | --- |
+| `architect.md` | `bf16f459a2814c0fb93a6095d3fc4c6cbedb4eee1dac7695a8c6ac5eadcb8636` |
+| `arena.md` | `e5a0df79c86f394edc225da32bcaa077f6c981f76d0649a34171a36f14c9412b` |
+| `architect/runner-prompt.md` | `8a084e45ee587f7e9c53360ace6e4b80faf06d3c73b15a1c1271bc553a2b210d` |
+
+### Actual sequence and delegated context
+
+Zero-based positions in the locally retained native event stream:
+
+- Primary read package entry/runtime/Architect at 84, then Arena/How at 97. Actual baseline execution at 111 reproduced two failures and one passing control. It identified their shared-state cause at 172, read the fixed contract and sources at 181/477, and deferred implementation pending research/design. No production patch occurred until 4111.
+- How spawned at 515, read entry and source context at 589, and completed at 1718. Why history and synthesis completed at 1858/2811, retaining unknown historical intent. The primary reconciled the How/history findings against its inspected sources at 1987, wrote the resulting shared grounding at 2831 and read it back at 2841. Both candidate spawns, 2853/2875, were later. No candidate raced its prerequisite How.
+- Candidate 1 actually read entry, Architect references and frozen grounding at 3084. Candidate 2's raw call/output at 3044/3068 contains those same required reads; later principle-path recovery did not erase the successful entry/grounding reads. Both wrote only their separate candidate directories and finished at 3582/3369 before judge spawn 3692.
+- The primary read every candidate file at 3673. Judge read entry at 3754, Architect/Arena comparison instructions at 3776, grounding at 3793 and candidate files at 3805/3871. Its observed comparison at 3866 and final at 3955 distinguish render-time retained rows from prepare-time result snapshots; this was not inferred only from the primary's final claim.
+- Seven requests produced seven actual native starts: six `poteto-agent` assignments (How, Why investigator/synthesizer, two candidates, judge) and one `comment-sicko` review. Every observed start resolved Luna/medium with independent-start requests. The comment reviewer read entry at 4210 and the diff/input evidence at 4228/4279/4291. Research/review used existing source context; no new grounding was required from those delegates. All delegate commands were static reads or authorized candidate artifact writes; no delegate imported/executed the app or tests.
+
+### Structural comparison and implementation
+
+Candidate 1 retains materialized rows for each receipt's lifetime and sums during every render. Candidate 2 materializes and aggregates inside `prepare`, drops the row collection and retains only customer/total. Actual types, pseudocode and rationale show a different retained-data lifetime and computation boundary: repeated O(rows) rendering and row storage versus one-time aggregation and constant-sized retained result. Public caller signatures agree; a mere wrapper distinction is not the accepted difference.
+
+Judge and primary agreed these were viable distinct shapes, but disagreed on the preferred base. Judge preferred candidate 1's direct shape and compatibility; primary's synthesis at 3991/4005 records independent scoring, arithmetic-timing/type risks, and chooses candidate 2's data lifecycle while removing its extra snapshot wrapper and narrowed type aliases. The implemented `app.py` at 4111 actually materializes/sums in `prepare` and retains customer/total fields; it does not silently revert to candidate 1. Tests at 4128 and independent host verification both passed all three cases; diff checks passed.
+
+Only seven paths changed: `app.py`, four candidate documents and two synthesis documents. Snapshot comparison found no changes to fixed `DESIGN.md`, `consumers.py`, `check.py`, role/configuration files or other paths. HEAD/index were preserved; temporary auth was removed and cleanup errors were empty. No checklist file was created. The final's phrase that candidates “remained read-only” is imprecise: they wrote authorized design artifacts, while remaining static-only with respect to the application; the actual record takes precedence.
+
+### Retained limits and next gate
+
+Early resolver calls used wrong paths and an unsupported singular `--selections` argument; the agent recovered through local discovery/help before any spawn. Principle leaf paths also needed local correction. Preserve these failures as execution friction, not a reason to rerun until flawless. No capability or model substitution was observed.
+
+No convergence occurred, so the one-replacement limit, constrained replacement ownership and honest incomplete-stop behavior remain **NOT RUN**. The next bounded native gate is a separately predeclared convergence scenario to inspect that branch without coaching its decision or widening directory authority. The new workflow guidance remains prose, not runtime scheduling/semantic enforcement. The original automatic-discovery, actual dropout/crash/network, code-worktree and Orca Chat/UI limits and full phase 3B dependencies remain; no phase 4/5 advance or publication occurred here.
+
+Local package validator and all **37 tests / 63 assertions** passed. Existing fixture proof/cleanup tests are included; no new framework or acceptance harness change was needed. Raw logs, fixture paths and incidental runtime identifiers remain local. Package changes and this evidence await coordinator review before publication.
