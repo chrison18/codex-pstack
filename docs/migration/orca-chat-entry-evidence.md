@@ -33,3 +33,22 @@ Continue independent 3B2 acceptance and the [Cursor behavior comparison](cursor-
 The task-owned fixture, symlink and empty Chat are retained locally for the coordinator; their identifiers are in the private fixture audit. No uncertain handle was used to close resources, and the original user chat was untouched. No global changes, runtime implementation, merges or recurring automation occurred. The existing phase gates remain unchanged.
 
 Validation: diff/Markdown link checks and fixture HEAD/status/README checks passed. Runtime tests were not needed for this documentation-only UI record; UI/provider acceptance remains blocked regardless of those local checks.
+
+
+## Supported initial Chat launch — 2026-10-29
+
+**Scoped PASS: actual Orca structured Chat, literal short-entry skill injection/loading and harmless read-only marker task.** Earlier GUI focus failures remain historical. Visible picker selection, same-Chat follow-up, fresh ordinary control and project role/install/update/remove acceptance are NOT RUN in this increment.
+
+Checkout `16b491cf001a6c5656b77ec1c10df0f52e8487e1`, package `0.2.0-alpha.1`, Orca `1.4.242`, provider CLI `0.164.0-alpha.11.1`. No model override: actual context reports existing `gpt-6-astra/ultra`. Verified retained fixture, README digest/HEAD and project-local entry symlink before executing exactly one documented `orca agent launch --agent codex --surface chat --worktree path:<verified-fixture> --prompt '<literal prompt>' --json`. The single-quoted prompt was exactly:
+
+```text
+$poteto-mode Read README.md and report its marker. Read-only: do not modify files, install anything, delegate, or contact external services. Report any missing capability honestly.
+```
+
+Receipt returned `outcome.kind: structured` and `prompt.delivery: submit` / `prompt.outcome: journaled`; no fallback, duplicate or retry occurred. Receipt alone did not pass loading. Supported search index status was enabled/current; a fresh Codex search restricted to the exact fixture path returned one hit with structured-session identity matching the launch receipt. Only the precise task-owned provider file returned by that mapping was inspected, not unrelated chats/stores.
+
+Zero-based provider records: 11 contains the submitted prompt; 13 injects the actual named skill/path and maintained SKILL contents; call16/output21 reads entry/runtime; call25/output29 reads Investigation/principles; call35 reads prove-it-works and status; call41/output45 reads README line1 with `ORCA_ENTRY_28` and unchanged Git status; final48 returns the correct marker and truthful read-only/role limits; task_complete51 confirms completion. This is actual injection and tool evidence rather than self-report alone.
+
+Independent before/after snapshots are identical, HEAD/index unchanged; only the pre-existing alias remains untracked. No install, delegate or external-source call occurred. Project roles are absent and delegation was explicitly prohibited; no registered-role or clean-global-policy claim follows. The original user Chat was untouched; this completed test Chat is retained for follow-up.
+
+Completed provider capture SHA-256: `59d176aa7e4766f445afc4a8dda5878931844090e9f63cbc634cffe36a8205df`. Raw paths/identities/receipts/host context remain private. Next: same-task follow-up in the precisely mapped Chat through a supported interface (or minimal owner input), then a separately launched fresh ordinary control and project setup/update/removal evidence. None ran here. Evidence remains uncommitted for coordinator review; no full core/phase4/phase5/merge completion claim. Snapshot, local link/privacy and diff checks passed.
