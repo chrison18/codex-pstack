@@ -127,3 +127,34 @@ python3 -B scripts/accept-codex-design.py --case arena-invalid-pool --codex /abs
 ```
 
 The new cases are opt-in so default runs do not silently consume extra model calls. Python parsing, package/inventory validators, the package regression suite (34 tests / 57 assertions), diff and local-link checks passed. No full-3B status is upgraded. Same-model success, design scrap/reframe/dropout, code-worktree variants, actual crash/network recovery, connector synthesis, protected discovery, strict Eval and applicable UI evidence remain open. Next feasible work is a bounded design dropout/reframe probe; goal-carrying guidance differences should be proposed separately with attribution and delegated-brief acceptance. Phases 4 and 5 remain dependent on full 3B closure.
+
+## Fifth increment: controlled missing output and same-model completion — 2026-10-28
+
+Tested source: `79c61dbef6dc50b3c0529f2b56ef7daffaeec0b0` plus the reviewable harness changes in this increment. Native Codex CLI remained `0.164.0-alpha.11.1` on macOS. A fresh native catalog supported the predeclared parent, both runners and judge: `gpt-6-luna/medium`. This is a separate declared scenario from the historical Sol capacity failure, not a substitution within that result. Raw events and fixtures remain local; event positions below are zero-based.
+
+### Controlled missing-output / N−1 handling — scoped PASS
+
+The opt-in case named `arena-dropout` deliberately instructs runner 2 to load its instructions and grounding, then report a simulated missing-input blocker without writing a candidate. It does **not** kill a process or simulate network recovery. Runner 1 must produce its own candidate; the primary may judge/synthesize only that real candidate and must write explicit incomplete coverage. Existing default cases are unchanged.
+
+The parent read entry/runtime/Arena at event 68 and wrote grounding before fan-out at 176. An initial inherited-context spawn failed with `no rollout found`; the parent then used independent `fork_turns:none` starts. Four spawn requests produced exactly three actual starts (two runners and one judge), all at the declared model/effort. Runner entry reads were observed at 431/473. Runner 2 returned BLOCKED at 565 without files; runner 1 wrote only its own app/rationale and completed at 734. The judge started at 822 after both terminal results, read the entry and actual candidate, and returned its reduced-coverage assessment at 1368. The primary wrote synthesis only afterward at 1466 and disclosed one available candidate, no two-candidate comparison and no crash-recovery claim in its final at 1998.
+
+Only candidate 1's two files and four synthesis files changed. Candidate 2 remained empty; production files, HEAD and index stayed unchanged. `coverage.json` records `complete:false`, completed candidate 1, missing candidate 2 and a nonblank reason. The exact synthesized-file contract check passed; temporary auth was removed. The strengthened coverage guard was replayed against these actual artifacts and passed. Negative regression cases reject `complete:true`, incorrect completed/missing lists, absent candidate 1, invented candidate 2, invalid reasons and malformed JSON. These checks validate evidence shape; the semantic verdict comes from the event/artifact audit above.
+
+### Same-model Arena completion — scoped PASS
+
+An initial Luna attempt was BLOCKED by two inherited-context spawn errors (`invalid thread-store request: no rollout found`), with zero child starts and no candidate artifacts. Its honest blocked final is retained. The harness now explicitly requests `fork_turns:none` and self-contained scoped entry/grounding briefs for these two opt-in scenarios. One bounded rerun after that changed launch constraint completed; no unchanged capacity retry was made.
+
+In the completed run, entry/runtime/Arena reads occurred at 74. The parent corrected an initially mistaken runtime-script path and resolved the whole pool before grounding at 289 and two runner spawns at 302/323. Both actual starts were Luna/medium despite isolated global defaults of Luna/high. Each runner independently read the entry (369/454), corrected mistaken principle paths, loaded grounding and wrote only its own app/rationale. Both finals (788/1004) preceded judge spawn 1033. The primary read both complete artifacts at 1021; the judge read the entry, grounding, both full apps and rationales at 1090, ran bounded contract checks, and returned at 1531. Synthesis was written at 1636, then the primary loaded that exact absolute file and verified the contract at 1649. Capture independently returned `design acceptance passed`, exit 0.
+
+The two candidates converged on the same one-pass implementation and rejected the same list-materialization alternative. The judge and primary explicitly reported equivalence, not structural or model diversity; the final at 2240 states `modelDiversity:false` and the judge's matching identity. Seven candidate/synthesis files changed, with no out-of-scope changes, unchanged production files/HEAD/index and removed temporary auth. No extra approval checkpoint was introduced. This proves independent same-model artifact execution and truthful convergence reporting, not Architect structural-alternative quality, code-worktree isolation or Chat parity. The judge's final included mistyped file links; actual tool reads used the correct files, so the links are not used as evidence.
+
+Reproduce each separately with a fresh catalog:
+
+```sh
+python3 -B scripts/accept-codex-design.py --case arena-dropout --codex /absolute/codex --model gpt-6-luna --effort medium --catalog /tmp/pstack-design-catalog.json
+python3 -B scripts/accept-codex-design.py --case arena-same-model --codex /absolute/codex --model gpt-6-luna --effort medium --catalog /tmp/pstack-design-catalog.json
+```
+
+Next executable task: a bounded Architect scrap/reframe scenario with a rejected initial design, explicit revised grounding and inspected second-round artifacts. Actual runner/process failure and crash/network recovery, design code-worktree variants, connector synthesis, protected discovery, strict Eval and applicable UI evidence remain open. The Orca Chat input block is unchanged. Full 3B remains incomplete; phases 4/5 and merge gates are unchanged.
+
+Local validation for this increment: package regression suite **35 passed / 59 assertions**, package validator and `git diff --check` passed. No production workflow instruction changed; the new missing-output case and independent-start constraints are acceptance harness controls. Independent review and publication are still pending.
