@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2, 3A and **3B1** are merged. PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb` after review and current-head CI. **3B2** is active on `test/codex-3b-acceptance` from that actual main; see the [acceptance queue](phase-3b2-acceptance.md). All portable sources have classified candidates and bounded evidence. Remaining live-source/desktop/blinding and other partial gates are retained, not waived. Phase 4 remains blocked until full 3B acceptance closes. Qualified desktop discovery/version-display capture remains assigned to phase 6.
+Status: phases 0 through 2, 3A and **3B1** are merged. PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb` after review and current-head CI. **3B2 core acceptance (PR #6)** is active on `test/codex-3b-acceptance` from that actual main; see the [acceptance queue](phase-3b2-acceptance.md). All portable sources have classified candidates and bounded evidence. Remaining live-source/desktop/blinding and other partial gates are retained, not waived. On 2026-10-29 the owner approved core-first delivery: phase 4 depends on accepted and merged 3B2 core, while advanced acceptance is tracked separately in 3B3. Approval changes ordering only, not merge authorization or evidence verdicts. Qualified desktop discovery/version-display capture remains assigned to phase 6.
 
 ## Outcome and scope
 
@@ -12,7 +12,7 @@ Keep persistent repository agreements and configuration separate from the skill'
 
 Start at `a06537a883278a63132e2518971166002f3de5de`, with pstack 0.15.29 and cursor-team-kit 1.2.0. See [provenance](../../UPSTREAM.md) and [Git rules](../../CONTRIBUTING.md). Preserve the baseline inventory unless a reviewed change explains a removal or replacement.
 
-Core availability requires phases 1 through 4. Full migration requires phases 5 and 6. Unsupported capabilities must be marked. Cursor/Antigravity compatibility, cloud parity, and unrelated upstream upgrades are outside scope.
+Core availability requires phases 1 through 4, including 3B2 core acceptance. Full migration requires phases 5 and 6 and an explicit disposition of 3B3 advanced support claims. Unsupported capabilities must be marked. Cursor/Antigravity compatibility, cloud parity, and unrelated upstream upgrades are outside scope.
 
 ## Capability mapping
 
@@ -36,7 +36,7 @@ Target mechanisms are proposals until verified against the selected client versi
 
 ## Phases and branches
 
-Each listed increment uses one branch and PR from latest merged `main`. Wait for its dependency to merge. Phase 3 is explicitly split below so reviewed candidate implementations can land while remaining capability gates stay visible. The 3B1/3B2 split preserves the original phase 3 exit gate. Update this plan before any further split; phases 4–6 still depend on completion of 3B2.
+Each listed increment uses one branch and PR from latest merged `main`. Wait for its dependency to merge. Phase 3 is explicitly split below so reviewed candidate implementations can land while remaining capability gates stay visible. The owner-approved 2026-10-29 split assigns core acceptance to existing 3B2/PR #6 and advanced acceptance to 3B3. Phase 4 depends on accepted/merged 3B2 core; phase 5 depends on accepted/merged phase 4. Phase 3B3 branches from merged core when its prerequisites are available and does not block phases 4/5; phase 6 still reconciles every support claim and all user outcomes. No merge is authorized by this revision.
 
 | Phase | Branch | Deliverables | Exit gate |
 | --- | --- | --- | --- |
@@ -45,7 +45,8 @@ Each listed increment uses one branch and PR from latest merged `main`. Wait for
 | 2 | `feat/codex-core-workflow` | Router, both agents, checklist, model setup; Feature/Bug fix/Investigation | One real task of each kind completes; roles load correct instructions; model/effort rules hold; primary owns workflow |
 | 3A | `feat/codex-skill-workflows` | Complete source inventory, full principles, How/Why local research | Source/provenance and explicit invocation guards; representative principles and local research checks; independent review and CI; live-source and remaining-skill gaps explicit |
 | 3B1 | `feat/codex-remaining-workflows` | Remaining portable candidates, design/review/delegation, expanded playbooks and bounded parallel workflows | Complete source classification and dependency checks; scoped native evidence; independent latest-change review, resolved findings and current-head CI; all partial/blocked surfaces retained |
-| 3B2 | `test/codex-3b-acceptance` | Remaining 3B acceptance and capability reconciliation | Original phase 3 exit gate: every skill classified and structurally checked; changed host mechanisms exercised; isolated writers, base refs and local-state verification work; applicable desktop/native checks and cross-source synthesis; unavailable live-source coverage explicitly limited |
+| 3B2 core | `test/codex-3b-acceptance` (PR #6) | Core intended-client acceptance and capability reconciliation | All 87 units classified/structurally checked; changed core host mechanisms exercised; scoped core Feature/Bug/Investigation and delegate loading; isolated writers/base/local-state evidence; actual Orca Chat short entry, positive task, follow-up and fresh ordinary negative control; project install/update/remove preserving unrelated state; independent review and exact-head CI |
+| 3B3 advanced | `test/codex-advanced-acceptance` | Separately tracked advanced live Why, strict Eval, real runner-fault and native visual/formal/other advertised breadth | Actual scoped evidence when prerequisites exist; retained failures and explicit unsupported/unverified boundaries otherwise; no synthetic passes or automatic inventory upgrades; review and exact-head CI before its own merge |
 | 4 | `feat/codex-session-lifecycle` | Recall, pickup, history mining, decision trail, worktree audit | Interrupted task resumes from evidence; scoped history; active/dirty/uncertain worktrees not declared safe |
 | 5 | `feat/codex-autonomous-workflows` | Autonomous run, babysit, orchestrate, autopilot, Benny, bot UI | Continuation, wake, cancel, restart, completion, duplicate delivery tested; missing dependencies reported |
 | 6 | `chore/codex-release-readiness` | Final docs/CI, client matrix, install/update/remove instructions | Clean walkthrough; all release claims have evidence; supported versions and limits explicit |
