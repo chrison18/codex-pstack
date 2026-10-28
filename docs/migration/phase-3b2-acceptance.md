@@ -8,7 +8,7 @@ This increment owns acceptance closure, not phase 4. Inventory remains 37 adapte
 
 | Area | Existing evidence | Remaining work |
 | --- | --- | --- |
-| Interrogate | Concrete two-model defect; native rejected-selection and missing-role boundaries; actual capacity-dropout disclosure below | Full two-completed-reviewer empty review, other dropout/recovery modes and desktop coverage |
+| Interrogate | Concrete two-model defect; native rejected-selection and missing-role boundaries; actual capacity-dropout disclosure and completed empty panel below | Other dropout/recovery modes and desktop coverage |
 | Arena / Architect | Artifact synthesis, How grounding, checkpoint and default implementation | Scrap/reframe/dropout, same-model pools, code-worktree and desktop variants |
 | Swarm | Concurrent writers, non-default base, local-process/auth proof, races/conflicts, bounded retry/interruption; tied scores and actual local HTTP rejection below | Actual crash/network recovery and desktop/browser variants |
 | Why | Native local history and primary-host GitHub supplement | Actual native connector access and genuine cross-category synthesis; advertised Slack dispatch failed |
@@ -94,3 +94,13 @@ python3 -B scripts/accept-codex-local-denied.py --codex /absolute/codex --model 
 ```
 
 The six recovery-instrument regressions and package suite (34 tests / 57 assertions) passed. A model-free service smoke also observed the real 403, exit 3 and exactly one request without changing the probe. No product workflow behavior or inventory status was upgraded: Swarm remains partial, and PR #6 remains an acceptance work in progress.
+
+## Third increment: completed empty review — scoped PASS, 2026-10-28
+
+A later rerun of the unchanged `review-empty` fixture completed both reviewers. This closes the two-completed-reviewer empty-result scenario; it does not change the historical capacity failures above into successes or prove other recovery/desktop variants.
+
+Evidence: `/private/var/folders/47/vjdx7cgs6kgd9bxf146wm1ph0000gn/T/pstack-research-live-xus7oxou/review-empty`. Client remained Codex CLI `0.164.0-alpha.11.1`, parent Sol/low; the native catalog was refreshed for this run. Actual whole-panel resolution at raw event 98 returned before explicit registered-role spawn requests at 110/158. Both used `fork_turns:none` and resolved Sol/low despite conflicting global defaults. Native child IDs were `01a1813f-7635-75a2-8928-ac6240999e23` and `01a1813f-8e06-7f50-b63c-2830291dd394`.
+
+Each reviewer independently read the scoped shipping diff and head artifact (events 183 and 420), then returned no findings at 407 and 515. The primary's final at 658 reconciled both results with its own inspection, explicitly labeled model diversity false and limited its conclusion to static equivalence for nonnegative integers. No application code/tests ran or were claimed to have run. Git emitted sandbox cache warnings but returned the requested artifacts; those warnings are retained in the final evidence limits.
+
+The native capture completed with unchanged snapshots, HEAD and index; the temporary auth link was removed. Manual inspection confirmed exactly two role starts, both final reviews before primary synthesis, no replacement reviewers and no invented findings. This is a same-model independent panel, not cross-model diversity. Interrogate remains partial pending the other retained scenarios; full 3B and phase 4 gates are unchanged.
