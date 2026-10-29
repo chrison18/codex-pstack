@@ -12,7 +12,7 @@ For setup, read [the setup entry](../../../setup-pstack/SKILL.md) and [runtime](
 
 For proof, first discover an existing project verify skill/harness. If absent, explain Create verification skill; for properties tests rarely reach, explain Create formal verification skill and its bounds. Existing maps/checks are maintained with the corresponding maintenance reference. Setup/help does not automatically generate them.
 
-Named-checkpoint recall, pickup and pause are supported through [task checkpoint and pickup](../session-lifecycle.md); broad provider-history access, destructive worktree cleanup and phase 5 wake/autonomy remain unavailable. Explain that gap rather than invoking a guessed tool. Ketchup uses this chat's already available state only; it is not cross-session recall.
+Named-checkpoint recall, pickup and pause are supported through [task checkpoint and pickup](../session-lifecycle.md); [bounded in-turn continuation](../continuation.md) drives authorized work without routine continuation prompts. Broad provider-history access, destructive worktree cleanup and automatic external wake/recurring autonomy remain unavailable. Explain that gap rather than invoking a guessed tool. Ketchup uses this chat's already available state only; it is not cross-session recall.
 
 For a prompt, state the goal, observable done check, evidence and constraints. Read [prompting](poteto-help/prompting.md) or [recipes](poteto-help/recipes.md) for examples. Adapt the example to the available Codex routes. Read current PR/CI state through available connectors only when needed for the answer; do not infer merge approval or mark drafts ready.
 

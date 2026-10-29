@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2, 3A, 3B1 and **3B2 core (PR #6)** are merged; core merged as `7c5307971ffcbfae2d90d93da86d246b98de35a1`. **Phase 4** is active on `feat/codex-session-lifecycle` from that main, with [bounded A10/A11 evidence](phase-4-lifecycle-evidence.md#phase-4-exit-review). Named-task recovery has host interruption tests and actual fresh Orca Chat pickup; final review, publication-head CI and separate merge authorization remain. Advanced 3B3 evidence and all inventory classifications remain unchanged. Under the owner-approved core-first ordering, phase 5 requires accepted/merged phase 4; phase 6 retains every support-claim responsibility, including qualified desktop discovery/version display. No phase 5 activation or merge is authorized by this status update.
+Status: phases 0 through 2, 3A, 3B1, **3B2 core (PR #6)** and **phase 4 (PR #7)** are merged; phase 4 merged as `e430c85`. **Phase 5** is active on `feat/codex-autonomous-workflows` with [bounded continuation evidence](phase-5-continuation-evidence.md): host delivery/restart/cancellation/completion checks and one actual fresh Orca Chat in-turn case. External automatic wake and recurring integrations remain unsupported; this is a review candidate, not a phase-wide certification or merge authorization. Advanced 3B3 evidence, inventory classifications and phase 6 support-claim responsibilities remain unchanged.
 
 
 ## Outcome and scope
