@@ -14,8 +14,10 @@ Branch: `feat/codex-remaining-workflows`, created from latest main `288561b1feda
 - [x] Inspect live GitHub source access in the current primary host; record successful PR/commit reads, bounded empty issue results and the failed advertised Slack tool in the [live source supplement](phase-3b-live-source-evidence.md).
 - [ ] Complete native live Why investigator/synthesizer access and genuine cross-source synthesis; the primary host supplement does not close this gate. Preserve unavailable-source gaps.
 - [x] Run actual bounded native A7 concurrent-writer, A8 pushed non-default-base and A9 local-process/auth checks; inspect live-PID/clock receipts, real worktree metadata, combined verification and authenticated requests. Desktop/browser variants remain NOT RUN; see [evidence](phase-3b-swarm-evidence.md).
-- [ ] Close 3B1 with independent latest-change review, resolved findings and current-head CI before merging PR #5.
+- [x] Close 3B1 with independent latest-change review, resolved findings and current-head CI: PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb`. [3B2 acceptance](phase-3b2-acceptance.md) now continues from that main.
 - [ ] In 3B2, reconcile every phase 3 inventory entry, complete applicable desktop/native evidence and cross-source synthesis, then review and validate before claiming full 3B completion or entering phase 4.
+
+Current continuation: [3B2 native review evidence](phase-3b2-acceptance.md) adds rejected-model and missing-role checks plus actual capacity-dropout disclosure. It does not pass the full empty panel or complete 3B. Earlier candidate results below remain historical.
 
 ## First candidate: read-only adversarial review
 

@@ -92,3 +92,22 @@ Host changes preserve substantive quality/writing/verification advice while repl
 ## Phase 3B1 review and continuation boundary
 
 On 2026-10-26 the owner authorized PR #5 merge after validation and review. The [migration plan](docs/migration/codex-migration-plan.md) explicitly separates 3B1 candidate delivery from 3B2 acceptance closure; partial capability claims and all original phase 3 gates remain. The [merge review](docs/migration/phase-3b1-merge-review.md) records the independently found/fixed temporary-auth cleanup defect, regression and local checks. The [live-source supplement](docs/migration/phase-3b-live-source-evidence.md) records scoped GitHub reads without claiming native multi-source acceptance. The inherited pin is unchanged.
+
+## Phase 3B2 acceptance start
+
+PR #5 merged as `b9ad7434506b3785b531b66afa85d1ad040b9fbb`; `test/codex-3b-acceptance` starts from that actual main. The [3B2 evidence](docs/migration/phase-3b2-acceptance.md) adds native rejection and missing-role fallback probes, retaining two real capacity failures as partial/dropout evidence rather than full empty-review passes. No inherited source pin or runtime workflow instruction changes; full 3B/phase 4 gates remain open.
+
+## Phase 3B2 independent-start adapter
+
+At the unchanged inherited pin, the package runtime contract and Arena reference now describe the supported Codex fresh-start schema for explicitly modeled independent delegates, complete scoped briefs and existing grounding before Arena fan-out. This is a local host adaptation prompted by observed inherited-context launch errors and missing-context handoffs, not a Cursor source synchronization. The [3B2 evidence](docs/migration/phase-3b2-acceptance.md) separates coached historical runs, initially incomplete uncoached handoffs and the corrected package-driven native run. General Feature/Bug/Investigation behavior and Orca Chat UI are not recertified by the Arena fixture.
+
+The same 3B2 adapter now distinguishes directly declared native collaboration/role schemas from nested tool inventories before missing-role fallback. This responds to a reproduced false-absence inference in Investigation; the retained failed run and corrected role-present/role-absent native probes are in the same evidence record. No upstream source pin or global policy changed.
+
+## Phase 3B2 Architect dependency and comparison clarification
+
+The controlled repeated-friction probe repaired the fixture but failed the full Scrap contract: candidates preceded delegated How completion and equivalent fields/closure designs were counted as distinct. The package now centralizes the grounding dependency and concrete structural-comparison evidence in Architect, with runner/judge references and at most one replacement for unchanged framing. These are workflow instructions, not runtime enforcement or a semantic diversity checker; a subsequent single native controlled-friction run passed the corrected ordering and structural comparison, while the convergence/replacement/stop branch remains NOT RUN. The inherited source pin and ordinary Arena/How/read-only boundaries remain unchanged. See the [acceptance record](docs/migration/phase-3b2-acceptance.md).
+
+
+## Phase 3B2 Architect replacement-count clarification
+
+The later [controlled convergence run](docs/migration/architect-convergence-evidence.md) remains FAIL: the primary interpreted one replacement as one round and dispatched two candidate writers. The central Architect structural-comparison contract now explicitly counts actual candidate-producing writer dispatches and replacement artifacts across the entire retry, including failed dispatches, rather than rounds, pairs or selected slots; one replacement can be compared with a preserved viable original, and honest incomplete stop remains allowed. Existing Arena/runner/judge pointers continue to use that central contract. This is instruction clarification only, not runtime enforcement; one subsequent unchanged-fixture native verification observed a single replacement followed by truthful incomplete stop (see the same evidence record), the earlier failure is retained, and the inherited source pin and all phase gates are unchanged.

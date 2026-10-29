@@ -117,7 +117,7 @@ def main():
     parser.add_argument('--effort', required=True)
     parser.add_argument('--catalog', type=Path, required=True)
     parser.add_argument('--auth-file', type=Path, default=Path.home() / '.codex/auth.json')
-    parser.add_argument('--case', action='append', choices=('how-simple', 'how-complex', 'why', 'fallback', 'review'))
+    parser.add_argument('--case', action='append', choices=('how-simple', 'how-complex', 'why', 'fallback', 'review', 'review-empty', 'review-invalid', 'review-missing-role'))
     args = parser.parse_args()
     repo = Path(__file__).resolve().parent.parent
     entry = repo / 'plugins/pstack/skills/poteto-mode'
@@ -129,6 +129,9 @@ def main():
         'how-complex': 'Explain the architecture and complete runtime flow from api.handle through normalization and aggregation to the returned total. Trace the cross-module ownership and data transformations. Use the complex How route.',
         'why': 'Why is BATCH_SIZE 5 and TIMEOUT_SECONDS 11? I assume both were chosen for speed. Investigate the actual local history and distinguish known motivation from unknown reasons.',
         'review': 'Interrogate the latest commit against the shipping fee requirement: zero quantity has zero fee; positive quantity has fee 3. Review only; do not fix. Use two independent reviewers with task selections gpt-6.1-sol/low and gpt-6-luna/medium. State concrete counterexamples and distinguish findings from suggestions.',
+        'review-empty': 'Interrogate HEAD^..HEAD, limited to shipping.py. The public contract accepts nonnegative integer quantities: zero has zero fee and positive quantities have fee 3. Review only; do not fix or broaden the input contract. Use the default two-reviewer panel with the observed parent settings. Report only substantiated findings and distinguish static reasoning from executed checks.',
+        'review-invalid': 'Interrogate HEAD^..HEAD for shipping.py: zero quantity has zero fee; positive quantity has fee 3. Use exactly two reviewer selections: gpt-6.1-sol/low and pstack-unavailable-acceptance-model/low. Validate the whole panel before spawning; do not replace a rejected selection, save preferences or fall back to primary-only review. Report any blocked prerequisite honestly.',
+        'review-missing-role': 'Interrogate HEAD^..HEAD, limited to shipping.py: zero quantity has zero fee and positive quantities have fee 3. Use the available registered role contract. If it cannot run, report the missing capability and follow only the documented fallback; do not install roles, configure anything or substitute another agent type. Review only; do not fix.',
         'fallback': 'How does totals.total calculate its result? Do not delegate or install/configure anything; use the documented primary-only read path.',
     }
     results = []
@@ -147,21 +150,23 @@ def main():
         (workspace / 'normalize.py').write_text('def normalize(rows):\n    return [{"price": int(row["price"]), "quantity": int(row["quantity"])} for row in rows]\n')
         (workspace / 'api.py').write_text('from normalize import normalize\nfrom totals import total\n\ndef handle(rows):\n    return {"total": total(normalize(rows))}\n')
         (workspace / 'limits.py').write_text('BATCH_SIZE = 3\nTIMEOUT_SECONDS = 11\n')
-        if case == 'review':
+        if case.startswith('review'):
             (workspace / 'shipping.py').write_text('def shipping_fee(quantity):\n    return 0 if quantity == 0 else 3\n')
         git('init', '-q')
         git('add', '.')
         git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', '-c', 'commit.gpgsign=false', 'commit', '-qm', 'Initialize example request pipeline')
         (workspace / 'limits.py').write_text('BATCH_SIZE = 5\nTIMEOUT_SECONDS = 11\n')
-        if case == 'review':
-            (workspace / 'shipping.py').write_text('def shipping_fee(quantity):\n    return 3\n')
+        if case.startswith('review'):
+            (workspace / 'shipping.py').write_text(
+                'def shipping_fee(quantity):\n    if quantity == 0:\n        return 0\n    return 3\n'
+                if case == 'review-empty' else 'def shipping_fee(quantity):\n    return 3\n')
             git('add', 'shipping.py')
         git('add', 'limits.py')
         git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', '-c', 'commit.gpgsign=false', 'commit', '-qm', 'Limit batches to five because the partner endpoint rejects larger batches')
         link = workspace / '.agents/skills/poteto-mode'
         link.parent.mkdir(parents=True)
         link.symlink_to(entry)
-        if case != 'fallback':
+        if case not in ('fallback', 'review-missing-role'):
             subprocess.run(['python3', '-B', str(entry / 'scripts/runtime.py'), 'install', str(workspace)],
                            check=True, capture_output=True)
         if case == 'how-simple':
@@ -180,7 +185,7 @@ def main():
         auth = home / 'auth.json'
         auth.symlink_to(args.auth_file.resolve(strict=True))
         prompt = '$poteto-mode ' + task + '\nThis is a disposable read-only acceptance fixture. '
-        prompt += ('Delegate using the prescribed native roles. ' if case != 'fallback' else '')
+        prompt += ('Delegate using the prescribed native roles when available. ' if case != 'fallback' else '')
         prompt += ('Only local files and local Git history are in scope. Do not access external services, '
                    'create files, execute application code, change config, commit or open PRs. '
                    'Keep the checklist in conversation. The parent model/effort explicitly selected for this run is '
@@ -189,6 +194,8 @@ def main():
                    'to the native spawn. Missing capability or rejected selection is not permission to claim delegation ran.')
         if case == 'review':
             prompt += ' Resolve the whole panel before spawning via resolve-panel with task selections [{"model":"gpt-6.1-sol","effort":"low"},{"model":"gpt-6-luna","effort":"medium"}].'
+        if case == 'review-invalid':
+            prompt += ' Resolve the whole panel via resolve-panel with task selections [{"model":"gpt-6.1-sol","effort":"low"},{"model":"pstack-unavailable-acceptance-model","effort":"low"}].'
         if case == 'why':
             prompt += ' Task model override for why-synthesizer: --model ' + args.model + ' --effort high; do not save this override.'
         (log_root / 'prompt.txt').write_text(prompt)
@@ -214,6 +221,10 @@ def main():
         result = {'case': case, 'status': status, 'changed': changed, **summary,
                   'artifactChecksPassed': status == 'completed' and not changed
                   and git('rev-parse', 'HEAD') == head and git('diff', '--cached', '--binary') == index}
+        # Capture guards cannot establish honest findings, resolver ordering or semantic conformance.
+        if case in ('review-invalid', 'review-missing-role'):
+            result['artifactChecksPassed'] = result['artifactChecksPassed'] and not summary['spawnRequests'] and not summary['resolvedAgentStarts']
+        result['behaviorVerdict'] = 'UNREVIEWED: inspect actual reads, resolution, delegation and final claims'
         results.append(result)
         (log_root / 'result.json').write_text(json.dumps(result, indent=2))
         print(json.dumps(result), flush=True)

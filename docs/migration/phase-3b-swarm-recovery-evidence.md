@@ -69,3 +69,7 @@ python3 -B scripts/accept-codex-swarm-recovery.py --case conflict --model gpt-6.
 ```
 
 Use `--codex /absolute/path/to/codex` for probes when needed. Missing catalog/model/role/native tool support must remain a reported failure or gap. Controlled missing artifacts and native interruption do not establish recovery from an actual process crash, network outage or rejected capability. Desktop/browser variants, tie-specific runs and other phase 3B skills/playbooks/live-source gates remain unverified. Swarm stays partial; phase 4 has not started. PR #5 stays draft and must not merge.
+
+## Later acceptance supplement
+
+PR #5 subsequently merged as phase 3B1. The [3B2 evidence](phase-3b2-acceptance.md#second-increment-swarm-tie-and-local-rejection--scoped-pass) records separate native tied-score and local HTTP rejection probes on 2026-10-26. The historical scope and limitations above describe the original runs; full 3B remains incomplete.
