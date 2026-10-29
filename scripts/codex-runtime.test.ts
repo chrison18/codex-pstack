@@ -80,3 +80,12 @@ test("Arena worktree cleanup preserves unknown writers and unexpected refs", () 
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 });
+
+
+test("task recovery refuses duplicate/uncertain replay and audits worktrees conservatively", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_lifecycle.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);

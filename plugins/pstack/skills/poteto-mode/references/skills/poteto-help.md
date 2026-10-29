@@ -12,10 +12,12 @@ For setup, read [the setup entry](../../../setup-pstack/SKILL.md) and [runtime](
 
 For proof, first discover an existing project verify skill/harness. If absent, explain Create verification skill; for properties tests rarely reach, explain Create formal verification skill and its bounds. Existing maps/checks are maintained with the corresponding maintenance reference. Setup/help does not automatically generate them.
 
-History/recall, pickup, pause, worktree cleanup, autonomous runs, orchestration, scheduled wakes and Benny are later-phase capabilities. Explain that gap rather than invoking a guessed tool. Ketchup uses this chat's already available state only; it is not cross-session recall.
+Named-checkpoint recall, pickup and pause are supported through [task checkpoint and pickup](../session-lifecycle.md); broad provider-history access, destructive worktree cleanup and phase 5 wake/autonomy remain unavailable. Explain that gap rather than invoking a guessed tool. Ketchup uses this chat's already available state only; it is not cross-session recall.
 
 For a prompt, state the goal, observable done check, evidence and constraints. Read [prompting](poteto-help/prompting.md) or [recipes](poteto-help/recipes.md) for examples. Adapt the example to the available Codex routes. Read current PR/CI state through available connectors only when needed for the answer; do not infer merge approval or mark drafts ready.
 
 Keep the reply short unless the user asks for the full map. For a public source link use the actual repository/ref supplied by the task, not the inherited fork's main branch.
 
 Source: `skills/poteto-help/SKILL.md` at inherited baseline `a06537a883278a63132e2518971166002f3de5de`. Codex host adaptations and evidence are recorded in the migration ledger.
+
+For a named task with a saved checkpoint, use [task checkpoint and pickup](../session-lifecycle.md). Example: `$poteto-mode Resume the task at <exact task directory> in <workspace>; reconcile uncertain work against its artifacts before continuing within the recorded authority.` The primary reads the named record and continues the appropriate existing route; no global history search or automatic wake is implied.
