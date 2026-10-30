@@ -104,6 +104,8 @@ def initialize(directory, workspace, context, operations):
 def mutate(directory, workspace, revision, owner, action, operation=None, evidence=None, context=None, reason=None):
     with locked(directory) as directory:
         state = read_state(directory, workspace)
+        if 'continuation' in state:
+            raise ValueError('Continuation owns mutations; use continuation.py, never bypass terminal state')
         if state['revision'] != revision or state['context']['owner'] != owner:
             raise ValueError('Stale revision or wrong owner; recover before writing')
         if action == 'checkpoint':

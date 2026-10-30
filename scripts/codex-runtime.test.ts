@@ -89,3 +89,12 @@ test("task recovery refuses duplicate/uncertain replay and audits worktrees cons
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 }, 30000);
+
+
+test("bounded continuation deduplicates delivery and preserves cancellation and completion", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_continuation.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);

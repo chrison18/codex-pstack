@@ -32,6 +32,8 @@ Before a scoped operation, run `begin PROJECT --task-dir TASK_DIR --owner OWNER 
 
 Use `checkpoint PROJECT --task-dir TASK_DIR --owner OWNER --revision N --input CONTEXT.json --reason REASON` to retain changed requirements, authority, scope, evidence, blockers and next action. CONTEXT.json is the complete context object above; the reason and prior context stay in task-local history. Scope changes require actual user authority, not merely editing this file. The helper rejects stale revisions/wrong owners, symlink state paths and repeated starts. It uses a POSIX file lock and atomic checkpoint replacement; it does not enforce access control against hostile same-user processes.
 
+When a task has an enabled [continuation grant](continuation.md), its controller owns all mutations, including checkpoints and cancellation. This helper remains available for read-only recovery/history; use the continuation commands to avoid bypassing terminal state.
+
 ## Recover without replay
 
 Run `recover PROJECT --task-dir TASK_DIR` before resuming. It returns the preserved context and completed, pending and uncertain operation IDs. `history` with the same exact arguments returns only this task's recorded decisions; it never scans another project or provider store. Check the current workspace/artifacts against the goal and evidence, then route remaining work to its existing playbook.
