@@ -1,6 +1,6 @@
 # Codex migration plan
 
-Status: phases 0 through 2, 3A, 3B1, **3B2 core (PR #6)** and **phase 4 (PR #7)** are merged; phase 4 merged as `e430c85`. **Phase 5** is active on `feat/codex-autonomous-workflows` with [bounded continuation evidence](phase-5-continuation-evidence.md): host delivery/restart/cancellation/completion checks and one actual fresh Orca Chat in-turn case. External automatic wake and recurring integrations remain unsupported; this is a review candidate, not a phase-wide certification or merge authorization. Advanced 3B3 evidence, inventory classifications and phase 6 support-claim responsibilities remain unchanged.
+Status: phases 0–2, 3A, 3B1, 3B2 core, phase 4 (PR #7, `e430c85`) and bounded phase 5 (PR #8, `0c0ecd83711394e67df6f2eb4ede66d8bea1d1f5`) are merged. Phase 6 is active on `chore/codex-release-readiness`; see the [release readiness and 87-unit disposition](release-readiness.md). External automatic wake and recurring integrations remain unsupported; advanced 3B3 and all historical inventory classifications remain qualified. No release/tag, full migration certification or merge is authorized by this status.
 
 
 ## Outcome and scope
@@ -93,7 +93,7 @@ Each PR records tested Git SHA, platform, client/runtime versions, commands/prom
 
 Run [script checks](../../CONTRIBUTING.md#verification) for affected code/dependencies. Keep manifest/frontmatter parsing, reference resolution, principle/playbook inventory checks in CI. Add tests for meaningful changed behavior. The existing multi-phase-plan checker validates a different autonomous-program artifact contract; do not apply it to this migration document.
 
-Inherited Antigravity CI stays unchanged in phase 0. Phase 1 adds Codex packaging checks; phase 6 removes obsolete host checks. Authenticated checks unavailable in CI require explicit local evidence and must never appear as a CI pass.
+Inherited Antigravity CI stays unchanged in phase 0. Phase 1 adds Codex packaging checks; phase 6 replaces obsolete host download/install checks with portable retained-source integrity validation. Authenticated checks unavailable in CI require explicit local evidence and must never appear as a CI pass.
 
 See the [initial baseline](baseline-2026-10-21.md). Review and owner approval are required before merge. This plan does not authorize deployment, automatic merging, or activation of recurring jobs.
 
