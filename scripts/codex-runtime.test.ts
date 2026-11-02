@@ -98,3 +98,12 @@ test("bounded continuation deduplicates delivery and preserves cancellation and 
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 }, 30000);
+
+
+test("one-shot task events bind claims and hold ambiguous launches", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_task_event.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);

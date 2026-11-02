@@ -21,3 +21,5 @@ Keep the reply short unless the user asks for the full map. For a public source 
 Source: `skills/poteto-help/SKILL.md` at inherited baseline `a06537a883278a63132e2518971166002f3de5de`. Codex host adaptations and evidence are recorded in the migration ledger.
 
 For a named task with a saved checkpoint, use [task checkpoint and pickup](../session-lifecycle.md). Example: `$poteto-mode Resume the task at <exact task directory> in <workspace>; reconcile uncertain work against its artifacts before continuing within the recorded authority.` The primary reads the named record and continues the appropriate existing route; no global history search or automatic wake is implied.
+
+For an authorized external caller delivering one event to a stopped named task, [one-shot task-event delivery](../task-events.md) can start a fresh receiver after settlement/ownership checks. The agent manages the internal commands; no event source or recurring wake is installed, and ambiguous launch receipts hold rather than relaunch.
