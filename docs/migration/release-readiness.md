@@ -134,3 +134,7 @@ Complete child messages are encrypted and observed child model/effort fields are
 ## Local checks
 
 Bun **1.4.3**: portable inherited-source validator PASS (59 skills, 2 agents, 23 playbooks); Codex package and 87-unit inventory validators PASS; root suite **40 pass**; inherited frozen install/typecheck and **69 tests pass**. Model-free entry smoke passes on CLI **0.164.0-alpha.11.1** (no model response). Shell syntax, principle synchronization, local link/diff/privacy and disposition coverage checks pass. These local results do not claim publication-head CI; coordinator owns publication and independent review.
+
+## Post-merge explicit event adapter
+
+PR #9 merged as `e6b0bc15cce125c1ab13f45eb115c4914189d518`; the phase 6 evidence above remains historical at its recorded versions. The subsequent [task-event increment](task-event-continuation-evidence.md) adds a tested externally invoked, one-shot fresh-Chat delivery adapter. It narrows the missing delivery boundary but does not install an event source or recurring wake; exclusive prior-writer settlement remains a cooperative prerequisite. All 87 classifications above remain unchanged, including deferred full inherited integrations.
