@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "pstack",
   "version": "0.2.0-alpha.1",
-  "description": "Codex-only pstack core workflow development candidate; explicit activation and bounded phase 2 routes.",
+  "description": "Codex-only pstack source-checkout preview: explicit workflows, named-task recovery and bounded in-turn continuation; advanced integrations remain limited.",
   "author": {
     "name": "Lauren Tan"
   },

@@ -1,6 +1,6 @@
 # Contributing
 
-This fork is migrating to Codex-only support. Read the [migration plan](docs/migration/codex-migration-plan.md) and [upstream ledger](UPSTREAM.md) before changing runtime behavior. The inherited runtime still targets Antigravity until the relevant migration phases pass acceptance.
+This fork is migrating to Codex-only support. Read the [migration plan](docs/migration/codex-migration-plan.md) and [upstream ledger](UPSTREAM.md) before changing runtime behavior. The retained inherited tree targets Antigravity and is source material, not the Codex installation; current supported scope is in the release-readiness matrix.
 
 ## Branch and PR workflow
 
@@ -41,6 +41,6 @@ bash -n skills/show-me-your-work/scripts/log.sh
 git diff --check
 ```
 
-Runtime changes also require proof in the supported Codex client. Record client version, prompt, expected behavior, actual behavior, and evidence. Mark unavailable checks BLOCKED or NOT RUN with a reason; never count them as passes. The inherited Antigravity CI remains during phase 0 and does not validate Codex behavior.
+Runtime changes also require proof in the supported Codex client. Record client version, prompt, expected behavior, actual behavior, and evidence. Mark unavailable checks BLOCKED or NOT RUN with a reason; never count them as passes. CI retains portable inherited-source integrity and script checks, without downloading/installing the obsolete host; these do not validate native Codex behavior.
 
-For the phase 1 Codex preview, also run `bun scripts/validate-codex-plugin.ts`, `bun test ./scripts/`, and `python3 scripts/smoke-codex-entry.py`. The last command needs Codex CLI and a loopback port; it uses isolated state and captures host context without calling a model. Desktop UI and actual model behavior require separate evidence.
+For the Codex preview, also run `bun scripts/validate-inherited-source.mjs`, `bun scripts/validate-codex-plugin.ts`, `bun test ./scripts/`, and `python3 scripts/smoke-codex-entry.py`. The last command needs Codex CLI and a loopback port; it uses isolated state and captures host context without calling a model. Desktop UI and actual model behavior require separate evidence.
