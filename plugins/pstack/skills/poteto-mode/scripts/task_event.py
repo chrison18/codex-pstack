@@ -48,6 +48,7 @@ def prepare(directory, workspace, owner, event, revision, evidence, assertion):
         state = checked(directory, workspace, owner)
         if state['continuation']['status'] != 'active':
             return dict(disposition='terminal-no-launch')
+        if state.get('supervision'): raise ValueError('Task is owned by supervised continuation')
         events = state.setdefault('task_events', {})
         if event in events:
             if not binding_matches(events[event],directory,state,owner,event):

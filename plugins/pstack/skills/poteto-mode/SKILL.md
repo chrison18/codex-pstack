@@ -11,6 +11,7 @@ Activate only on explicit invocation for a new task. Follow-ups continue that ac
 
 Read [the runtime contract](references/runtime.md) before executing a task or configuring roles. Read only the applicable playbook. Select and read the full applicable leaves through the [principle index](references/principles.md):
 
+- Explicitly requested supervised continuation with sequential Orca workers: [foreground supervised completion](references/supervised-continuation.md).
 - Drive authorized multi-step work to a done predicate without routine continuation prompts: [bounded continuation](references/continuation.md).
 - Pause, named-task recovery or conservative worktree audit: [task checkpoint and pickup](references/session-lifecycle.md).
 - Parallel coverage, races and isolated code slices: [Swarm](references/swarm.md).

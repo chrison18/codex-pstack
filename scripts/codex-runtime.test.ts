@@ -107,3 +107,12 @@ test("one-shot task events bind claims and hold ambiguous launches", () => {
   expect(new TextDecoder().decode(result.stderr)).toContain("OK");
   expect(result.exitCode).toBe(0);
 }, 30000);
+
+
+test("foreground supervision gates successors on exact settled units", () => {
+  const result = Bun.spawnSync(["python3", "-B", resolve(import.meta.dir, "test_codex_supervision.py")], {
+    env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
+  });
+  expect(new TextDecoder().decode(result.stderr)).toContain("OK");
+  expect(result.exitCode).toBe(0);
+}, 30000);
