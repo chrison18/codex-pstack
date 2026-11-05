@@ -25,7 +25,7 @@ def validate(run):
 
 
 def apply(directory, workspace, owner, action, revision=None, delivery=None, evidence=None,
-          predicate=None, grant=None, limit=None, reason=None, context=None, event_token=None):
+          predicate=None, grant=None, limit=None, reason=None, context=None, event_token=None, writer_token=None):
     with lifecycle.locked(directory) as directory:
         state = lifecycle.read_state(directory, workspace)
         if owner != state['context']['owner']:
@@ -41,6 +41,9 @@ def apply(directory, workspace, owner, action, revision=None, delivery=None, evi
                 return dict(state=state, disposition='duplicate-no-execution', receipt=run['deliveries'][delivery])
             if run['status'] != 'active':
                 return dict(state=state, disposition=run['status'] + '-no-execution')
+        if state.get('supervision'):
+            import supervision
+            supervision.mutation_guard(directory,state,action,delivery,writer_token)
         if action != 'cancel' and state.get('active_event'):
             event = state['task_events'][state['active_event']]
             bound = dict(workspace=state['workspace'], task=str(directory), owner=owner, event=state['active_event'])
@@ -123,10 +126,10 @@ def main():
     p.add_argument('workspace');p.add_argument('--task-dir',required=True);p.add_argument('--owner',required=True)
     p.add_argument('--revision',type=int);p.add_argument('--delivery');p.add_argument('--predicate');p.add_argument('--grant')
     p.add_argument('--input');p.add_argument('--limit',type=int);p.add_argument('--reason');p.add_argument('--evidence',action='append')
-    p.add_argument('--event-token')
+    p.add_argument('--event-token');p.add_argument('--writer-token')
     a=p.parse_args()
     try:
-        print(json.dumps(apply(a.task_dir,a.workspace,a.owner,a.action,a.revision,a.delivery,a.evidence,a.predicate,a.grant,a.limit,a.reason,json.loads(Path(a.input).read_text()) if a.input else None,a.event_token),indent=2))
+        print(json.dumps(apply(a.task_dir,a.workspace,a.owner,a.action,a.revision,a.delivery,a.evidence,a.predicate,a.grant,a.limit,a.reason,json.loads(Path(a.input).read_text()) if a.input else None,a.event_token,a.writer_token),indent=2))
     except (ValueError,KeyError,TypeError,OSError) as error:
         p.exit(1,str(error)+'\n')
 

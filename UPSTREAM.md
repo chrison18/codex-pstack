@@ -131,3 +131,7 @@ The current README prioritizes Codex project-local setup/use/update/removal and 
 ## Explicit task-event continuation increment
 
 `references/task-events.md` and `scripts/task_event.py` extend the phase 5 host adaptation with documented Orca fresh-Chat launch, durable intent/receipt, exact task/event claim and cooperative settlement. Existing continuation mutations enforce the active event binding/token. This is new Codex-host code, not an upstream sync: inherited Antigravity timers, shipping and Benny transports remain unported. No event detector, recurring deployment or host-enforced writer exclusion is added. [Two-stage native and host evidence](docs/migration/task-event-continuation-evidence.md) retains those limits; source pin and all inventory classifications are unchanged.
+
+## Foreground supervised continuation candidate
+
+The Codex host adaptation adds `references/supervised-continuation.md` and `scripts/supervision.py`, reusing the existing frozen checkpoint/continuation contract and documented Orca Run/Task/Dispatch lifecycle. Explicitly requested foreground supervision advances sequential units only after accepted settlement and primary evidence review; ordinary entry remains unchanged. This is not an inherited timer port, detached coordinator, same-Chat wake guarantee or upstream sync. Native evidence and limits are recorded in `docs/migration/supervised-continuation-evidence.md`; source pin and inventory classifications are unchanged.

@@ -28,6 +28,8 @@ Or start read-only: `$poteto-mode Read README.md and explain this project; do no
 
 For sustained work, ask: `$poteto-mode Complete this bounded task, verify the result, and preserve a checkpoint so it can be resumed: …` Include the goal and any scope restrictions. The agent manages checkpoint commands. Keep the reported checkpoint location; after a restart, invoke `$poteto-mode` and ask it to resume that exact named checkpoint. It checks completed and uncertain effects before continuing. Cancellation is cooperative: it prevents later work but cannot undo or forcibly stop a tool already running. A stopped Chat does not wake itself.
 
+For sequential agents under the original Chat, ask: `$poteto-mode Complete this task with supervised continuation: …` The Chat chooses and states finite worker/time limits, supervises one writer at a time, verifies each result and advances without asking you to continue. Additional workers consume model usage; the supervising Chat must remain active. Cancellation stops later work, but cannot preempt a running tool. This opt-in mode does not install a recurring job or resume after app shutdown. See the [bounded evidence and limitations](docs/migration/supervised-continuation-evidence.md).
+
 Role models inherit the parent by default; no model change is required for setup. To request explicit choices, use the optional setup entry described below. Unsupported roles/tools must be reported rather than replaced by a claimed successful fallback.
 
 ## Update safely

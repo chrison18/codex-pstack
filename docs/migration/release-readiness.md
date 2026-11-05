@@ -138,3 +138,7 @@ Bun **1.4.3**: portable inherited-source validator PASS (59 skills, 2 agents, 23
 ## Post-merge explicit event adapter
 
 PR #9 merged as `e6b0bc15cce125c1ab13f45eb115c4914189d518`; the phase 6 evidence above remains historical at its recorded versions. The subsequent [task-event increment](task-event-continuation-evidence.md) adds a tested externally invoked, one-shot fresh-Chat delivery adapter. It narrows the missing delivery boundary but does not install an event source or recurring wake; exclusive prior-writer settlement remains a cooperative prerequisite. All 87 classifications above remain unchanged, including deferred full inherited integrations.
+
+## Foreground supervision overlay
+
+[Supervised completion](supervised-continuation-evidence.md) adds an opt-in original-Chat flow with two sequential workers and accepted-settlement-driven progress, observed on Orca 1.4.245 / Codex CLI 0.164.0-alpha.11.1 using host-selected gpt-6-astra / low. This is one bounded case, not recertification of the historical matrix or all workflows. Finite worker/time bounds are not hard monetary caps; the coordinator must remain active and uncertain effects hold. All 87 source dispositions above remain unchanged; full inherited unattended/scheduler/forge integrations remain deferred. No release/tag or merge is implied by this candidate.
